@@ -20,7 +20,6 @@ function MainComponent(userId) {
           element={<SingleArticlePage articleIf={articleId} />}
         />
       </Routes>
-      <section>Main Page</section>
     </>
   );
 }

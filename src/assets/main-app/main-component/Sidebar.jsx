@@ -3,6 +3,7 @@ function Sidebar() {
     <aside>
       <div className="sidebar user-avatar">USER IMAGE HERE</div>
       <div className="sidebar username">Username here</div>
+      <div id="main-header-stats-div">User stats here</div>
       <nav>
         <div className="sidebar topic-list">
           <ul className="sidebar-list">

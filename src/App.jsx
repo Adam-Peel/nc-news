@@ -8,11 +8,11 @@ function App() {
   const [userId, setUserId] = useState(2);
 
   return (
-    <>
+    <body>
       <Header setUserId={setUserId} />
       <MainComponent userId={userId} />
       <Footer />
-    </>
+    </body>
   );
 }
 
