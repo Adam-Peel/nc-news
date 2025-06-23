@@ -1,18 +1,27 @@
-function ArticleCard() {
+function ArticleCard(article) {
   return (
-    <section className="article-card">
+    <section className="article-card" key={article.id}>
       <section className="article-card-head">
-        <div className="article-card-head-image">IMAGE HERE</div>
+        <div className="article-card-head-image-placeholder">
+          <img
+            className="article-card-head-image"
+            src={article.article_img_url}
+            alt="An image of the article"
+          ></img>
+        </div>
         <div className="article-card-head-info">
-          <h2>Article title</h2>
-          <p>Article Topic</p>
-          <br>Article Author: Date</br>
+          <h2>{article.title}</h2>
+          <p>{article.topic}</p>
+          <br />
+          {article.author}
+          {" : "}
+          {article.created_at}
         </div>
       </section>
       <section className="article-card-stats">
         <ul className="article-card-stats-list">
-          <li>Comment Count stat</li>
-          <li>Vote Count stat</li>
+          <li>{article.comment_count}</li>
+          <li>{article.votes}</li>
         </ul>
       </section>
     </section>
