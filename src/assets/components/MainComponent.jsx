@@ -1,0 +1,13 @@
+import Sidebar from "./main/Sidebar";
+
+function MainComponent() {
+  return (
+    <>
+      <Sidebar userId={userId} />
+      {/* Routing here for different pages */}
+      <section>Main Page</section>
+    </>
+  );
+}
+
+export default MainComponent;
