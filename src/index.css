@@ -16,9 +16,9 @@
 #root {
   display: grid;
   grid-template-columns: 300px 1fr 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 150px 1fr auto;
   grid-template-areas:
-    "header header header"
+    "header-buttons header-hero header-hero"
     "aside main main"
     "aside footer footer";
   padding-top: 0 !important;
@@ -36,7 +36,6 @@ a:hover {
 }
 
 body {
-  padding-top: 0;
   margin-top: 0;
   top: 0;
   place-items: center;
@@ -44,20 +43,24 @@ body {
 }
 
 header {
-  grid-area: header;
   display: flex;
-  position: sticky;
+  position: fixed;
   top: 0;
-  padding: 0;
-  height: auto;
+  padding-bottom: 10px;
+  height: 150 px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
 }
 
 #header-hero-image {
+  grid-area: header-hero;
   height: 150px;
   width: auto;
 }
 
-#main-header-title {
+#main-header-buttons #main-header-title {
   line-height: 0;
   font-size: 2.5em;
 }
@@ -66,8 +69,7 @@ aside {
   grid-area: aside;
   display: flex;
   flex-direction: column;
-  top: 66.38px;
-  height: calc(100vh - 66.38px);
+  top: 157px;
   position: sticky;
   align-self: start;
 }
@@ -76,11 +78,17 @@ main {
   grid-area: main;
   display: flex;
   flex-direction: column;
+  top: 157px;
+  position: sticky;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+ul {
+  padding-left: 0;
 }
 
 li {
@@ -107,8 +115,11 @@ button:focus-visible {
 }
 
 footer {
+  margin-top: 20px;
   grid-area: footer;
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 @media (prefers-color-scheme: light) {
