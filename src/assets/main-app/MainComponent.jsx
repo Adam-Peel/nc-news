@@ -1,8 +1,9 @@
 import ArticlesPage from "./main-component/routes/ArticlesPage";
 import UserPage from "./main-component/routes/UserPage";
 import Sidebar from "./main-component/Sidebar";
+import SingleArticlePage from "./main-component/routes/SingleArticlePage";
 import { Routes, Route } from "react-router";
-import SingleArticlePage from "./main/routes/SingleArticlePage";
+import { useState } from "react";
 
 function MainComponent(userId) {
   const [articlesAPI, setArticlesAPI] = useState("/api/articles");
