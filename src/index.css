@@ -37,7 +37,6 @@ a:hover {
 
 body {
   margin-top: 0;
-  top: 0;
   place-items: center;
   min-height: 100vh;
 }
@@ -52,6 +51,7 @@ header {
   align-items: center;
   justify-content: center;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 #header-hero-image {
@@ -78,8 +78,9 @@ main {
   grid-area: main;
   display: flex;
   flex-direction: column;
-  top: 157px;
   position: sticky;
+  top: 157px;
+  align-self: flex-start;
 }
 
 h1 {
