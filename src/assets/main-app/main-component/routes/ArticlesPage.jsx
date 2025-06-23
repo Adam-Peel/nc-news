@@ -1,4 +1,4 @@
-function ArticlesFeed() {
+function ArticlesPage() {
   return (
     <main>
       <nav>
@@ -9,4 +9,4 @@ function ArticlesFeed() {
   );
 }
 
-export default ArticlesFeed;
+export default ArticlesPage;

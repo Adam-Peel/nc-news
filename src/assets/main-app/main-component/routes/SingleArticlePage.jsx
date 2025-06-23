@@ -1,4 +1,6 @@
-function Article() {
+import CommentsFeed from "../components/CommentsFeed";
+
+function SingleArticlePage() {
   return (
     <main>
       <article>
@@ -26,4 +28,4 @@ function Article() {
   );
 }
 
-export default Article;
+export default SingleArticlePage;

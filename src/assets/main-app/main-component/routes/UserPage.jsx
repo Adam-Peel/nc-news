@@ -1,3 +1,6 @@
+import ArticlesFeed from "../components/ArticlesFeed";
+import CommentsFeed from "../components/CommentsFeed";
+
 function UserPage() {
   return (
     <main>
