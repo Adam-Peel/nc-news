@@ -1,4 +1,4 @@
-function ArticlesFeed() {
+function ArticlesFeed(articlesAPI) {
   return (
     <section>
       <h3>For each ... return an article card</h3>

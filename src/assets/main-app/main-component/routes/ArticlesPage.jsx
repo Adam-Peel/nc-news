@@ -1,10 +1,12 @@
-function ArticlesPage() {
+import { useState } from "react";
+import SearchBar from "../components/SearchBar";
+import ArticlesFeed from "../components/ArticlesFeed";
+
+function ArticlesPage(articlesAPI) {
   return (
     <main>
-      <nav>
-        <h2>Search bar component here</h2>
-      </nav>
-      <h3>Articles feed component here</h3>
+      <SearchBar />
+      <ArticlesFeed articlesAPI={articlesAPI} />
     </main>
   );
 }

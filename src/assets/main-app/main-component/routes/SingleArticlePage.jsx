@@ -1,4 +1,5 @@
 import CommentsFeed from "../components/CommentsFeed";
+import UserInteractionBox from "../components/UserInteractionBox";
 
 function SingleArticlePage() {
   return (
@@ -18,10 +19,10 @@ function SingleArticlePage() {
           formatting. Possibly add some funky emphasis to the first letter.
         </section>
         <section>
-          <h3>Article interaction box here</h3>
+          <UserInteractionBox />
         </section>
         <section>
-          <h3>comments feed component here</h3>
+          <CommentsFeed />
         </section>
       </article>
     </main>
