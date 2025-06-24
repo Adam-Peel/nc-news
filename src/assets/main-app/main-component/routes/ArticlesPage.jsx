@@ -1,17 +1,13 @@
-import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import ArticlesFeed from "../components/ArticlesFeed";
 
-function ArticlesPage({ awaitingAPI, baseURL, setAwaitingAPI }) {
+function ArticlesPage({ baseURL }) {
+  console.log(baseURL);
   return (
     <>
       <main>
         <SearchBar />
-        <ArticlesFeed
-          awaitingAPI={awaitingAPI}
-          baseURL={baseURL}
-          setAwaitingAPI={setAwaitingAPI}
-        />
+        <ArticlesFeed baseURL={baseURL} />
       </main>
     </>
   );

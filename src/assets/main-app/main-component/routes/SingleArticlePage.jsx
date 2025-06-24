@@ -4,48 +4,26 @@ import UserInteractionBox from "../components/UserInteractionBox";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-function SingleArticlePage({ awaitingAPI, setAwaitingAPI, error, setError }) {
+function SingleArticlePage() {
   const [articleData, setArticleData] = useState(null);
-  const [commentsData, setCommentsData] = useState(null);
   const [articleError, setArticleError] = useState(null);
-  const [commentsError, setCommentsError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
     const fetchArticle = async function () {
-      if (awaitingAPI)
-        try {
-          const fetchedArticle = await fetchData(
-            `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
-          );
-          setArticleData(fetchedArticle);
-          setArticleError(null);
-        } catch (err) {
-          setArticleError(err);
-        } finally {
-          setAwaitingAPI(false);
-        }
+      try {
+        const fetchedArticle = await fetchData(
+          `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
+        );
+        setArticleData(fetchedArticle);
+        setArticleError(null);
+      } catch (err) {
+        setArticleError(err.message);
+        setArticleData(null);
+      }
     };
-    fetchArticle(), [awaitingAPI, article_id];
-  });
-
-  useEffect(() => {
-    const fetchComments = async function () {
-      if (awaitingAPI)
-        try {
-          const fetchedComments = await fetchData(
-            `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}/comments`
-          );
-          setCommentsData(fetchedComments);
-          setCommentsError(null);
-        } catch (err) {
-          setCommentsError(err);
-        } finally {
-          setAwaitingAPI(false);
-        }
-    };
-    fetchComments(), [awaitingAPI, article_id];
-  });
+    fetchArticle();
+  }, [article_id]);
 
   if (articleError) {
     console.log(articleError);
@@ -56,7 +34,7 @@ function SingleArticlePage({ awaitingAPI, setAwaitingAPI, error, setError }) {
     );
   }
 
-  if (!articleData || !commentsData) {
+  if (!articleData) {
     return (
       <main>
         <h3>Loading....</h3>
@@ -64,42 +42,38 @@ function SingleArticlePage({ awaitingAPI, setAwaitingAPI, error, setError }) {
     );
   }
 
-  if (articleData && commentsData)
-    return (
-      <main>
-        <article>
-          <section className="article-head">
-            <img
-              className="article-head-image"
-              src={articleData.article.article_img_url}
-            ></img>
-            <span className="article-head-info">
-              <h2>{articleData.article.title}</h2>
-              <p>{articleData.article.topic}</p>
-              <br />
-              {articleData.article.author} :{" "}
-              {articleData.article.created_at.slice(0, 10)}
-            </span>
-          </section>
-          <section className="article-body">
-            <span className="article-start-accent">
-              {articleData.article.body[0]}
-            </span>
-            {articleData.article.body.slice(1)}
-          </section>
-          <UserInteractionBox
-            articleId={articleData.article.id}
-            articleVotes={articleData.article.votes}
-          />
+  return (
+    <main>
+      <article>
+        <section className="article-head">
+          <img
+            className="article-head-image"
+            src={articleData.article.article_img_url}
+          ></img>
+          <span className="article-head-info">
+            <h2>{articleData.article.title}</h2>
+            <p>{articleData.article.topic}</p>
+            <br />
+            {articleData.article.author} :{" "}
+            {articleData.article.created_at.slice(0, 10)}
+          </span>
+        </section>
+        <section className="article-body">
+          <span className="article-start-accent">
+            {articleData.article.body[0]}
+          </span>
+          {articleData.article.body.slice(1)}
+        </section>
+        <UserInteractionBox
+          articleId={articleData.article.article_id}
+          articleVotes={articleData.article.votes}
+          articleCommentCount={articleData.article.comment_count}
+        />
 
-          <CommentsFeed
-            commentsData={commentsData.comments}
-            articleCommentCount={articleData.article.comment_count}
-            articleId={articleData.article.id}
-          />
-        </article>
-      </main>
-    );
+        <CommentsFeed articleId={articleData.article.article_id} />
+      </article>
+    </main>
+  );
 }
 
 export default SingleArticlePage;

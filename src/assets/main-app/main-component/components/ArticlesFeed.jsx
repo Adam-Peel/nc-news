@@ -2,28 +2,27 @@ import ArticleCard from "../components/ArticleCard";
 import { useState, useEffect } from "react";
 import fetchData from "../utils/fetch";
 
-function ArticlesFeed({ awaitingAPI, baseURL, setAwaitingAPI }) {
+function ArticlesFeed({ baseURL }) {
   const [articlesData, setArticlesData] = useState(null);
-  const [error, setError] = useState(null);
+  const [articlesError, setArticlesError] = useState(null);
+  console.log(baseURL);
 
   useEffect(() => {
     const fetchArticles = async function () {
       try {
-        if (awaitingAPI) {
-          const data = await fetchData(baseURL);
-          setArticlesData(data);
-          setAwaitingAPI(false);
-          setError(null);
-        }
+        const data = await fetchData(baseURL);
+        setArticlesData(data);
+        setArticlesError(null);
       } catch (err) {
-        setError(err);
+        setArticlesError(err.message);
+        setArticlesData(null);
       }
     };
-    fetchArticles(), [awaitingAPI, baseURL];
-  });
+    fetchArticles();
+  }, [baseURL]);
 
-  if (error) {
-    console.log(error);
+  if (articlesError) {
+    console.log(articlesError);
     return <div>Error: Something went wrong</div>;
   }
 

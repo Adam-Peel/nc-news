@@ -1,5 +1,4 @@
 function CommentCard(comment) {
-  console.log(comment);
   return (
     <section className="comment-card">
       <section className="comment-card-head">
