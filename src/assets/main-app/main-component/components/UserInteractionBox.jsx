@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
@@ -6,6 +7,22 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 
 function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
+  const [voteValue, setVoteValue] = useState(articleVotes);
+  const [disableUpvoteButton, setDisableUpvoteButton] = useState(false);
+  const [disableDownvoteButton, setDisableDownvoteButton] = useState(false);
+
+  function upvoteChange() {
+    setVoteValue((prev) => prev + 1);
+    setDisableUpvoteButton(true);
+    setDisableDownvoteButton(false);
+  }
+
+  function downvoteChange() {
+    setVoteValue((prev) => prev - 1);
+    setDisableUpvoteButton(false);
+    setDisableDownvoteButton(true);
+  }
+
   return (
     <section className="user-interaction-box">
       <div className="user-interaction-options">
@@ -19,8 +36,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
             <span className="user-interaction-button-text">Read</span>
           </button>
         </span>
-      </div>
-      <div>
         <button
           id="article-bookmarked"
           className="user-article-interaction-box-button"
@@ -29,8 +44,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           <br />
           <span className="user-interaction-button-text">Save</span>
         </button>
-      </div>
-      <div>
         <button
           id="article-comments"
           className="user-article-interaction-box-button"
@@ -42,11 +55,14 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           </span>
         </button>
       </div>
-      <div>
+      <div id="user-article-voting-options">
         <span>
           <button
             id="article-downvote"
             className="user-article-interaction-box-button"
+            value={-1}
+            disabled={disableDownvoteButton}
+            onClick={() => downvoteChange()}
           >
             <ThumbDownOffAltOutlinedIcon />
             <br />
@@ -60,13 +76,16 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           <HowToVoteIcon />
           <br />
           <span className="user-interaction-button-text no-hover">
-            Votes: {articleVotes}
+            Votes: {voteValue}
           </span>
         </button>
         <span>
           <button
             id="article-upvote"
             className="user-article-interaction-box-button"
+            value={1}
+            disabled={disableUpvoteButton}
+            onClick={() => upvoteChange()}
           >
             <ThumbUpOutlinedIcon />
             <br />

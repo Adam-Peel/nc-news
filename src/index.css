@@ -275,6 +275,7 @@ footer {
 
 .user-interaction-box {
   display: flex;
+  justify-content: space-evenly;
 }
 
 .user-interaction-button-text {

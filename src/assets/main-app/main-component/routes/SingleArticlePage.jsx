@@ -66,7 +66,9 @@ function SingleArticlePage() {
           {articleData.article.body.slice(1)}
         </section>
         <div id="article-author">
-          <PersonIcon /> {articleData.article.author}
+          <h4>
+            <PersonIcon /> {articleData.article.author}
+          </h4>
         </div>
         <UserInteractionBox
           articleId={articleData.article.article_id}
