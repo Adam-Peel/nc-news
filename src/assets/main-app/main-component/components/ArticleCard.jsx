@@ -2,6 +2,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PersonIcon from "@mui/icons-material/Person";
+import Badge from "@mui/material/Badge";
 
 function ArticleCard(article) {
   return (
@@ -25,12 +26,24 @@ function ArticleCard(article) {
       <section className="article-card-stats">
         <ul className="article-card-stats-list">
           <li>
-            <CommentIcon /> {article.article.comment_count}
+            <Badge
+              badgeContent={article.article.comment_count}
+              color="primary"
+              showZero
+            >
+              <CommentIcon />
+            </Badge>
           </li>
         </ul>
         <ul className="article-card-stats-list">
           <li>
-            <HowToVoteIcon /> {article.article.votes}
+            <Badge
+              badgeContent={article.article.votes}
+              color="primary"
+              showZero
+            >
+              <HowToVoteIcon />
+            </Badge>
           </li>
         </ul>
       </section>

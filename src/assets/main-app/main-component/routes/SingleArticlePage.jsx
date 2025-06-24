@@ -5,6 +5,8 @@ import CommentsFeed from "../components/CommentsFeed";
 import UserInteractionBox from "../components/UserInteractionBox";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import Stack from "@mui/material/Stack";
+import Skeleton from "@mui/material/Skeleton";
 
 function SingleArticlePage() {
   const [articleData, setArticleData] = useState(null);
@@ -39,7 +41,11 @@ function SingleArticlePage() {
   if (!articleData) {
     return (
       <main>
-        <h3>Loading....</h3>
+        <Stack spacing={1}>
+          <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          <Skeleton variant="circular" width={40} height={40} />
+          <Skeleton variant="rounded" width={210} height={60} />
+        </Stack>
       </main>
     );
   }

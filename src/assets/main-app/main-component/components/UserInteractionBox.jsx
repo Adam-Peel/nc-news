@@ -6,6 +6,7 @@ import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import CommentIcon from "@mui/icons-material/Comment";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
+import Badge from "@mui/material/Badge";
 
 function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [voteValue, setVoteValue] = useState(articleVotes);

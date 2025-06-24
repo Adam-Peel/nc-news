@@ -1,6 +1,8 @@
 import CommentCard from "./CommentCard";
 import fetchData from "../utils/fetch";
 import { useState, useEffect } from "react";
+import Stack from "@mui/material/Stack";
+import Skeleton from "@mui/material/Skeleton";
 
 function CommentsFeed({ articleId }) {
   const [commentsData, setCommentsData] = useState(null);
@@ -34,7 +36,14 @@ function CommentsFeed({ articleId }) {
   if (!commentsData) {
     return (
       <main>
-        <h3>Loading comments...</h3>
+        <Stack spacing={1}>
+          <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          <Skeleton variant="circular" width={40} height={40} />
+          <Skeleton variant="rounded" width={210} height={60} />
+          <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          <Skeleton variant="circular" width={40} height={40} />
+          <Skeleton variant="rounded" width={210} height={60} />
+        </Stack>
       </main>
     );
   }
