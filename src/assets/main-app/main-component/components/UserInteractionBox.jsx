@@ -1,3 +1,4 @@
+import patchData from "../utils/patch";
 import { useState } from "react";
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
@@ -10,17 +11,44 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [voteValue, setVoteValue] = useState(articleVotes);
   const [disableUpvoteButton, setDisableUpvoteButton] = useState(false);
   const [disableDownvoteButton, setDisableDownvoteButton] = useState(false);
+  const [patchURL, setPatchURL] = useState(
+    `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
+  );
+  const [patchError, setPatchError] = useState("placeholder text");
 
-  function upvoteChange() {
-    setVoteValue((prev) => prev + 1);
+  async function upvoteChange(value) {
+    setVoteValue((prev) => prev + value);
     setDisableUpvoteButton(true);
     setDisableDownvoteButton(false);
+    const body = [{ inc_votes: value }];
+    try {
+      const patch = await patchData(patchURL, body);
+      setVoteValue(patch.article.votes);
+      setPatchError(null);
+    } catch (err) {
+      setVoteValue((prev) => prev - value);
+      setDisableUpvoteButton(false);
+      setDisableDownvoteButton(false);
+      setPatchError("Sorry, vote did not work");
+    }
   }
 
-  function downvoteChange() {
-    setVoteValue((prev) => prev - 1);
+  async function downvoteChange(value) {
+    setVoteValue((prev) => prev + value);
     setDisableUpvoteButton(false);
     setDisableDownvoteButton(true);
+    const body = [{ inc_votes: value }];
+    try {
+      const patch = await patchData(patchURL, body);
+      setPatchError(null);
+      setVoteValue(patch.article.votes);
+    } catch (err) {
+      console.log(err);
+      setVoteValue((prev) => prev - value);
+      setDisableUpvoteButton(false);
+      setDisableDownvoteButton(false);
+      setPatchError("Sorry, vote did not work");
+    }
   }
 
   return (
@@ -62,7 +90,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
             className="user-article-interaction-box-button"
             value={-1}
             disabled={disableDownvoteButton}
-            onClick={() => downvoteChange()}
+            onClick={() => downvoteChange(-1)}
           >
             <ThumbDownOffAltOutlinedIcon />
             <br />
@@ -85,13 +113,14 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
             className="user-article-interaction-box-button"
             value={1}
             disabled={disableUpvoteButton}
-            onClick={() => upvoteChange()}
+            onClick={() => upvoteChange(1)}
           >
             <ThumbUpOutlinedIcon />
             <br />
             <span className="user-interaction-button-text">Upvote</span>
           </button>
         </span>
+        <p id="voting-error">{patchError}</p>
       </div>
     </section>
   );
