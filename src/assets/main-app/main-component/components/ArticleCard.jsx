@@ -23,8 +23,8 @@ function ArticleCard(article) {
       </section>
       <section className="article-card-stats">
         <ul className="article-card-stats-list">
-          <li>📣: {article.article.comment_count}</li>
-          <li>🗳️: {article.article.votes}</li>
+          <li>📣 {article.article.comment_count}</li>
+          <li>🗳️ {article.article.votes}</li>
         </ul>
       </section>
     </section>
