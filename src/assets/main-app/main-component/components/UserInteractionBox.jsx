@@ -14,7 +14,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [patchURL, setPatchURL] = useState(
     `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
   );
-  const [patchError, setPatchError] = useState("placeholder text");
+  const [patchError, setPatchError] = useState(null);
 
   async function upvoteChange(value) {
     setVoteValue((prev) => prev + value);
@@ -29,7 +29,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
       setVoteValue((prev) => prev - value);
       setDisableUpvoteButton(false);
       setDisableDownvoteButton(false);
-      setPatchError("Sorry, vote did not work");
+      setPatchError("🪧 Sorry, vote did not work 🪧");
     }
   }
 
