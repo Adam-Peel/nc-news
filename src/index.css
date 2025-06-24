@@ -135,9 +135,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -262,4 +264,9 @@ footer {
 
 .user-article-interaction-box-button {
   background-color: transparent;
+}
+
+#user-interaction-article-votes-button {
+  border: none;
+  cursor: auto;
 }
