@@ -40,12 +40,15 @@ function SingleArticlePage({ awaitingAPI, setAwaitingAPI, error, setError }) {
     <main>
       <article>
         <section className="article-head">
-          <div className="article-head-image">IMAGE HERE</div>
+          <div className="article-head-image">
+            <img src={articleData.article.article_img_url}></img>
+          </div>
           <div className="article-head-info">
             <h2>{articleData.article.title}</h2>
-            <p>Article Topic</p>
+            <p>{articleData.article.topic}</p>
             <br />
-            Article Author: Date
+            {articleData.article.author} :{" "}
+            {articleData.article.created_at.slice(0, 10)}
           </div>
         </section>
         <section>
