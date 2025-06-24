@@ -1,3 +1,5 @@
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import PersonIcon from "@mui/icons-material/Person";
 import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
 import UserInteractionBox from "../components/UserInteractionBox";
@@ -50,26 +52,27 @@ function SingleArticlePage() {
             className="article-head-image"
             src={articleData.article.article_img_url}
           ></img>
-          <span className="article-head-info">
-            <h2>{articleData.article.title}</h2>
-            <p>{articleData.article.topic}</p>
-            <br />
-            {articleData.article.author} :{" "}
-            {articleData.article.created_at.slice(0, 10)}
-          </span>
         </section>
+        <h2 id="article-head-title">{articleData.article.title}</h2>
+        <h3 id="article-head-subtitle">{articleData.article.topic}</h3>
+        <div id="article-tagline">
+          <CalendarMonthIcon />
+          {articleData.article.created_at.slice(0, 10)}{" "}
+        </div>
         <section className="article-body">
           <span className="article-start-accent">
             {articleData.article.body[0]}
           </span>
           {articleData.article.body.slice(1)}
         </section>
+        <div id="article-author">
+          <PersonIcon /> {articleData.article.author}
+        </div>
         <UserInteractionBox
           articleId={articleData.article.article_id}
           articleVotes={articleData.article.votes}
           articleCommentCount={articleData.article.comment_count}
         />
-
         <CommentsFeed articleId={articleData.article.article_id} />
       </article>
     </main>

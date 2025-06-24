@@ -41,6 +41,7 @@ function CommentsFeed({ articleId }) {
 
   return (
     <section className="comments-feed">
+      <h2 className="comments-feed-title">Comments</h2>
       {commentsData.comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />
       ))}
