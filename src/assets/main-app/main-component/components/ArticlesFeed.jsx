@@ -31,11 +31,13 @@ function ArticlesFeed({ baseURL }) {
   }
 
   return (
-    <section className="articles-feed">
-      {articlesData.articles.map((article) => (
-        <ArticleCard key={article.id} article={article} />
-      ))}
-    </section>
+    <>
+      <section className="articles-feed">
+        {articlesData.articles.map((article) => (
+          <ArticleCard key={article.id} article={article} />
+        ))}
+      </section>
+    </>
   );
 }
 

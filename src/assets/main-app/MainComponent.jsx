@@ -18,6 +18,7 @@ function MainComponent(userId) {
       <Sidebar userId={userId} setBaseURL={setBaseURL} />
       {/* Routing here for different pages - use API REQUEST*/}
       <Routes>
+        <Route path="/articles" element={<ArticlesPage baseURL={baseURL} />} />
         <Route path="/" element={<ArticlesPage baseURL={baseURL} />} />
         <Route path="/profile" element={<UserPage />} />
         <Route path="/articles/:article_id" element={<SingleArticlePage />} />

@@ -97,7 +97,7 @@ main {
   display: flex;
   flex-direction: column;
   position: sticky;
-  top: 157px;
+  top: 200px;
   align-self: flex-start;
   max-height: 60dvh;
   overflow-y: scroll;
@@ -198,14 +198,18 @@ footer {
 
 /*Article Cards*/
 
+.searchbar {
+  position: fixed;
+}
+
 .article-card {
   display: grid;
   grid-template-columns: 100px 1fr 75px;
   grid-template-areas: "article-card-image article-card-info article-card-stats";
   align-items: center;
-  border-top: goldenrod;
-  border-top-width: 1px;
-  border-top-style: solid;
+  border-bottom: goldenrod;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
   padding: 15px;
 }
 
