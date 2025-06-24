@@ -1,5 +1,7 @@
 import CommentIcon from "@mui/icons-material/Comment";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import PersonIcon from "@mui/icons-material/Person";
 
 function ArticleCard(article) {
   return (
@@ -11,12 +13,12 @@ function ArticleCard(article) {
       ></img>
       <section>
         <div className="article-card-head-info">
-          <h3 className="article-card-head-title">{article.article.title}</h3>
-          <br />
-          {article.article.topic}
-          <br />
+          <h3 className="article-card-head-title"> {article.article.title}</h3>
+          <h4 className="article-card-subtitle">{article.article.topic}</h4>
+          <PersonIcon />
           {article.article.author}
-          {" : "}
+          <br />
+          <CalendarMonthIcon />
           {article.article.created_at.slice(0, 10)}
         </div>
       </section>
@@ -25,6 +27,8 @@ function ArticleCard(article) {
           <li>
             <CommentIcon /> {article.article.comment_count}
           </li>
+        </ul>
+        <ul className="article-card-stats-list">
           <li>
             <HowToVoteIcon /> {article.article.votes}
           </li>

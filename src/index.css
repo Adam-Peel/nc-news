@@ -200,33 +200,45 @@ footer {
 
 .article-card {
   display: grid;
-  grid-template-columns: 157px 1fr 75px;
-  grid-row: 125px;
+  grid-template-columns: 100px 1fr 75px;
   grid-template-areas: "article-card-image article-card-info article-card-stats";
   align-items: center;
+  border-top: goldenrod;
+  border-top-width: 1px;
+  border-top-style: solid;
+  padding: 15px;
 }
 
 .article-card-head-image {
-  height: auto;
-  width: 157px;
-  border-radius: 20%;
-  border-color: dimgrey;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border-color: goldenrod;
   border-width: 1px;
   border-style: solid;
   grid-area: article-card-image;
 }
 
 .article-card-head-title {
-  margin-bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.article-card-subtitle {
+  margin: 0;
 }
 
 .article-card-head-info {
   grid-area: article-card-info;
-  margin-left: 100px;
+  margin-left: 50px;
+  text-align: left;
 }
 
 .article-card-stats {
   grid-area: article-card-stats;
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
 }
 
 /* Single Article Page */
@@ -254,12 +266,12 @@ footer {
 }
 
 .article-head-image {
-  border-radius: 20%;
+  border-radius: 10%;
   border-color: goldenrod;
   border-width: 1px;
   border-style: solid;
-  width: 35%;
-  height: auto;
+  width: auto;
+  height: 200px;
 }
 
 .article-start-accent {
