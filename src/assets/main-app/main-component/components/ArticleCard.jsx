@@ -1,3 +1,6 @@
+import CommentIcon from "@mui/icons-material/Comment";
+import HowToVoteIcon from "@mui/icons-material/HowToVote";
+
 function ArticleCard(article) {
   return (
     <section className="article-card" key={article.article.id}>
@@ -19,8 +22,12 @@ function ArticleCard(article) {
       </section>
       <section className="article-card-stats">
         <ul className="article-card-stats-list">
-          <li>📣 {article.article.comment_count}</li>
-          <li>🗳️ {article.article.votes}</li>
+          <li>
+            <CommentIcon /> {article.article.comment_count}
+          </li>
+          <li>
+            <HowToVoteIcon /> {article.article.votes}
+          </li>
         </ul>
       </section>
     </section>

@@ -1,5 +1,6 @@
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import HowToVoteIcon from "@mui/icons-material/HowToVote";
 
 function UserInteractionBox({ articleId, articleVotes }) {
   return (
@@ -31,7 +32,8 @@ function UserInteractionBox({ articleId, articleVotes }) {
           <button>Up</button>
         </span>
         <span>
-          🗳️{"--"} {articleVotes}
+          <HowToVoteIcon />
+          {"--"} {articleVotes}
         </span>
         <span>
           <button>Up</button>

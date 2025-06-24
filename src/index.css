@@ -11,6 +11,19 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #535bf2;
+  }
+
+  /* Style the thumb */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.87);
+  }
 }
 
 #root {
@@ -73,6 +86,7 @@ aside {
   top: 157px;
   position: sticky;
   align-self: start;
+  text-align: left;
 }
 
 main {
@@ -83,7 +97,10 @@ main {
   top: 157px;
   align-self: flex-start;
   max-height: 60dvh;
-  overflow-y: auto;
+  overflow-y: scroll;
+  border-left: #535bf2;
+  border-left-style: solid;
+  padding-left: 5px;
 }
 
 .searchbar {
