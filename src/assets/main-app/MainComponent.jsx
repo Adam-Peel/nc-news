@@ -13,7 +13,7 @@ function MainComponent(userId) {
     "https://news-aggregator-7e9t.onrender.com/api/articles"
   );
   const [awaitingAPI, setAwaitingAPI] = useState(true);
-  const [articleId, setArticleId] = useState(0);
+  const [error, setError] = useState(null);
 
   return (
     <>
@@ -27,13 +27,22 @@ function MainComponent(userId) {
               awaitingAPI={awaitingAPI}
               baseURL={baseURL}
               setAwaitingAPI={setAwaitingAPI}
+              error={error}
+              setError={setError}
             />
           }
         />
         <Route path="/profile" element={<UserPage />} />
         <Route
-          path="/article"
-          element={<SingleArticlePage articleId={articleId} />}
+          path="/articles/:article_id"
+          element={
+            <SingleArticlePage
+              awaitingAPI={awaitingAPI}
+              setAwaitingAPI={setAwaitingAPI}
+              error={error}
+              setError={setError}
+            />
+          }
         />
       </Routes>
     </>

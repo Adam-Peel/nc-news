@@ -1,22 +1,56 @@
+import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
 import UserInteractionBox from "../components/UserInteractionBox";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 
-function SingleArticlePage() {
+function SingleArticlePage({ awaitingAPI, setAwaitingAPI, error, setError }) {
+  const [articleData, setArticleData] = useState(null);
+  const { article_id } = useParams();
+
+  useEffect(() => {
+    const fetchArticle = async function () {
+      if (awaitingAPI)
+        try {
+          const data = await fetchData(
+            `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
+          );
+          setArticleData(data);
+          setAwaitingAPI(false);
+          setError(null);
+        } catch (err) {
+          setAwaitingAPI(false);
+          setError(err);
+        }
+    };
+    fetchArticle(), [awaitingAPI, article_id];
+  });
+
+  if (error) {
+    console.log(error);
+    return <h3>Error: Something went wrong</h3>;
+  }
+
+  if (!articleData) {
+    return <h3>Loading....</h3>;
+  }
+
+  console.log(articleData);
   return (
     <main>
       <article>
         <section className="article-head">
           <div className="article-head-image">IMAGE HERE</div>
           <div className="article-head-info">
-            <h2>Article title</h2>
+            <h2>{articleData.article.title}</h2>
             <p>Article Topic</p>
-            <br>Article Author: Date</br>
+            <br />
+            Article Author: Date
           </div>
         </section>
         <section>
-          <h3>Article body</h3>
-          Here will be the main text of the article I will have to ensure neat
-          formatting. Possibly add some funky emphasis to the first letter.
+          <h3>Body</h3>
+          {articleData.article.body}
         </section>
         <section>
           <UserInteractionBox />

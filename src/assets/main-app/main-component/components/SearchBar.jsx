@@ -2,7 +2,7 @@ function SearchBar() {
   return (
     <section className="searchbar">
       <div>
-        {/* Add labels */}
+        {/* TODO - Add labels */}
         <input type="text" placeholder="search by title"></input>
         <button className="searchbar-button">Search</button>
       </div>

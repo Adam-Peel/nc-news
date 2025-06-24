@@ -1,15 +1,11 @@
 function ArticleCard(article) {
   return (
     <section className="article-card" key={article.article.id}>
-      {/* <section className="article-card-head"> */}
-      {/* <div className="article-card-head-image-placeholder"> */}
       <img
         className="article-card-head-image"
         src={article.article.article_img_url}
         alt="An image of the article"
       ></img>
-      {/* </div> */}
-      {/* </section> */}
       <section>
         <div className="article-card-head-info">
           <h3 className="article-card-head-title">{article.article.title}</h3>
@@ -18,7 +14,7 @@ function ArticleCard(article) {
           <br />
           {article.article.author}
           {" : "}
-          {article.article.created_at}
+          {article.article.created_at.slice(0, 10)}
         </div>
       </section>
       <section className="article-card-stats">

@@ -4,14 +4,16 @@ import ArticlesFeed from "../components/ArticlesFeed";
 
 function ArticlesPage({ awaitingAPI, baseURL, setAwaitingAPI }) {
   return (
-    <main>
-      <SearchBar />
-      <ArticlesFeed
-        awaitingAPI={awaitingAPI}
-        baseURL={baseURL}
-        setAwaitingAPI={setAwaitingAPI}
-      />
-    </main>
+    <>
+      <main>
+        <SearchBar />
+        <ArticlesFeed
+          awaitingAPI={awaitingAPI}
+          baseURL={baseURL}
+          setAwaitingAPI={setAwaitingAPI}
+        />
+      </main>
+    </>
   );
 }
 
