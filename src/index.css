@@ -16,7 +16,7 @@
 #root {
   display: grid;
   grid-template-columns: 300px 1fr 1fr;
-  grid-template-rows: 150px 1fr auto;
+  grid-template-rows: 157px 1fr auto;
   grid-template-areas:
     "header-buttons header-hero header-hero"
     "aside main main"
@@ -52,6 +52,7 @@ header {
   justify-content: center;
   justify-content: space-evenly;
   width: 100%;
+  background-color: #242424;
 }
 
 #header-hero-image {
@@ -161,4 +162,37 @@ footer {
   .show-sidebar {
     display: block;
   }
+}
+
+/*Article Cards*/
+
+.article-card {
+  display: grid;
+  grid-template-columns: 157px 1fr 75px;
+  grid-row: 125px;
+  grid-template-areas: "article-card-image article-card-info article-card-stats";
+  align-items: center;
+}
+
+.article-card-head-image {
+  height: auto;
+  width: 157px;
+  border-radius: 20%;
+  border-color: dimgrey;
+  border-width: 1px;
+  border-style: solid;
+  grid-area: article-card-image;
+}
+
+.article-card-head-title {
+  margin-bottom: 0;
+}
+
+.article-card-head-info {
+  grid-area: article-card-info;
+  margin-left: 100px;
+}
+
+.article-card-stats {
+  grid-area: article-card-stats;
 }

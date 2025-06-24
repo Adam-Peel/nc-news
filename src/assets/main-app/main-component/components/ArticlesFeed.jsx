@@ -11,7 +11,6 @@ function ArticlesFeed({ awaitingAPI, baseURL, setAwaitingAPI }) {
       try {
         if (awaitingAPI) {
           const data = await fetchData(baseURL);
-          console.log(data);
           setArticlesData(data);
           setAwaitingAPI(false);
           setError(null);

@@ -1,20 +1,20 @@
 function ArticleCard(article) {
-  {
-    console.log(article);
-  }
   return (
     <section className="article-card" key={article.article.id}>
-      <section className="article-card-head">
-        <div className="article-card-head-image-placeholder">
-          <img
-            className="article-card-head-image"
-            src={article.article.article_img_url}
-            alt="An image of the article"
-          ></img>
-        </div>
+      {/* <section className="article-card-head"> */}
+      {/* <div className="article-card-head-image-placeholder"> */}
+      <img
+        className="article-card-head-image"
+        src={article.article.article_img_url}
+        alt="An image of the article"
+      ></img>
+      {/* </div> */}
+      {/* </section> */}
+      <section>
         <div className="article-card-head-info">
-          <h2>{article.article.title}</h2>
-          <p>{article.article.topic}</p>
+          <h3 className="article-card-head-title">{article.article.title}</h3>
+          <br />
+          {article.article.topic}
           <br />
           {article.article.author}
           {" : "}
@@ -23,8 +23,8 @@ function ArticleCard(article) {
       </section>
       <section className="article-card-stats">
         <ul className="article-card-stats-list">
-          <li>{article.article.comment_count}</li>
-          <li>{article.article.votes}</li>
+          <li>📣: {article.article.comment_count}</li>
+          <li>🗳️: {article.article.votes}</li>
         </ul>
       </section>
     </section>
