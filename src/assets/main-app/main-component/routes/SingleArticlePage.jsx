@@ -6,33 +6,62 @@ import { useParams } from "react-router";
 
 function SingleArticlePage({ awaitingAPI, setAwaitingAPI, error, setError }) {
   const [articleData, setArticleData] = useState(null);
+  const [commentsData, setCommentsData] = useState(null);
+  const [articleError, setArticleError] = useState(null);
+  const [commentsError, setCommentsError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
     const fetchArticle = async function () {
       if (awaitingAPI)
         try {
-          const data = await fetchData(
+          const fetchedArticle = await fetchData(
             `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
           );
-          setArticleData(data);
-          setAwaitingAPI(false);
-          setError(null);
+          setArticleData(fetchedArticle);
+          setArticleError(null);
         } catch (err) {
+          setArticleError(err);
+        } finally {
           setAwaitingAPI(false);
-          setError(err);
         }
     };
     fetchArticle(), [awaitingAPI, article_id];
   });
 
-  if (error) {
-    console.log(error);
-    return <h3>Error: Something went wrong</h3>;
+  useEffect(() => {
+    const fetchComments = async function () {
+      if (awaitingAPI)
+        try {
+          const fetchedComments = await fetchData(
+            `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}/comments`
+          );
+          setCommentsData(fetchedComments);
+          setCommentsError(null);
+        } catch (err) {
+          setCommentsError(err);
+        } finally {
+          setAwaitingAPI(false);
+        }
+    };
+    fetchComments(), [awaitingAPI, article_id];
+  });
+
+  if (articleError) {
+    console.log(articleError);
+    return (
+      <main>
+        <h3>Error...</h3>
+      </main>
+    );
   }
 
   if (!articleData) {
-    return <h3>Loading....</h3>;
+    return (
+      <main>
+        <h3>Loading....</h3>
+      </main>
+    );
   }
 
   console.log(articleData);
@@ -40,27 +69,34 @@ function SingleArticlePage({ awaitingAPI, setAwaitingAPI, error, setError }) {
     <main>
       <article>
         <section className="article-head">
-          <div className="article-head-image">
-            <img src={articleData.article.article_img_url}></img>
-          </div>
-          <div className="article-head-info">
+          <img
+            className="article-head-image"
+            src={articleData.article.article_img_url}
+          ></img>
+          <span className="article-head-info">
             <h2>{articleData.article.title}</h2>
             <p>{articleData.article.topic}</p>
             <br />
             {articleData.article.author} :{" "}
             {articleData.article.created_at.slice(0, 10)}
-          </div>
+          </span>
         </section>
-        <section>
-          <h3>Body</h3>
-          {articleData.article.body}
+        <section className="article-body">
+          <span className="article-start-accent">
+            {articleData.article.body[0]}
+          </span>
+          {articleData.article.body.slice(1)}
         </section>
-        <section>
-          <UserInteractionBox />
-        </section>
-        <section>
-          <CommentsFeed />
-        </section>
+        <UserInteractionBox
+          articleId={articleData.article.id}
+          articleVotes={articleData.article.votes}
+        />
+
+        <CommentsFeed
+          commentsData={commentsData.comments}
+          articleCommentCount={articleData.article.comment_count}
+          articleId={articleData.article.id}
+        />
       </article>
     </main>
   );

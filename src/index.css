@@ -206,3 +206,43 @@ footer {
 .article-card-stats {
   grid-area: article-card-stats;
 }
+
+/* Single Article Page */
+
+.article-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.article-head-image {
+  border-radius: 20%;
+  border-color: goldenrod;
+  border-width: 1px;
+  border-style: solid;
+  width: 35%;
+  height: auto;
+}
+
+.article-start-accent {
+  font-size: 2em;
+  font-weight: bolder;
+  color: goldenrod;
+}
+
+.article-body {
+  margin: 15px;
+  padding: 15px;
+}
+
+.user-interaction-box {
+  display: flex;
+}
+
+.user-interaction-button-text {
+  font-size: 0.7em;
+}
+
+.user-article-interaction-box-button {
+  background-color: transparent;
+}
