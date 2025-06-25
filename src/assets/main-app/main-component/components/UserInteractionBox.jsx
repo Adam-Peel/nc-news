@@ -4,7 +4,6 @@ import { UserContext } from "../../contexts/UserContext";
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
-import CommentIcon from "@mui/icons-material/Comment";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 
@@ -72,16 +71,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           <BookmarkAddIcon />
           <br />
           <span className="user-interaction-button-text">Save</span>
-        </button>
-        <button
-          id="article-comments"
-          className="user-article-interaction-box-button"
-        >
-          <CommentIcon />
-          <br />
-          <span className="user-interaction-button-text">
-            Comment: {articleCommentCount}
-          </span>
         </button>
       </div>
       <div id="user-article-voting-options">

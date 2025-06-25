@@ -5,6 +5,8 @@ import fetchData from "../utils/fetch";
 import { useState, useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
+import Badge from "@mui/material/Badge";
+import CommentIcon from "@mui/icons-material/Comment";
 
 function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
   const [commentsData, setCommentsData] = useState(null);
@@ -85,7 +87,13 @@ function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
         articleCommentCount={articleCommentCount}
       />
       <CommentForm articleId={articleId} setCommentPosted={setCommentPosted} />
-      <h2 className="comments-feed-title">Comments</h2>
+
+      <h2 className="comments-feed-title">
+        <Badge badgeContent={commentsData.comments.length} color="primary">
+          <CommentIcon />
+        </Badge>
+        &emsp; Comments
+      </h2>
       {commentsData.comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />
       ))}

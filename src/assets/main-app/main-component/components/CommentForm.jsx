@@ -21,6 +21,7 @@ function CommentForm({ articleId, setCommentPosted }) {
     ];
     if (commentValue.length > 5) {
       try {
+        setCommentValue("📨 Your post is being submitted 📨");
         setCommentPosted(false);
         const post = await postData(url, postToSend);
         setPostError(null);
