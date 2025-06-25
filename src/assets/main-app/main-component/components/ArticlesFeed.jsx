@@ -8,7 +8,7 @@ function ArticlesFeed({ url }) {
   const [articlesData, setArticlesData] = useState(null);
   const [articlesError, setArticlesError] = useState(null);
   const [baseURL, setBaseURL] = useState(
-    `https://news-aggregator-7e9t.onrender.com/api${url}`
+    `https://news-aggregator-7e9t.onrender.com/api/articles${url}`
   );
 
   useEffect(() => {

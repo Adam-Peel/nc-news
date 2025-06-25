@@ -1,12 +1,14 @@
 import SearchBar from "../components/SearchBar";
 import ArticlesFeed from "../components/ArticlesFeed";
+import { useParams } from "react-router";
 
-function ArticlesPage({ url }) {
+function ArticlesPage() {
+  const { topic } = useParams();
   return (
     <>
       <main>
         <SearchBar />
-        <ArticlesFeed url={url} />
+        <ArticlesFeed url={`?topic=${topic}`} />
       </main>
     </>
   );

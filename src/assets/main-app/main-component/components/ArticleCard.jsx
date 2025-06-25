@@ -31,7 +31,7 @@ function ArticleCard(article) {
       </section>
       <section className="article-card-stats">
         <ul className="article-card-stats-list">
-          <li>
+          <li key={article.article.id}>
             <Badge
               badgeContent={article.article.comment_count}
               color="primary"
@@ -42,7 +42,7 @@ function ArticleCard(article) {
           </li>
         </ul>
         <ul className="article-card-stats-list">
-          <li>
+          <li key={article.article.id}>
             <Badge
               badgeContent={article.article.votes}
               color="primary"

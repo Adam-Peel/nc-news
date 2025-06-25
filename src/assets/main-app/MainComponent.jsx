@@ -6,7 +6,6 @@ import UserPage from "./main-component/routes/UserPage";
 import Sidebar from "./main-component/Sidebar";
 import SingleArticlePage from "./main-component/routes/SingleArticlePage";
 import { Routes, Route } from "react-router";
-import { useState } from "react";
 
 function MainComponent() {
   return (
@@ -14,8 +13,9 @@ function MainComponent() {
       <Sidebar />
       {/* Routing here for different pages - use API REQUEST*/}
       <Routes>
-        <Route path="/articles" element={<ArticlesPage url="/articles" />} />
-        <Route path="/" element={<ArticlesPage url="/articles" />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/" element={<ArticlesPage />} />
+        <Route path="/topics/:topic" element={<ArticlesPage />} />
         <Route path="/profile" element={<UserPage />} />
         <Route path="/articles/:article_id" element={<SingleArticlePage />} />
       </Routes>
