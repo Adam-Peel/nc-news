@@ -7,7 +7,6 @@ function CommentForm({ articleId, setCommentPosted }) {
   const [commentValue, setCommentValue] = useState("");
   const [postError, setPostError] = useState(null);
   const { currentUser } = useContext(UserContext);
-  console.log(articleId);
   function handleChange(event) {
     const value = event.target.value;
     setCommentValue(value);
@@ -20,16 +19,21 @@ function CommentForm({ articleId, setCommentPosted }) {
     const postToSend = [
       { username: destructuredUser.username, body: commentValue },
     ];
-    try {
-      const post = await postData(url, postToSend);
-      setPostError(null);
-      setCommentValue("");
-      setCommentPosted(true);
-    } catch (err) {
-      setPostError("🪧 Sorry, the post did not work 🪧");
-      setCommentPosted(true);
-    } finally {
-      setCommentPosted(true);
+    if (commentValue.length > 5) {
+      try {
+        setCommentPosted(false);
+        const post = await postData(url, postToSend);
+        setPostError(null);
+        setCommentValue("");
+        setCommentPosted(true);
+      } catch (err) {
+        setPostError("🪧 Sorry, the post did not work 🪧");
+        setCommentPosted(true);
+      } finally {
+        setCommentPosted(true);
+      }
+    } else {
+      setPostError("🪧 Sorry, the post is too short 🪧");
     }
   }
 
@@ -44,13 +48,14 @@ function CommentForm({ articleId, setCommentPosted }) {
             name="body"
             value={commentValue}
             onChange={handleChange}
+            onClick={() => setPostError(null)}
           />
         </label>
         <div id="comment-textarea-button">
           <button className="user-article-interaction-box-button" type="submit">
             <PostAddIcon fontSize="small" />
           </button>
-          <span>{postError}</span>
+          <span className="error-text">{postError}</span>
         </div>
       </form>
     </section>

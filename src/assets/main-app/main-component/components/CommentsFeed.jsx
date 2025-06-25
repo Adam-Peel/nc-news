@@ -1,11 +1,12 @@
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
+import UserInteractionBox from "./UserInteractionBox";
 import fetchData from "../utils/fetch";
 import { useState, useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 
-function CommentsFeed({ articleId }) {
+function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
   const [commentsData, setCommentsData] = useState(null);
   const [commentsError, setCommentsError] = useState(null);
   const [commentPosted, setCommentPosted] = useState(false);
@@ -78,6 +79,11 @@ function CommentsFeed({ articleId }) {
 
   return (
     <section className="comments-feed">
+      <UserInteractionBox
+        articleId={articleId}
+        articleVotes={articleVotes}
+        articleCommentCount={articleCommentCount}
+      />
       <CommentForm articleId={articleId} setCommentPosted={setCommentPosted} />
       <h2 className="comments-feed-title">Comments</h2>
       {commentsData.comments.map((comment) => (

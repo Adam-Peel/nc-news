@@ -48,7 +48,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
       setVoteValue((prev) => prev - value);
       setDisableUpvoteButton(false);
       setDisableDownvoteButton(false);
-      setPatchError("Sorry, vote did not work");
+      setPatchError("🪧 Sorry, vote did not work 🪧");
     }
   }
 
@@ -121,7 +121,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
             <span className="user-interaction-button-text">Upvote</span>
           </button>
         </span>
-        <p id="voting-error">{patchError}</p>
+        <p className="error-text">{patchError}</p>
       </div>
     </section>
   );

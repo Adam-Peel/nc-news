@@ -311,7 +311,7 @@ footer {
   cursor: auto;
 }
 
-#voting-error {
+.error-text {
   text-align: center;
   color: orange;
 }
