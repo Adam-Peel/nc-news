@@ -95,7 +95,7 @@ function SingleArticlePage() {
           articleVotes={articleData.article.votes}
           articleCommentCount={articleData.article.comment_count}
         />
-        {/* BUG -<CommentForm articleId={articleData.article.article_id} /> */}
+        -<CommentForm articleId={articleData.article.article_id} />
         <CommentsFeed articleId={articleData.article.article_id} />
       </article>
     </main>
