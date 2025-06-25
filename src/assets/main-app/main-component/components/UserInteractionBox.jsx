@@ -19,9 +19,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [patchError, setPatchError] = useState(null);
   const textAreaRef = useRef();
 
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
-
   async function upvoteChange(value) {
     setVoteValue((prev) => prev + value);
     setDisableUpvoteButton(true);
@@ -59,6 +56,8 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
 
   async function submitComment(event) {
     event.preventDefault();
+    const { currentUser } = useContext(UserContext);
+    const destructuredUser = currentUser[0];
   }
 
   function focusOnComment() {

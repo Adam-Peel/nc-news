@@ -42,7 +42,7 @@ export const UserProvider = ({ children }) => {
     },
   ];
 
-  const [currentUser, SetCurrentUser] = useState([users[0]]);
+  const [currentUser, SetCurrentUser] = useState([users[2]]);
 
   return (
     <UserContext.Provider value={{ currentUser, SetCurrentUser }}>
