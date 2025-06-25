@@ -7,7 +7,6 @@ import Skeleton from "@mui/material/Skeleton";
 function CommentsFeed({ articleId }) {
   const [commentsData, setCommentsData] = useState(null);
   const [commentsError, setCommentsError] = useState(null);
-
   useEffect(() => {
     const fetchComments = async function () {
       try {
@@ -76,7 +75,6 @@ function CommentsFeed({ articleId }) {
 
   return (
     <section className="comments-feed">
-      <div id="comment-input"></div>
       <h2 className="comments-feed-title">Comments</h2>
       {commentsData.comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />

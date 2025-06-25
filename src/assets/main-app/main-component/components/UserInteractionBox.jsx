@@ -6,7 +6,7 @@ import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import CommentIcon from "@mui/icons-material/Comment";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
-import Badge from "@mui/material/Badge";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
 function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [voteValue, setVoteValue] = useState(articleVotes);
@@ -16,11 +16,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
   );
   const [patchError, setPatchError] = useState(null);
-  const [showTextArea, setShowTextArea] = useState(true);
-
-  function toggleTextArea() {
-    setShowTextArea((prev) => !prev);
-  }
 
   async function upvoteChange(value) {
     setVoteValue((prev) => prev + value);
@@ -57,88 +52,99 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     }
   }
 
+  async function submitComment(event) {
+    event.preventDefault();
+  }
+
   return (
-    <>
-      <section className="user-interaction-box">
-        <div className="user-interaction-options">
-          <span>
-            <button
-              id="article-read"
-              className="user-article-interaction-box-button"
-            >
-              <MarkChatReadIcon />
-              <br />
-              <span className="user-interaction-button-text">Read</span>
-            </button>
-          </span>
+    <section className="user-interaction-box">
+      <div className="user-interaction-options">
+        <span>
           <button
-            id="article-bookmarked"
+            id="article-read"
             className="user-article-interaction-box-button"
           >
-            <BookmarkAddIcon />
+            <MarkChatReadIcon />
             <br />
-            <span className="user-interaction-button-text">Save</span>
+            <span className="user-interaction-button-text">Read</span>
           </button>
-          <button
-            id="article-comments"
-            className="user-article-interaction-box-button"
-            onClick={toggleTextArea}
-          >
-            <CommentIcon />
-            <br />
-            <span className="user-interaction-button-text">
-              Comment: {articleCommentCount}
-            </span>
-          </button>
-        </div>
-        <div id="user-article-voting-options">
-          <span>
-            <button
-              id="article-downvote"
-              className="user-article-interaction-box-button"
-              value={-1}
-              disabled={disableDownvoteButton}
-              onClick={() => downvoteChange(-1)}
-            >
-              <ThumbDownOffAltOutlinedIcon />
-              <br />
-              <span className="user-interaction-button-text">Downvote</span>
-            </button>
+        </span>
+        <button
+          id="article-bookmarked"
+          className="user-article-interaction-box-button"
+        >
+          <BookmarkAddIcon />
+          <br />
+          <span className="user-interaction-button-text">Save</span>
+        </button>
+        <button
+          id="article-comments"
+          className="user-article-interaction-box-button"
+        >
+          <CommentIcon />
+          <br />
+          <span className="user-interaction-button-text">
+            Comment: {articleCommentCount}
           </span>
+        </button>
+      </div>
+      <div id="user-article-voting-options">
+        <span>
           <button
-            id="user-interaction-article-votes-button"
+            id="article-downvote"
             className="user-article-interaction-box-button"
+            value={-1}
+            disabled={disableDownvoteButton}
+            onClick={() => downvoteChange(-1)}
           >
-            <HowToVoteIcon />
+            <ThumbDownOffAltOutlinedIcon />
             <br />
-            <span className="user-interaction-button-text no-hover">
-              Votes: {voteValue}
-            </span>
+            <span className="user-interaction-button-text">Downvote</span>
           </button>
-          <span>
-            <button
-              id="article-upvote"
-              className="user-article-interaction-box-button"
-              value={1}
-              disabled={disableUpvoteButton}
-              onClick={() => upvoteChange(1)}
-            >
-              <ThumbUpOutlinedIcon />
-              <br />
-              <span className="user-interaction-button-text">Upvote</span>
-            </button>
+        </span>
+        <button
+          id="user-interaction-article-votes-button"
+          className="user-article-interaction-box-button"
+        >
+          <HowToVoteIcon />
+          <br />
+          <span className="user-interaction-button-text no-hover">
+            Votes: {voteValue}
           </span>
-          <p id="voting-error">{patchError}</p>
-        </div>
-      </section>
-      <section id="comment-text-area" hidden={showTextArea}>
-        <textarea
-          width="100%"
-          hidden={showTextArea}
-          defaultValue={"Add comment:"}
-        ></textarea>
-      </section>
-    </>
+        </button>
+        <span>
+          <button
+            id="article-upvote"
+            className="user-article-interaction-box-button"
+            value={1}
+            disabled={disableUpvoteButton}
+            onClick={() => upvoteChange(1)}
+          >
+            <ThumbUpOutlinedIcon />
+            <br />
+            <span className="user-interaction-button-text">Upvote</span>
+          </button>
+        </span>
+        <p id="voting-error">{patchError}</p>
+      </div>
+      <div id="commenting-area">
+        <form method="post" onSubmit={submitComment}>
+          <label htmlFor="comment-textarea-input">
+            Add a comment:
+            <br />
+            <textarea width="100%" id="comment-textarea-input" name="body" />
+          </label>
+          <div id="comment-textarea-button">
+            <button
+              className="user-article-interaction-box-button"
+              type="submit"
+            >
+              <PostAddIcon fontSize="small" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
 
