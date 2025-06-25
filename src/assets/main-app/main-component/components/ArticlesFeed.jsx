@@ -57,7 +57,7 @@ function ArticlesFeed({ url }) {
     <>
       <section className="articles-feed">
         {articlesData.articles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
+          <ArticleCard article={article} />
         ))}
       </section>
     </>

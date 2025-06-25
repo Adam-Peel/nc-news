@@ -16,6 +16,7 @@ function MainComponent() {
         <Route path="/articles" element={<ArticlesPage />} />
         <Route path="/" element={<ArticlesPage />} />
         <Route path="/topics/:topic" element={<ArticlesPage />} />
+        <Route path="/topic/:topic" element={<ArticlesPage />} />
         <Route path="/profile" element={<UserPage />} />
         <Route path="/articles/:article_id" element={<SingleArticlePage />} />
       </Routes>

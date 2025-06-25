@@ -4,14 +4,26 @@ import { useParams } from "react-router";
 
 function ArticlesPage() {
   const { topic } = useParams();
-  return (
-    <>
-      <main>
-        <SearchBar />
-        <ArticlesFeed url={`?topic=${topic}`} />
-      </main>
-    </>
-  );
+
+  if (topic) {
+    return (
+      <>
+        <main>
+          <SearchBar />
+          <ArticlesFeed url={`?topic=${topic}`} />
+        </main>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <main>
+          <SearchBar />
+          <ArticlesFeed url={""} />
+        </main>
+      </>
+    );
+  }
 }
 
 export default ArticlesPage;
