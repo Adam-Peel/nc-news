@@ -1,9 +1,21 @@
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import Avatar from "@mui/material/Avatar";
+
 function Sidebar() {
+  const { currentUser } = useContext(UserContext);
+
   return (
     <aside>
-      <div className="sidebar user-avatar">USER IMAGE HERE</div>
-      <div className="sidebar username">Username here</div>
-      <div id="main-header-stats-div">User stats here</div>
+      <div className="sidebar user-avatar">
+        <Avatar
+          alt={currentUser[0].name}
+          src={currentUser[0].avatar_url}
+          sx={{ width: 65, height: 65 }}
+        />
+      </div>
+      <div className="sidebar username">{currentUser[0].name}</div>
+      <div id="main-header-stats-div"></div>
       <nav>
         <div className="sidebar topic-list">
           <ul className="sidebar-list">
