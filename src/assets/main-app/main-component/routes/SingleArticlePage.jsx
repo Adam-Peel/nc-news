@@ -2,6 +2,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PersonIcon from "@mui/icons-material/Person";
 import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
+import CommentForm from "../components/CommentForm";
 import UserInteractionBox from "../components/UserInteractionBox";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
@@ -94,6 +95,7 @@ function SingleArticlePage() {
           articleVotes={articleData.article.votes}
           articleCommentCount={articleData.article.comment_count}
         />
+        <CommentForm articleId={articleData.article.article_id} />
         <CommentsFeed articleId={articleData.article.article_id} />
       </article>
     </main>

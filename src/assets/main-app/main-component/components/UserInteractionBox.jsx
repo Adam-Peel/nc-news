@@ -1,5 +1,5 @@
 import patchData from "../utils/patch";
-import { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
@@ -7,7 +7,6 @@ import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import CommentIcon from "@mui/icons-material/Comment";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
-import PostAddIcon from "@mui/icons-material/PostAdd";
 
 function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [voteValue, setVoteValue] = useState(articleVotes);
@@ -17,7 +16,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
   );
   const [patchError, setPatchError] = useState(null);
-  const textAreaRef = useRef();
 
   async function upvoteChange(value) {
     setVoteValue((prev) => prev + value);
@@ -54,21 +52,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     }
   }
 
-  async function submitComment(event) {
-    event.preventDefault();
-    const { currentUser } = useContext(UserContext);
-    const destructuredUser = currentUser[0];
-    const url = `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}/comments`;
-    console.log(event.target.value);
-    const postToSend = [
-      { username: destructuredUser.username, body: event.target.value },
-    ];
-  }
-
-  function focusOnComment() {
-    textAreaRef.current.focus();
-  }
-
   return (
     <section className="user-interaction-box">
       <div className="user-interaction-options">
@@ -93,7 +76,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
         <button
           id="article-comments"
           className="user-article-interaction-box-button"
-          onClick={focusOnComment}
         >
           <CommentIcon />
           <br />
@@ -140,28 +122,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           </button>
         </span>
         <p id="voting-error">{patchError}</p>
-      </div>
-      <div id="commenting-area">
-        <form method="post" onSubmit={submitComment}>
-          <label htmlFor="comment-textarea-input">
-            Add a comment:
-            <br />
-            <textarea
-              width="100%"
-              id="comment-textarea-input"
-              name="body"
-              ref={textAreaRef}
-            />
-          </label>
-          <div id="comment-textarea-button">
-            <button
-              className="user-article-interaction-box-button"
-              type="submit"
-            >
-              <PostAddIcon fontSize="small" />
-            </button>
-          </div>
-        </form>
       </div>
     </section>
   );
