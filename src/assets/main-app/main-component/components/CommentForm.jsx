@@ -26,30 +26,32 @@ function CommentForm({ articleId }) {
     try {
       const post = await postData(url, postToSend);
       setPostError(null);
+      setCommentValue("");
     } catch (err) {
       setPostError("🪧 Sorry, the post did not work 🪧");
     }
   }
-
+  console.log(commentValue);
   return (
     <section id="commenting-area">
-      <form method="post" name="comment-form" action={handleSubmit}>
-        <label htmlFor="comment-textarea-input">
-          Add a comment:
-          <br />
-          <textarea
-            id="comment-textarea-input"
-            name="comment-body"
-            onChange={handleChange}
-          />
-        </label>
-        <div id="comment-textarea-button">
-          <button className="user-article-interaction-box-button" type="submit">
-            <PostAddIcon fontSize="small" />
-          </button>
-        </div>
-      </form>
-      <p id="posting-error">{postError}</p>
+      {/* <form method="post" name="comment-form" onSubmit={handleSubmit}> */}
+      <label htmlFor="comment-textarea-input">
+        Add a comment:
+        <br />
+        <textarea
+          id="comment-textarea-input"
+          name="comment-body"
+          // value={commentValue}
+          // onChange={handleChange}
+        />
+      </label>
+      <div id="comment-textarea-button">
+        <button className="user-article-interaction-box-button" type="submit">
+          <PostAddIcon fontSize="small" />
+        </button>
+        <span>{postError}</span>
+      </div>
+      {/* </form> */}
     </section>
   );
 }

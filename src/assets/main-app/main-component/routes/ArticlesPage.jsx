@@ -1,12 +1,12 @@
 import SearchBar from "../components/SearchBar";
 import ArticlesFeed from "../components/ArticlesFeed";
 
-function ArticlesPage({ baseURL }) {
+function ArticlesPage() {
   return (
     <>
       <main>
         <SearchBar />
-        <ArticlesFeed baseURL={baseURL} />
+        <ArticlesFeed />
       </main>
     </>
   );

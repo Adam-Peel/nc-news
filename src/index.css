@@ -321,7 +321,7 @@ footer {
   padding-left: 15px;
 }
 
-#commenting-area textarea {
+/* #commenting-area textarea {
   padding: 10px;
   line-height: 1.5;
   border-radius: 5px;
@@ -329,7 +329,7 @@ footer {
   box-shadow: 1px 1px 1px #999;
   box-sizing: border-box;
   width: 95%;
-}
+} */
 
 .comment-card {
   margin-left: 20px;

@@ -4,9 +4,12 @@ import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 
-function ArticlesFeed({ baseURL }) {
+function ArticlesFeed() {
   const [articlesData, setArticlesData] = useState(null);
   const [articlesError, setArticlesError] = useState(null);
+  const [baseURL, setBaseURL] = useState(
+    "https://news-aggregator-7e9t.onrender.com/api/articles"
+  );
   console.log(baseURL);
 
   useEffect(() => {
