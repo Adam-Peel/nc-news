@@ -1,5 +1,6 @@
 import patchData from "../utils/patch";
-import { useState } from "react";
+import { useState, useRef, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
@@ -16,6 +17,10 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
   );
   const [patchError, setPatchError] = useState(null);
+  const textAreaRef = useRef();
+
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
 
   async function upvoteChange(value) {
     setVoteValue((prev) => prev + value);
@@ -56,6 +61,10 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     event.preventDefault();
   }
 
+  function focusOnComment() {
+    textAreaRef.current.focus();
+  }
+
   return (
     <section className="user-interaction-box">
       <div className="user-interaction-options">
@@ -80,6 +89,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
         <button
           id="article-comments"
           className="user-article-interaction-box-button"
+          onClick={focusOnComment}
         >
           <CommentIcon />
           <br />
@@ -132,7 +142,12 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           <label htmlFor="comment-textarea-input">
             Add a comment:
             <br />
-            <textarea width="100%" id="comment-textarea-input" name="body" />
+            <textarea
+              width="100%"
+              id="comment-textarea-input"
+              name="body"
+              ref={textAreaRef}
+            />
           </label>
           <div id="comment-textarea-button">
             <button
