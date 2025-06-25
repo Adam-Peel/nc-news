@@ -16,7 +16,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
   );
   const [patchError, setPatchError] = useState(null);
-  const [showTextArea, setShowTextArea] = useState(false);
+  const [showTextArea, setShowTextArea] = useState(true);
 
   function toggleTextArea() {
     setShowTextArea((prev) => !prev);
@@ -131,10 +131,12 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           <p id="voting-error">{patchError}</p>
         </div>
       </section>
-      <section id="comment-text-area">
-        <textarea width="100%" hidden={showTextArea}>
-          Add comment:
-        </textarea>
+      <section id="comment-text-area" hidden={showTextArea}>
+        <textarea
+          width="100%"
+          hidden={showTextArea}
+          defaultValue={"Add comment:"}
+        ></textarea>
       </section>
     </>
   );
