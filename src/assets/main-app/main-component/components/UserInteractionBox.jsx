@@ -58,6 +58,11 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     event.preventDefault();
     const { currentUser } = useContext(UserContext);
     const destructuredUser = currentUser[0];
+    const url = `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}/comments`;
+    console.log(event.target.value);
+    const postToSend = [
+      { username: destructuredUser.username, body: event.target.value },
+    ];
   }
 
   function focusOnComment() {
