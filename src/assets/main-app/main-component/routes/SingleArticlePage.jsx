@@ -3,11 +3,14 @@ import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 import provideAvatar from "../utils/provideAvatar.jsx";
 
 function SingleArticlePage() {
+  const { users } = useContext(UserContext);
   const [articleData, setArticleData] = useState(null);
   const [articleError, setArticleError] = useState(null);
   const { article_id } = useParams();
@@ -85,7 +88,7 @@ function SingleArticlePage() {
         </section>
         <div id="article-author">
           <h4>
-            <span>{provideAvatar(articleData.article.author, 66)}</span>
+            <span>{provideAvatar(articleData.article.author, 66, users)}</span>
             {articleData.article.author}
           </h4>
         </div>

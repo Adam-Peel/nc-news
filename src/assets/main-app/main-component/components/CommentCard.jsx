@@ -10,6 +10,7 @@ import provideAvatar from "../utils/provideAvatar";
 
 function CommentCard({ comment, setCommentPosted }) {
   const { currentUser } = useContext(UserContext);
+  let { users } = useContext(UserContext);
   const [deleteError, setDeleteError] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -52,7 +53,7 @@ function CommentCard({ comment, setCommentPosted }) {
     <section className="comment-card">
       <div className="comment-card-head-info">
         <h4>
-          <span>{provideAvatar(comment.author, 45)}</span>
+          <span>{provideAvatar(comment.author, 45, users)}</span>
           <span>{comment.author}</span>
         </h4>
       </div>

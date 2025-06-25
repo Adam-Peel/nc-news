@@ -1,10 +1,6 @@
 import Avatar from "@mui/material/Avatar";
-import { useContext, useId } from "react";
-import { UserContext } from "../../contexts/UserContext";
 
-function provideAvatar(author, pixels) {
-  const { users } = useContext(UserContext);
-
+function provideAvatar(author, pixels, users) {
   let size = pixels;
   if (typeof pixels !== "number") {
     size = 54;
@@ -21,7 +17,6 @@ function provideAvatar(author, pixels) {
           {author[0]}
         </Avatar>
       );
-    } else {
     }
   });
 }
