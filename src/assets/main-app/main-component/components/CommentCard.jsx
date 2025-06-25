@@ -2,18 +2,23 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import PersonIcon from "@mui/icons-material/Person";
 import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    right: -7,
-    top: 13,
-    border: `2px solid ${(theme.vars ?? theme).palette.background.paper}`,
-    padding: "0 4px",
-  },
-}));
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function CommentCard(comment) {
+  const { currentUser } = useContext(UserContext);
+
+  function checkUser(user) {
+    if (user === currentUser[0].username) {
+      return (
+        <IconButton aria-label="delete" color="primary">
+          <DeleteIcon />
+        </IconButton>
+      );
+    }
+  }
   return (
     <section className="comment-card">
       <div className="comment-card-head-info">
@@ -22,7 +27,10 @@ function CommentCard(comment) {
           {comment.comment.author}
         </h4>
       </div>
-      <div className="comment-card-body">{comment.comment.body}</div>
+      <div className="comment-card-body">
+        {comment.comment.body} {checkUser(comment.comment.author)}
+      </div>
+
       <CalendarMonthIcon />
       {comment.comment.created_at.slice(0, 10)}
       <div className="comment-card-head-vote">

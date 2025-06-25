@@ -32,12 +32,13 @@ function CommentForm({ articleId }) {
     }
   }
   console.log(commentValue);
+
   return (
     <section id="commenting-area">
       {/* <form method="post" name="comment-form" onSubmit={handleSubmit}> */}
       <label htmlFor="comment-textarea-input">
         Add a comment:
-        <br />
+        {/* <br /> */}
         <textarea
           id="comment-textarea-input"
           name="comment-body"
