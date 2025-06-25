@@ -95,7 +95,11 @@ function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
         &emsp; Comments
       </h2>
       {commentsData.comments.map((comment) => (
-        <CommentCard key={comment.comment_id} comment={comment} />
+        <CommentCard
+          key={comment.comment_id}
+          comment={comment}
+          setCommentPosted={setCommentPosted}
+        />
       ))}
     </section>
   );

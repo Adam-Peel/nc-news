@@ -7,3 +7,5 @@ async function deleteData(baseURL) {
     return err;
   }
 }
+
+export default deleteData;
