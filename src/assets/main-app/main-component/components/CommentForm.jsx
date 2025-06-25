@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import postData from "../utils/post";
+import Button from "@mui/material/Button";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
 function CommentForm({ articleId, setCommentPosted }) {
@@ -53,9 +54,13 @@ function CommentForm({ articleId, setCommentPosted }) {
           />
         </label>
         <div id="comment-textarea-button">
-          <button className="user-article-interaction-box-button" type="submit">
-            <PostAddIcon fontSize="small" />
-          </button>
+          <Button
+            className="user-article-interaction-box-button"
+            type="submit"
+            variant="contained"
+          >
+            <PostAddIcon fontSize="medium" />
+          </Button>
           <span className="error-text">{postError}</span>
         </div>
       </form>

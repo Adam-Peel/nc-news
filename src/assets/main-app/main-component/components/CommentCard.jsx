@@ -5,6 +5,7 @@ import Badge from "@mui/material/Badge";
 import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import deleteData from "../utils/delete";
 
@@ -30,14 +31,16 @@ function CommentCard({ comment, setCommentPosted }) {
   function checkUser(user) {
     if (user === currentUser[0].username) {
       return (
-        <IconButton
-          aria-label="delete"
-          color="warning"
-          size="large"
-          onClick={() => deleteComment(comment.comment_id)}
-        >
-          <DeleteIcon />
-        </IconButton>
+        <>
+          <br />
+          <Button
+            color="warning"
+            onClick={() => deleteComment(comment.comment_id)}
+            variant="contained"
+          >
+            <DeleteIcon fontSize="small" />
+          </Button>
+        </>
       );
     }
   }
