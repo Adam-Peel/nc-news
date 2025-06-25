@@ -14,8 +14,8 @@ function MainComponent() {
       <Sidebar />
       {/* Routing here for different pages - use API REQUEST*/}
       <Routes>
-        <Route path="/articles" element={<ArticlesPage />} />
-        <Route path="/" element={<ArticlesPage />} />
+        <Route path="/articles" element={<ArticlesPage url="/articles" />} />
+        <Route path="/" element={<ArticlesPage url="/articles" />} />
         <Route path="/profile" element={<UserPage />} />
         <Route path="/articles/:article_id" element={<SingleArticlePage />} />
       </Routes>

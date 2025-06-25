@@ -1,12 +1,12 @@
 import SearchBar from "../components/SearchBar";
 import ArticlesFeed from "../components/ArticlesFeed";
 
-function ArticlesPage() {
+function ArticlesPage({ url }) {
   return (
     <>
       <main>
         <SearchBar />
-        <ArticlesFeed />
+        <ArticlesFeed url={url} />
       </main>
     </>
   );

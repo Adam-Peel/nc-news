@@ -3,8 +3,12 @@ import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PersonIcon from "@mui/icons-material/Person";
 import Badge from "@mui/material/Badge";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import provideAvatar from "../utils/provideAvatar";
 
 function ArticleCard(article) {
+  const { users } = useContext(UserContext);
   return (
     <section className="article-card" key={article.article.id}>
       <img
@@ -16,8 +20,10 @@ function ArticleCard(article) {
         <div className="article-card-head-info">
           <h3 className="article-card-head-title"> {article.article.title}</h3>
           <h4 className="article-card-subtitle">{article.article.topic}</h4>
-          <PersonIcon />
-          {article.article.author}
+          <span>
+            {provideAvatar(article.article.author, 30, users)}
+            {article.article.author}
+          </span>
           <br />
           <CalendarMonthIcon />
           {article.article.created_at.slice(0, 10)}
