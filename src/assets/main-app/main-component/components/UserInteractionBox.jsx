@@ -16,6 +16,11 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
     `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
   );
   const [patchError, setPatchError] = useState(null);
+  const [showTextArea, setShowTextArea] = useState(false);
+
+  function toggleTextArea() {
+    setShowTextArea((prev) => !prev);
+  }
 
   async function upvoteChange(value) {
     setVoteValue((prev) => prev + value);
@@ -53,77 +58,85 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   }
 
   return (
-    <section className="user-interaction-box">
-      <div className="user-interaction-options">
-        <span>
-          <button
-            id="article-read"
-            className="user-article-interaction-box-button"
-          >
-            <MarkChatReadIcon />
-            <br />
-            <span className="user-interaction-button-text">Read</span>
-          </button>
-        </span>
-        <button
-          id="article-bookmarked"
-          className="user-article-interaction-box-button"
-        >
-          <BookmarkAddIcon />
-          <br />
-          <span className="user-interaction-button-text">Save</span>
-        </button>
-        <button
-          id="article-comments"
-          className="user-article-interaction-box-button"
-        >
-          <CommentIcon />
-          <br />
-          <span className="user-interaction-button-text">
-            Comment: {articleCommentCount}
+    <>
+      <section className="user-interaction-box">
+        <div className="user-interaction-options">
+          <span>
+            <button
+              id="article-read"
+              className="user-article-interaction-box-button"
+            >
+              <MarkChatReadIcon />
+              <br />
+              <span className="user-interaction-button-text">Read</span>
+            </button>
           </span>
-        </button>
-      </div>
-      <div id="user-article-voting-options">
-        <span>
           <button
-            id="article-downvote"
+            id="article-bookmarked"
             className="user-article-interaction-box-button"
-            value={-1}
-            disabled={disableDownvoteButton}
-            onClick={() => downvoteChange(-1)}
           >
-            <ThumbDownOffAltOutlinedIcon />
+            <BookmarkAddIcon />
             <br />
-            <span className="user-interaction-button-text">Downvote</span>
+            <span className="user-interaction-button-text">Save</span>
           </button>
-        </span>
-        <button
-          id="user-interaction-article-votes-button"
-          className="user-article-interaction-box-button"
-        >
-          <HowToVoteIcon />
-          <br />
-          <span className="user-interaction-button-text no-hover">
-            Votes: {voteValue}
+          <button
+            id="article-comments"
+            className="user-article-interaction-box-button"
+            onClick={toggleTextArea}
+          >
+            <CommentIcon />
+            <br />
+            <span className="user-interaction-button-text">
+              Comment: {articleCommentCount}
+            </span>
+          </button>
+        </div>
+        <div id="user-article-voting-options">
+          <span>
+            <button
+              id="article-downvote"
+              className="user-article-interaction-box-button"
+              value={-1}
+              disabled={disableDownvoteButton}
+              onClick={() => downvoteChange(-1)}
+            >
+              <ThumbDownOffAltOutlinedIcon />
+              <br />
+              <span className="user-interaction-button-text">Downvote</span>
+            </button>
           </span>
-        </button>
-        <span>
           <button
-            id="article-upvote"
+            id="user-interaction-article-votes-button"
             className="user-article-interaction-box-button"
-            value={1}
-            disabled={disableUpvoteButton}
-            onClick={() => upvoteChange(1)}
           >
-            <ThumbUpOutlinedIcon />
+            <HowToVoteIcon />
             <br />
-            <span className="user-interaction-button-text">Upvote</span>
+            <span className="user-interaction-button-text no-hover">
+              Votes: {voteValue}
+            </span>
           </button>
-        </span>
-        <p id="voting-error">{patchError}</p>
-      </div>
-    </section>
+          <span>
+            <button
+              id="article-upvote"
+              className="user-article-interaction-box-button"
+              value={1}
+              disabled={disableUpvoteButton}
+              onClick={() => upvoteChange(1)}
+            >
+              <ThumbUpOutlinedIcon />
+              <br />
+              <span className="user-interaction-button-text">Upvote</span>
+            </button>
+          </span>
+          <p id="voting-error">{patchError}</p>
+        </div>
+      </section>
+      <section id="comment-text-area">
+        <textarea width="100%" hidden={showTextArea}>
+          Add comment:
+        </textarea>
+      </section>
+    </>
   );
 }
 
