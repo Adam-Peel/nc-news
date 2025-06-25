@@ -1,4 +1,5 @@
 import CommentCard from "./CommentCard";
+import CommentForm from "./CommentForm";
 import fetchData from "../utils/fetch";
 import { useState, useEffect } from "react";
 import Stack from "@mui/material/Stack";
@@ -7,6 +8,8 @@ import Skeleton from "@mui/material/Skeleton";
 function CommentsFeed({ articleId }) {
   const [commentsData, setCommentsData] = useState(null);
   const [commentsError, setCommentsError] = useState(null);
+  const [commentPosted, setCommentPosted] = useState(false);
+
   useEffect(() => {
     const fetchComments = async function () {
       try {
@@ -21,7 +24,7 @@ function CommentsFeed({ articleId }) {
       }
     };
     fetchComments();
-  }, [articleId]);
+  }, [articleId, commentPosted]);
 
   if (commentsError) {
     console.log(commentsError);
@@ -75,6 +78,7 @@ function CommentsFeed({ articleId }) {
 
   return (
     <section className="comments-feed">
+      <CommentForm articleId={articleId} setCommentPosted={setCommentPosted} />
       <h2 className="comments-feed-title">Comments</h2>
       {commentsData.comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />

@@ -13,7 +13,7 @@ function CommentCard(comment) {
   function checkUser(user) {
     if (user === currentUser[0].username) {
       return (
-        <IconButton aria-label="delete" color="primary">
+        <IconButton aria-label="delete" color="warning" size="large">
           <DeleteIcon />
         </IconButton>
       );
