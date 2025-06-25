@@ -1,38 +1,16 @@
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import PersonIcon from "@mui/icons-material/Person";
 import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
-import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
-import Avatar from "@mui/material/Avatar";
+import provideAvatar from "../utils/provideAvatar.jsx";
 
 function SingleArticlePage() {
   const [articleData, setArticleData] = useState(null);
   const [articleError, setArticleError] = useState(null);
   const { article_id } = useParams();
-  const { users } = useContext(UserContext);
-
-  function provideAvatar(author) {
-    console.log(users.username);
-    return users.map((user) => {
-      if (author === user.username) {
-        return (
-          <>
-            <Avatar
-              alt={`${user.username}`}
-              src={`${user.avatar_url}`}
-              sx={{ width: 56, height: 56 }}
-            />
-          </>
-        );
-      } else {
-      }
-    });
-    return <Avatar>{author[0]}</Avatar>;
-  }
 
   useEffect(() => {
     const fetchArticle = async function () {
@@ -76,7 +54,7 @@ function SingleArticlePage() {
           <Skeleton
             variant="rounded"
             width={210}
-            height={60}
+            height={200}
             sx={{ bgcolor: "#ffffde" }}
           />
         </Stack>
@@ -107,7 +85,7 @@ function SingleArticlePage() {
         </section>
         <div id="article-author">
           <h4>
-            <span>{provideAvatar(articleData.article.author)}</span>
+            <span>{provideAvatar(articleData.article.author, 66)}</span>
             {articleData.article.author}
           </h4>
         </div>

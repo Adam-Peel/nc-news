@@ -6,11 +6,10 @@ import { UserContext } from "../../contexts/UserContext";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import deleteData from "../utils/delete";
-import Avatar from "@mui/material/Avatar";
+import provideAvatar from "../utils/provideAvatar";
 
 function CommentCard({ comment, setCommentPosted }) {
   const { currentUser } = useContext(UserContext);
-  const { users } = useContext(UserContext);
   const [deleteError, setDeleteError] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -49,26 +48,11 @@ function CommentCard({ comment, setCommentPosted }) {
     }
   }
 
-  function provideAvatar(author) {
-    console.log(users.username);
-    return users.map((user) => {
-      if (author === user.username) {
-        return (
-          <>
-            <Avatar alt={`${user.username}`} src={`${user.avatar_url}`} />
-          </>
-        );
-      } else {
-      }
-    });
-    return <Avatar>{author[0]}</Avatar>;
-  }
-
   return (
     <section className="comment-card">
       <div className="comment-card-head-info">
         <h4>
-          <span>{provideAvatar(comment.author)}</span>
+          <span>{provideAvatar(comment.author, 45)}</span>
           <span>{comment.author}</span>
         </h4>
       </div>
