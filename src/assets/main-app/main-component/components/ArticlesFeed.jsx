@@ -30,10 +30,15 @@ function ArticlesFeed({ title, url, topicChange }) {
         setArticlesData(data);
         setArticlesError(null);
       } catch (err) {
-        console.log(err);
-        setArticlesError(err.message);
+        setArticlesError(err);
         setArticlesData(null);
-        navigate("/404");
+        if (err === 404) {
+          navigate("/404");
+        } else if (err === 400) {
+          navigate("/400");
+        } else {
+          navigate("/500");
+        }
       }
     };
     fetchArticles();
