@@ -1,6 +1,9 @@
-function SearchBar() {
+function SearchBar({ title }) {
   return (
     <section className="searchbar">
+      <div>
+        <h3 className="article-start-accent">{title}</h3>
+      </div>
       <div>
         {/* TODO - Add labels */}
         <input type="text" placeholder="search by title"></input>

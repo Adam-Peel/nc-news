@@ -1,5 +1,6 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { useNavigate } from "react-router";
 import Avatar from "@mui/material/Avatar";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -8,20 +9,20 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import fetchData from "./utils/fetch";
+import Divider from "@mui/material/Divider";
 
 function Sidebar() {
   const { currentUser } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const [topicList, setTopicList] = useState(null);
   const [topicMessage, setTopicMessage] = useState(null);
-  const [fetching, SetFetching] = useState(false);
 
   const handleClick = async function () {
     setOpen(!open);
     if (open) {
       return;
     }
-    SetFetching(true);
+
     setTopicMessage("loading");
     try {
       const fetchedTopics = await fetchData(
@@ -31,10 +32,10 @@ function Sidebar() {
       setTopicMessage(null);
     } catch (err) {
       setTopicMessage("Error");
-    } finally {
-      SetFetching(false);
     }
   };
+
+  let navigate = useNavigate();
 
   return (
     <aside>
@@ -58,13 +59,17 @@ function Sidebar() {
               <ListItemText primary={currentUser[0].name} />
             </ListItemButton>
             <ListItemButton sx={{ pl: 0 }}>
-              <ListItemText primary="Posts" />
+              <ListItemText
+                primary="All Posts"
+                onClick={() => navigate(`/articles`)}
+              />
             </ListItemButton>
             <ListItemButton onClick={() => handleClick()} sx={{ pl: 0 }}>
               <ListItemText primary="Topics" />
               {open ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
+              <Divider sx={{ bgcolor: "white" }} />
               {topicMessage ? (
                 <List component="div" disablePadding>
                   <ListItemButton sx={{ pl: 2 }}>
@@ -77,8 +82,12 @@ function Sidebar() {
 
               {topicList ? (
                 topicList.topics.map((topic) => (
-                  <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 1 }} key={topic.slug}>
+                  <List component="div" disablePadding key={topic.slug}>
+                    <ListItemButton
+                      sx={{ pl: 1 }}
+                      key={topic.slug}
+                      onClick={() => navigate(`/topics/${topic.slug}`)}
+                    >
                       <ListItemText primary={topic.slug} key={topic.slug} />
                     </ListItemButton>
                   </List>

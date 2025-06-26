@@ -6,16 +6,12 @@ function ArticlesPage() {
   const { topic } = useParams();
 
   if (topic) {
-    const title = topic[0].toUpperCase();
+    const title = topic[0].toUpperCase() + topic.slice(1);
     return (
       <>
         <main>
-          <SearchBar />
-          <h2>
-            <span className="article-start-accent">{title}</span>
-            <span className="article-start-accent">{topic.slice(1)}</span>
-          </h2>
-          <ArticlesFeed url={`?topic=${topic}`} />
+          <SearchBar title={title} />
+          <ArticlesFeed url={`?topic=${topic}`} topicChange={topic} />
         </main>
       </>
     );
@@ -23,7 +19,7 @@ function ArticlesPage() {
     return (
       <>
         <main>
-          <SearchBar />
+          <SearchBar title="All posts" />
           <ArticlesFeed url={""} />
         </main>
       </>

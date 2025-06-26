@@ -13,6 +13,9 @@ function ArticlesFeed({ url }) {
 
   useEffect(() => {
     const fetchArticles = async function () {
+      setBaseURL(
+        `https://news-aggregator-7e9t.onrender.com/api/articles${url}`
+      );
       try {
         const data = await fetchData(baseURL);
         setArticlesData(data);
@@ -52,7 +55,7 @@ function ArticlesFeed({ url }) {
       </Stack>
     );
   }
-
+  console.log(url);
   return (
     <>
       <section className="articles-feed">

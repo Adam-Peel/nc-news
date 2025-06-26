@@ -202,6 +202,11 @@ footer {
 
 .searchbar {
   position: fixed;
+  justify-items: center;
+}
+
+.article-topics-header {
+  top: 0;
 }
 
 .article-card {
@@ -284,6 +289,7 @@ footer {
   font-size: 2em;
   font-weight: bolder;
   color: goldenrod;
+  margin: 0;
 }
 
 .article-body {
