@@ -1,12 +1,10 @@
 import CommentIcon from "@mui/icons-material/Comment";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-
 import Badge from "@mui/material/Badge";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router";
 import provideAvatar from "../utils/provideAvatar";
-// Here
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -19,11 +17,13 @@ import CardActions from "@mui/material/CardActions";
 
 function ArticleCard(article) {
   const { users } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <div className="article-card-container" key={article.article.id}>
       <Card sx={{ width: 350 }} className="article-card">
         <CardHeader
+          sx={{ height: 35 }}
           avatar={provideAvatar(article.article.author, 35, users)}
           action={
             <IconButton aria-label="settings">
@@ -33,14 +33,16 @@ function ArticleCard(article) {
           title={article.article.author}
           subheader={article.article.created_at.slice(0, 10)}
         />
-        <CardMedia
-          component="img"
-          height="140"
-          image={article.article.article_img_url}
-          alt="An image of the article"
-        />
-        <CardActionArea>
-          <CardContent>
+        <CardActionArea
+          onClick={() => navigate(`/articles/${article.article.article_id}`)}
+        >
+          <CardMedia
+            component="img"
+            height="125"
+            image={article.article.article_img_url}
+            alt="An image of the article"
+          />
+          <CardContent sx={{ height: 125 }}>
             <Typography
               gutterBottom
               variant="h6"
@@ -54,7 +56,7 @@ function ArticleCard(article) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions sx={{ height: 25 }}>
           <Badge
             badgeContent={article.article.comment_count}
             color="primary"
