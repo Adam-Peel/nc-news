@@ -1,5 +1,3 @@
-import { useState } from "react";
-import SearchBar from "../components/SearchBar";
 import ArticlesFeed from "../components/ArticlesFeed";
 import { useParams } from "react-router";
 
@@ -11,7 +9,6 @@ function ArticlesPage() {
     return (
       <>
         <main>
-          {/* <SearchBar title={title} url={`?topic=${topic}`} /> */}
           <ArticlesFeed
             title={title}
             url={`?topic=${topic}`}
@@ -24,7 +21,6 @@ function ArticlesPage() {
     return (
       <>
         <main>
-          {/* <SearchBar title="All posts" url={""} /> */}
           <ArticlesFeed title="All posts" url={""} />
         </main>
       </>

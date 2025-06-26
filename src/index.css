@@ -117,7 +117,11 @@ main {
 }
 
 .searchbar * {
-  margin-left: 5px;
+  margin-left: 15px;
+}
+
+form {
+  text-align: left;
 }
 
 h1 {
@@ -134,7 +138,7 @@ li {
 }
 
 label {
-  vertical-align: top;
+  font-size: 0.8rem;
 }
 
 button {

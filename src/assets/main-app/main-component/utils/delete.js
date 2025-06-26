@@ -1,9 +1,11 @@
 async function deleteData(baseURL) {
   try {
     const deleted = await fetch(baseURL, { method: "DELETE" });
+    if (!deleted.ok) {
+      throw new Error(`Response status: ${deleted.status}`);
+    }
   } catch (err) {
-    console.log(err);
-    return err;
+    throw err;
   }
 }
 

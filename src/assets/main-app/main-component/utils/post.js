@@ -6,6 +6,9 @@ async function postData(url, bodyToPost) {
       body: JSON.stringify(bodyToPost[0]),
     });
     const formattedPost = await post.json();
+    if (!formattedPost.ok) {
+      throw new Error(`Response status: ${formattedPost.status}`);
+    }
     return formattedPost;
   } catch (err) {
     console.log(err);

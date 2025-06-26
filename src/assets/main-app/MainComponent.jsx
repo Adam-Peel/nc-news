@@ -5,6 +5,7 @@ import ArticlesPage from "./main-component/routes/ArticlesPage";
 import Sidebar from "./main-component/Sidebar";
 import SingleArticlePage from "./main-component/routes/SingleArticlePage";
 import { Routes, Route } from "react-router";
+import NotFound from "./main-component/routes/NotFound";
 
 function MainComponent() {
   return (
@@ -17,6 +18,8 @@ function MainComponent() {
         <Route path="/topics/:topic" element={<ArticlesPage />} />
         <Route path="/topic/:topic" element={<ArticlesPage />} />
         <Route path="/articles/:article_id" element={<SingleArticlePage />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
