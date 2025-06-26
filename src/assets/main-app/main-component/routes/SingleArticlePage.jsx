@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { Navigate } from "react-router";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 import provideAvatar from "../utils/provideAvatar.jsx";
@@ -14,7 +13,6 @@ function SingleArticlePage() {
   const { users } = useContext(UserContext);
   const navigate = useNavigate();
   const [articleData, setArticleData] = useState(null);
-  const [articleError, setArticleError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -26,7 +24,6 @@ function SingleArticlePage() {
         setArticleData(fetchedArticle);
         setArticleError(null);
       } catch (err) {
-        setArticleError(err.message);
         setArticleData(null);
         if (err === 404) {
           navigate("/404");
@@ -39,15 +36,6 @@ function SingleArticlePage() {
     };
     fetchArticle();
   }, [article_id]);
-
-  if (articleError) {
-    console.log(articleError);
-    return (
-      <main>
-        <h3>Error...</h3>
-      </main>
-    );
-  }
 
   if (!articleData) {
     return (

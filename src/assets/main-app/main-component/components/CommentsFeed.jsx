@@ -24,6 +24,13 @@ function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
       } catch (err) {
         setCommentsError(err.message);
         setCommentsData(null);
+        if (err === 404) {
+          navigate("/404");
+        } else if (err === 400) {
+          navigate("/400");
+        } else {
+          navigate("/500");
+        }
       }
     };
     fetchComments();

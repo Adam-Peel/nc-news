@@ -7,7 +7,6 @@ import Stack from "@mui/material/Stack";
 
 function ArticlesFeed({ title, url, topicChange }) {
   const [articlesData, setArticlesData] = useState(null);
-  const [articlesError, setArticlesError] = useState(null);
   const [baseURL, setBaseURL] = useState(
     `https://news-aggregator-7e9t.onrender.com/api/articles${url}`
   );
@@ -30,7 +29,6 @@ function ArticlesFeed({ title, url, topicChange }) {
         setArticlesData(data);
         setArticlesError(null);
       } catch (err) {
-        setArticlesError(err);
         setArticlesData(null);
         if (err === 404) {
           navigate("/404");
@@ -46,11 +44,6 @@ function ArticlesFeed({ title, url, topicChange }) {
 
   function handleChange(event) {
     setSearchParams(event.target.value);
-  }
-
-  if (articlesError) {
-    console.log(articlesError);
-    return <div>Error: Something went wrong</div>;
   }
 
   if (!articlesData) {
