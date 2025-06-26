@@ -110,10 +110,14 @@ main {
 
 .searchbar {
   display: flex;
-  position: fixed;
+  position: sticky;
   top: 57px;
   width: auto;
-  align-self: center;
+  padding: 2px;
+}
+
+.searchbar * {
+  margin-left: 5px;
 }
 
 h1 {
@@ -127,6 +131,10 @@ ul {
 
 li {
   list-style: none;
+}
+
+label {
+  vertical-align: top;
 }
 
 button {

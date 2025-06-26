@@ -1,27 +1,32 @@
-function SearchBar({ title }) {
+import { useState } from "react";
+
+function SearchBar({ title, url }) {
+  const [searchParams, setSearchParams] = useState(url);
+
+  function handleChange(event) {
+    setSearchParams(url + event.target.value);
+  }
+  console.log(searchParams);
+
   return (
     <section className="searchbar">
-      <div>
-        <h3 className="article-start-accent">{title}</h3>
-      </div>
-      <div>
-        {/* TODO - Add labels */}
-        <input type="text" placeholder="search by title"></input>
-        <button className="searchbar-button">Search</button>
-      </div>
-      <div>
-        <nav>
-          <span>
-            <button className="searchbar-button">Newest</button>
-          </span>
-          <span>
-            <button className="searchbar-button">Hottest</button>
-          </span>
-          <span>
-            <button className="searchbar-button">Most talked about</button>
-          </span>
-        </nav>
-      </div>
+      <h3 className="article-start-accent">{title}</h3>
+      <nav>
+        <form>
+          <select
+            id="sort-by"
+            value={searchParams}
+            label="Sort by:"
+            onChange={handleChange}
+          >
+            <option>Sort by</option>
+            <option value="?sort=votes:desc">Votes: Descending</option>
+            <option value="?sort=votes:asc">Votes: Ascending</option>
+            <option value="?sort=created_at:asc">Date: Descending</option>
+            <option value="?sort=created_at:desc">Date: Ascending</option>
+          </select>
+        </form>
+      </nav>
     </section>
   );
 }
