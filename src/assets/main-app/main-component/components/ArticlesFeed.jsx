@@ -4,7 +4,7 @@ import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 
-function ArticlesFeed({ url }) {
+function ArticlesFeed({ url, topicChange }) {
   const [articlesData, setArticlesData] = useState(null);
   const [articlesError, setArticlesError] = useState(null);
   const [baseURL, setBaseURL] = useState(
@@ -26,7 +26,7 @@ function ArticlesFeed({ url }) {
       }
     };
     fetchArticles();
-  }, [baseURL]);
+  }, [baseURL, topicChange]);
 
   if (articlesError) {
     console.log(articlesError);
