@@ -7,12 +7,11 @@ async function patchData(url, bodyToPatch) {
     });
     const formattedPatch = await patch.json();
     if (!formattedPatch.ok) {
-      throw new Error(`Response status: ${formattedPatch.status}`);
+      throw formattedPatch.status;
     }
     return formattedPatch;
   } catch (err) {
-    console.log(err);
-    return err;
+    throw err;
   }
 }
 

@@ -7,12 +7,11 @@ async function postData(url, bodyToPost) {
     });
     const formattedPost = await post.json();
     if (!formattedPost.ok) {
-      throw new Error(formattedPost.status);
+      throw formattedPost.status;
     }
     return formattedPost;
   } catch (err) {
-    console.log(err);
-    return err;
+    throw err;
   }
 }
 
