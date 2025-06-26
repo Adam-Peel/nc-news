@@ -27,8 +27,8 @@ function ArticlesFeed({ title, url, topicChange }) {
       try {
         const data = await fetchData(baseURL);
         setArticlesData(data);
-        setArticlesError(null);
       } catch (err) {
+        console.log(err);
         setArticlesData(null);
         if (err === 404) {
           navigate("/404");
@@ -114,10 +114,8 @@ function ArticlesFeed({ title, url, topicChange }) {
         <form>
           <label htmlFor="sort-by">Sort by:</label>
           <br />
-          <select id="sort-by" onChange={handleChange}>
-            <option value="" disabled selected>
-              Sort by
-            </option>
+          <select id="sort-by" onChange={handleChange} defaultValue="Sort by">
+            <option disabled>Sort by</option>
             <option value="sort=comment_count:desc">
               Comments: Descending
             </option>
@@ -130,8 +128,8 @@ function ArticlesFeed({ title, url, topicChange }) {
         </form>
       </section>
       <section className="articles-feed">
-        {articlesData.articles.map((article) => (
-          <ArticleCard article={article} />
+        {articlesData.articles.map((article, index) => (
+          <ArticleCard article={article} key={index} />
         ))}
       </section>
     </>

@@ -21,7 +21,11 @@ function ArticleCard(article) {
 
   return (
     <div className="article-card-container" key={article.article.id}>
-      <Card sx={{ width: 350 }} className="article-card">
+      <Card
+        sx={{ width: 350 }}
+        className="article-card"
+        key={article.article.id}
+      >
         <CardHeader
           sx={{ height: 35 }}
           avatar={provideAvatar(article.article.author, 35, users)}
