@@ -28,6 +28,7 @@ function ArticlesFeed({ title, url, topicChange }) {
       try {
         const data = await fetchData(baseURL);
         console.log(searchParams);
+        console.log(url);
         setArticlesData(data);
         setSearchParams(null);
       } catch (err) {

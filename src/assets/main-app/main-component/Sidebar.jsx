@@ -196,7 +196,7 @@ function Sidebar() {
             </ListItemButton>
           </ListItem>
           <Divider />
-          <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
+          <ListItem key="coding" disablePadding sx={{ display: "block" }}>
             <ListItemButton
               sx={[
                 {
@@ -245,7 +245,7 @@ function Sidebar() {
               />
             </ListItemButton>
           </ListItem>
-          <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
+          <ListItem key="cooking" disablePadding sx={{ display: "block" }}>
             <ListItemButton
               sx={[
                 {
@@ -294,7 +294,7 @@ function Sidebar() {
               />
             </ListItemButton>
           </ListItem>
-          <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
+          <ListItem key="football" disablePadding sx={{ display: "block" }}>
             <ListItemButton
               sx={[
                 {

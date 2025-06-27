@@ -3,11 +3,22 @@ import { useParams } from "react-router";
 
 function ArticlesPage() {
   const { topic } = useParams();
-  console.log(topic);
+
+  if (topic) {
+    return (
+      <>
+        <ArticlesFeed
+          title={topic || "All posts"}
+          url={`?topic=${topic}`}
+          topicChange={topic}
+        />
+      </>
+    );
+  }
 
   return (
     <>
-      <ArticlesFeed title="All posts" url={"?topic="} topicChange={topic} />
+      <ArticlesFeed title={"All posts"} url={"?topic="} />
     </>
   );
 }
