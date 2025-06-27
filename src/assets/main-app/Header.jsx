@@ -5,6 +5,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
+import Typography from "@mui/material/Typography";
 
 function Header() {
   const { currentColourTheme, setCurrentColourTheme } =
@@ -81,10 +82,17 @@ function Header() {
   return (
     <header className="header main-header">
       <div id="main-header-logo">
-        <RssFeedIcon className="header-logo" fontSize="large" />
+        <RssFeedIcon className="header-logo" sx={{ fontSize: 60 }} />
       </div>
       <div id="header-banner">
-        <h1 id="main-header-title">Northcoders News</h1>
+        <Typography
+          id="main-header-title"
+          sx={{
+            typography: { xs: "h6", sm: "h5", md: "h3", lg: "h2", xl: "h2" },
+          }}
+        >
+          Northcoders News
+        </Typography>
       </div>
       <div id="main-header-buttons">
         <FormGroup>

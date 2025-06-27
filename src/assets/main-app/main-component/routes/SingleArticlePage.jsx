@@ -16,6 +16,8 @@ function SingleArticlePage() {
   const { article_id } = useParams();
   const [errorStatus, setErrorStatus] = useState(null);
   const navigate = useNavigate();
+  const d = new Date(articleData.article.created_at);
+  const date = d.toDateString();
 
   useEffect(() => {
     const fetchArticle = async function () {
@@ -48,17 +50,15 @@ function SingleArticlePage() {
           <Skeleton
             variant="text"
             sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
-            width={210}
           />
           <Skeleton
             variant="circular"
-            width={40}
-            height={40}
+            width={200}
+            height={200}
             sx={{ bgcolor: "#ffffde" }}
           />
           <Skeleton
             variant="rounded"
-            width={210}
             height={200}
             sx={{ bgcolor: "#ffffde" }}
           />
@@ -84,7 +84,7 @@ function SingleArticlePage() {
           </strong>
           <br />
           <CalendarMonthIcon />
-          {articleData.article.created_at.slice(0, 10)}{" "}
+          {date.slice(4)}{" "}
         </p>
         <section className="article-body">
           <span className="article-start-accent">

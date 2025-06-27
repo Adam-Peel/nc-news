@@ -13,6 +13,8 @@ function CommentCard({ comment, setCommentPosted }) {
   let { users } = useContext(UserContext);
   const [deleteError, setDeleteError] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const d = new Date(comment.created_at);
+  const date = d.toDateString();
 
   async function deleteComment(id) {
     console.log(id);
@@ -41,6 +43,7 @@ function CommentCard({ comment, setCommentPosted }) {
             onClick={() => deleteComment(comment.comment_id)}
             disabled={buttonDisabled}
             variant="contained"
+            size="small"
           >
             <DeleteIcon fontSize="small" />
           </Button>
@@ -57,19 +60,19 @@ function CommentCard({ comment, setCommentPosted }) {
           <span>{comment.author}</span>
         </h4>
       </div>
-      <div className="comment-card-body">
-        {comment.body} {checkUser(comment.author)}
-      </div>
 
-      <CalendarMonthIcon />
-      {comment.created_at.slice(0, 10)}
-      <div className="comment-card-head-vote">
+      <div className="comment-card-body">{comment.body}</div>
+      <div className="comment-card-footer">
+        {checkUser(comment.author)}
+        <CalendarMonthIcon sx={{ ml: 2 }} />
+        {date.slice(4)}
         <Badge
           badgeContent={comment.votes}
           color="primary"
           showZero
+          sx={{ ml: 2 }}
           anchorOrigin={{
-            vertical: "bottom",
+            vertical: "top",
             horizontal: "right",
           }}
         >

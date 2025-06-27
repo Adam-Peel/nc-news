@@ -12,8 +12,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import Box from "@mui/material/Box";
-import CardActions from "@mui/material/CardActions";
-import Container from "@mui/material/Container";
 
 function ArticleCard(article) {
   const { users } = useContext(UserContext);
@@ -30,8 +28,6 @@ function ArticleCard(article) {
           display: "flex",
           flexDirection: "column",
           height: "100%",
-          // alignItems: "stretch",
-          // boxSizing: "border-box",
         }}
       >
         <Box
@@ -48,6 +44,7 @@ function ArticleCard(article) {
             sx={{
               maxHeight: 35,
               typography: { sm: "body2", xs: "caption" },
+              textAlign: "left",
             }}
             avatar={provideAvatar(article.article.author, 35, users)}
             title={article.article.author}
@@ -61,6 +58,7 @@ function ArticleCard(article) {
           <CardMedia
             component="img"
             maxHeight="125"
+            className="article-card-image"
             image={article.article.article_img_url}
             alt="An image of the article"
           />

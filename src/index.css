@@ -385,8 +385,8 @@ button:focus-visible {
     font-size: xx-small;
   }
 
-  .header-switch {
-    font-size: small;
+  #main-header-buttons {
+    display: none;
   }
 
   #header-hero-image {
@@ -424,6 +424,10 @@ button:focus-visible {
   width: 100%;
   max-height: auto;
   align-items: stretch;
+}
+
+.article-card-image {
+  height: 215px;
 }
 
 /* Single Article Page */
@@ -528,4 +532,11 @@ button:focus-visible {
 
 .comment-card-body {
   margin-bottom: 10px;
+}
+
+.comment-card-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
