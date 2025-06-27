@@ -103,6 +103,10 @@ header {
   z-index: 999;
 }
 
+.header-logo {
+  font-size: 2rem;
+}
+
 #header-hero-image {
   height: 57px;
   width: auto;
