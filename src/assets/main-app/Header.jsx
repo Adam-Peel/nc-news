@@ -91,7 +91,8 @@ function Header() {
             typography: { xs: "h6", sm: "h5", md: "h3", lg: "h2", xl: "h2" },
           }}
         >
-          Northcoders News
+          Northcoders
+          <wbr /> News
         </Typography>
       </div>
       <div id="main-header-buttons">
