@@ -91,7 +91,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           className="user-article-interaction-box-button"
         >
           <Badge color="primary" badgeContent={voteValue}>
-            <HowToVoteIcon />
+            <HowToVoteIcon color="primary" />
           </Badge>
         </IconButton>
         <span>
