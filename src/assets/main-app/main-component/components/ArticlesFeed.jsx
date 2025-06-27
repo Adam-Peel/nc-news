@@ -87,6 +87,7 @@ function ArticlesFeed({ title, url, topicChange }) {
   return (
     <main>
       <Sidebar />
+      <div></div>
       <div className="searchbar">
         <h5 className="article-start-accent">
           {title[0].toUpperCase()}
