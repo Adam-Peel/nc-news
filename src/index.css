@@ -28,11 +28,10 @@
 #root {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 100px 1fr auto;
+  grid-template-rows: 100px auto;
   grid-template-areas:
     "header"
-    "main"
-    "footer";
+    "main";
   padding-top: 0 !important;
   margin-top: 0;
   top: 0;
@@ -50,7 +49,7 @@ a:hover {
 body {
   margin-top: 0;
   place-items: center;
-  /* min-height: 100vh; */
+  max-height: 99vh;
 }
 
 article {
@@ -163,14 +162,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-footer {
-  margin-top: 20px;
-  grid-area: footer;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 }
 
 @media (prefers-color-scheme: light) {
