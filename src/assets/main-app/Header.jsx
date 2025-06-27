@@ -91,12 +91,12 @@ function Header() {
           <FormControlLabel
             control={
               <MaterialUISwitch
+                className="header-switch"
                 sx={{ m: 1 }}
                 checked={checked}
                 onChange={switchColor}
               />
             }
-            label="Choose colour theme"
           />
         </FormGroup>
       </div>

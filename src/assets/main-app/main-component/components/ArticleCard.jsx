@@ -11,63 +11,101 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
+import Box from "@mui/material/Box";
 import CardActions from "@mui/material/CardActions";
-import CodeIcon from "@mui/icons-material/Code";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
-import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
+import Container from "@mui/material/Container";
 
 function ArticleCard(article) {
   const { users } = useContext(UserContext);
   const navigate = useNavigate();
+  const d = new Date(article.article.created_at);
+  const date = d.toDateString();
 
   return (
     <div className="article-card-container" key={article.article.id}>
-      <Card className="article-card" key={article.article.id}>
-        <CardHeader
-          sx={{ maxHeight: 35 }}
-          avatar={provideAvatar(article.article.author, 35, users)}
-          title={article.article.author}
-          subheader={article.article.created_at.slice(0, 10)}
-        />
+      <Card
+        className="article-card"
+        key={article.article.id}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          // alignItems: "stretch",
+          // boxSizing: "border-box",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            padding: "2",
+            typography: { sm: "body2", xs: "caption" },
+            justifyContent: "flex-start",
+          }}
+        >
+          <CardHeader
+            sx={{
+              maxHeight: 35,
+              typography: { sm: "body2", xs: "caption" },
+            }}
+            avatar={provideAvatar(article.article.author, 35, users)}
+            title={article.article.author}
+            variant="caption"
+            subheader={date.slice(4)}
+          />
+        </Box>
         <CardActionArea
           onClick={() => navigate(`/articles/${article.article.article_id}`)}
         >
           <CardMedia
             component="img"
-            height="125"
+            maxHeight="125"
             image={article.article.article_img_url}
             alt="An image of the article"
           />
-          <CardContent sx={{ maxHeight: 125 }}>
+          <CardContent sx={{}}>
             <Typography
+              className="article-card-title"
               gutterBottom
-              variant="h6"
               component="div"
               textAlign="left"
+              sx={{ typography: { md: "body1", sm: "body2", xs: "caption" } }}
             >
               {article.article.title}
             </Typography>
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              {article.article.topic}
-            </Typography>
           </CardContent>
-          <CardActions sx={{ maxHeight: 25 }}>
-            <Badge
-              badgeContent={article.article.comment_count}
-              color="primary"
-              showZero
-            >
-              <CommentIcon />
-            </Badge>
-            <Badge
-              badgeContent={article.article.votes}
-              color="primary"
-              showZero
-            >
-              <HowToVoteIcon />
-            </Badge>
-          </CardActions>
         </CardActionArea>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            padding: "2",
+            typography: { sm: "body2", xs: "caption" },
+            justifyContent: "space-evenly",
+          }}
+        >
+          <Badge
+            badgeContent={article.article.comment_count}
+            color="primary"
+            showZero
+          >
+            <CommentIcon fontSize="small" />
+          </Badge>
+          <Badge badgeContent={article.article.votes} color="primary" showZero>
+            <HowToVoteIcon fontSize="small" sx={{ ml: 1 }} />
+          </Badge>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              typography: { sm: "body2", xs: "caption" },
+            }}
+          >
+            {article.article.topic}
+          </Typography>
+        </Box>
       </Card>
     </div>
   );
