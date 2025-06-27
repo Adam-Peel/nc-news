@@ -10,7 +10,7 @@ import ServerError from "./main-component/routes/ServerError";
 function MainComponent() {
   return (
     <>
-      <Sidebar />
+      {/* <Sidebar /> */}
       {/* Routing here for different pages - use API REQUEST*/}
       <Routes>
         <Route path="/articles" element={<ArticlesPage />} />

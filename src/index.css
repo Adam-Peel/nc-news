@@ -27,12 +27,12 @@
 
 #root {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: auto;
   grid-template-rows: 100px 1fr auto;
   grid-template-areas:
-    "aside header"
-    "aside main"
-    "aside footer";
+    "header"
+    "main"
+    "footer";
   padding-top: 0 !important;
   margin-top: 0;
   top: 0;
@@ -101,7 +101,7 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
   top: 115px;
-  max-height: 80dvh;
+  max-height: 100dvh;
   overflow-y: scroll;
   border-left: #535bf2;
   border-left-style: solid;

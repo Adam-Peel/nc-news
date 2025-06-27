@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
+import Sidebar from "../Sidebar";
 
 function ArticlesFeed({ title, url, topicChange }) {
   const [articlesData, setArticlesData] = useState(null);
@@ -116,6 +117,7 @@ function ArticlesFeed({ title, url, topicChange }) {
 
   return (
     <main>
+      <Sidebar />
       <div className="searchbar">
         <h3 className="article-start-accent">{title}</h3>
         <form>

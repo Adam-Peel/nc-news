@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
+import HomeIcon from "@mui/icons-material/Home";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -17,7 +17,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import CodeIcon from "@mui/icons-material/Code";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 
 const drawerWidth = 200;
 
@@ -102,30 +104,32 @@ const Drawer = styled(MuiDrawer, {
 function Sidebar() {
   const [open, setOpen] = useState(false);
   const { currentUser } = useContext(UserContext);
-  const [topicList, setTopicList] = useState(null);
-  const [topicMessage, setTopicMessage] = useState(null);
 
   const handleClick = async function () {
     setOpen(!open);
-    if (topicList) {
-      return;
-    }
-    setTopicMessage("loading\ntopics");
-    try {
-      const fetchedTopics = await fetchData(
-        `https://news-aggregator-7e9t.onrender.com/api/topics`
-      );
-      setTopicList(fetchedTopics);
-      setTopicMessage("Topics:");
-    } catch (err) {
-      setTopicMessage("Error");
-    }
+
+    //  Extracted out as will hard code topics - but shows the logic for rendering a topic list
+    // const [topicList, setTopicList] = useState(null);
+    // const [topicMessage, setTopicMessage] = useState(null);
+    // if (topicList) {
+    //   return;
+    // }
+    // setTopicMessage("loading\ntopics");
+    // try {
+    //   const fetchedTopics = await fetchData(
+    //     `https://news-aggregator-7e9t.onrender.com/api/topics`
+    //   );
+    //   setTopicList(fetchedTopics);
+    //   setTopicMessage("Topics:");
+    // } catch (err) {
+    //   setTopicMessage("Error");
+    // }
   };
 
   let navigate = useNavigate();
 
   return (
-    <aside>
+    <>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleClick}>
@@ -174,11 +178,159 @@ function Sidebar() {
                       },
                 ]}
               >
-                <InboxIcon />
+                <HomeIcon />
               </ListItemIcon>
               <ListItemText
                 onClick={() => navigate(`/articles`)}
-                primary="all posts"
+                primary="All posts"
+                sx={[
+                  open
+                    ? {
+                        opacity: 1,
+                      }
+                    : {
+                        opacity: 0,
+                      },
+                ]}
+              />
+            </ListItemButton>
+          </ListItem>
+          <Divider />
+          <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={[
+                {
+                  minHeight: 48,
+                  px: 2.5,
+                },
+                open
+                  ? {
+                      justifyContent: "initial",
+                    }
+                  : {
+                      justifyContent: "center",
+                    },
+              ]}
+            >
+              <ListItemIcon
+                onClick={() => navigate(`/topics/coding`)}
+                sx={[
+                  {
+                    minWidth: 0,
+                    justifyContent: "center",
+                  },
+                  open
+                    ? {
+                        mr: 3,
+                      }
+                    : {
+                        mr: "auto",
+                      },
+                ]}
+              >
+                <CodeIcon />
+              </ListItemIcon>
+              <ListItemText
+                onClick={() => navigate(`/topics/coding`)}
+                primary="Coding"
+                sx={[
+                  open
+                    ? {
+                        opacity: 1,
+                      }
+                    : {
+                        opacity: 0,
+                      },
+                ]}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={[
+                {
+                  minHeight: 48,
+                  px: 2.5,
+                },
+                open
+                  ? {
+                      justifyContent: "initial",
+                    }
+                  : {
+                      justifyContent: "center",
+                    },
+              ]}
+            >
+              <ListItemIcon
+                onClick={() => navigate(`/topics/cooking`)}
+                sx={[
+                  {
+                    minWidth: 0,
+                    justifyContent: "center",
+                  },
+                  open
+                    ? {
+                        mr: 3,
+                      }
+                    : {
+                        mr: "auto",
+                      },
+                ]}
+              >
+                <RestaurantIcon />
+              </ListItemIcon>
+              <ListItemText
+                onClick={() => navigate(`/topics/cooking`)}
+                primary="Cooking"
+                sx={[
+                  open
+                    ? {
+                        opacity: 1,
+                      }
+                    : {
+                        opacity: 0,
+                      },
+                ]}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={[
+                {
+                  minHeight: 48,
+                  px: 2.5,
+                },
+                open
+                  ? {
+                      justifyContent: "initial",
+                    }
+                  : {
+                      justifyContent: "center",
+                    },
+              ]}
+            >
+              <ListItemIcon
+                onClick={() => navigate(`/topics/football`)}
+                sx={[
+                  {
+                    minWidth: 0,
+                    justifyContent: "center",
+                  },
+                  open
+                    ? {
+                        mr: 3,
+                      }
+                    : {
+                        mr: "auto",
+                      },
+                ]}
+              >
+                <SportsSoccerIcon />
+              </ListItemIcon>
+              <ListItemText
+                onClick={() => navigate(`/topics/football`)}
+                primary="Football"
                 sx={[
                   open
                     ? {
@@ -192,13 +344,13 @@ function Sidebar() {
             </ListItemButton>
           </ListItem>
         </List>
-        <List component="div" disablePadding>
+        {/* <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 1 }}>
             <ListItemText primary={topicMessage} />
           </ListItemButton>
-        </List>
+        </List> */}
 
-        {topicList ? (
+        {/* {topicList ? (
           topicList.topics.map((topic) => (
             <List component="div" disablePadding key={topic.slug}>
               <ListItem
@@ -256,11 +408,11 @@ function Sidebar() {
           ))
         ) : (
           <></>
-        )}
+        )} */}
 
         <Divider />
       </Drawer>
-    </aside>
+    </>
   );
 }
 

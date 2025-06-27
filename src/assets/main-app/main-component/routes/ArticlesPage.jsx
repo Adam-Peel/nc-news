@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 
 function ArticlesPage() {
   const { topic } = useParams();
+  console.log(topic);
 
   return (
     <>
