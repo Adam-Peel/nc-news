@@ -50,7 +50,7 @@ a:hover {
 body {
   margin-top: 0;
   place-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 article {

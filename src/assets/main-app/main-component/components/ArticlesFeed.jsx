@@ -5,6 +5,8 @@ import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import Sidebar from "../Sidebar";
+import NotFound from "../routes/NotFound";
+import BadRequest from "../routes/BadRequest";
 
 function ArticlesFeed({ title, url, topicChange }) {
   const [articlesData, setArticlesData] = useState(null);
@@ -12,6 +14,7 @@ function ArticlesFeed({ title, url, topicChange }) {
     `https://news-aggregator-7e9t.onrender.com/api/articles${url}`
   );
   const [searchParams, setSearchParams] = useState(null);
+  const [errorStatus, setErrorStatus] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,17 +34,12 @@ function ArticlesFeed({ title, url, topicChange }) {
         console.log(url);
         setArticlesData(data);
         setSearchParams(null);
+        setErrorStatus(null);
       } catch (err) {
         console.log(err);
         setArticlesData(null);
         setSearchParams(null);
-        if (err === 404) {
-          navigate("/404");
-        } else if (err === 400) {
-          navigate("/400");
-        } else {
-          navigate("/500");
-        }
+        setErrorStatus(err);
       }
     };
     fetchArticles();
@@ -51,47 +49,20 @@ function ArticlesFeed({ title, url, topicChange }) {
     setSearchParams(event.target.value);
   }
 
+  if (errorStatus) {
+    return (
+      <main>
+        <BadRequest errorStatus={errorStatus} />
+      </main>
+    );
+  }
+
   if (!articlesData) {
     return (
       <main>
+        <h3>Loading...</h3>
         <section className="articles-feed">
           <div className="article-card-container">
-            <Stack spacing={1}>
-              <Skeleton
-                variant="text"
-                sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
-              />
-              <Skeleton
-                variant="circular"
-                width={40}
-                height={40}
-                sx={{ bgcolor: "#ffffde" }}
-              />
-              <Skeleton
-                variant="rounded"
-                width={210}
-                height={60}
-                sx={{ bgcolor: "#ffffde" }}
-              />
-            </Stack>
-            <Stack spacing={1}>
-              <Skeleton
-                variant="text"
-                sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
-              />
-              <Skeleton
-                variant="circular"
-                width={40}
-                height={40}
-                sx={{ bgcolor: "#ffffde" }}
-              />
-              <Skeleton
-                variant="rounded"
-                width={210}
-                height={60}
-                sx={{ bgcolor: "#ffffde" }}
-              />
-            </Stack>
             <Stack spacing={1}>
               <Skeleton
                 variant="text"
@@ -120,7 +91,10 @@ function ArticlesFeed({ title, url, topicChange }) {
     <main>
       <Sidebar />
       <div className="searchbar">
-        <h3 className="article-start-accent">{title}</h3>
+        <h5 className="article-start-accent">
+          {title[0].toUpperCase()}
+          {title.slice(1)}
+        </h5>
         <form>
           <label htmlFor="sort-by">Sort by:</label>
           <br />
