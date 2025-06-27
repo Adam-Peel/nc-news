@@ -30,13 +30,10 @@ function ArticlesFeed({ title, url, topicChange }) {
       }
       try {
         const data = await fetchData(baseURL);
-        console.log(searchParams);
-        console.log(url);
         setArticlesData(data);
         setSearchParams(null);
         setErrorStatus(null);
       } catch (err) {
-        console.log(err);
         setArticlesData(null);
         setSearchParams(null);
         setErrorStatus(err);

@@ -8,6 +8,7 @@ import { UserContext } from "../../contexts/UserContext";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 import provideAvatar from "../utils/provideAvatar.jsx";
+import Sidebar from "../Sidebar.jsx";
 
 function SingleArticlePage() {
   const { users } = useContext(UserContext);
@@ -64,6 +65,7 @@ function SingleArticlePage() {
 
   return (
     <main>
+      <Sidebar />
       <article>
         <section className="article-head">
           <img
@@ -72,11 +74,14 @@ function SingleArticlePage() {
           ></img>
         </section>
         <h2 id="article-head-title">{articleData.article.title}</h2>
-        <h3 id="article-head-subtitle">{articleData.article.topic}</h3>
-        <div id="article-tagline">
+        <p id="article-info">
+          <strong id="article-head-subtitle">
+            {articleData.article.topic}
+          </strong>
+          <br />
           <CalendarMonthIcon />
           {articleData.article.created_at.slice(0, 10)}{" "}
-        </div>
+        </p>
         <section className="article-body">
           <span className="article-start-accent">
             {articleData.article.body[0]}
@@ -89,13 +94,13 @@ function SingleArticlePage() {
             {articleData.article.author}
           </h4>
         </div>
-
-        <CommentsFeed
-          articleId={articleData.article.article_id}
-          articleVotes={articleData.article.votes}
-          articleCommentCount={articleData.article.comment_count}
-        />
       </article>
+
+      <CommentsFeed
+        articleId={articleData.article.article_id}
+        articleVotes={articleData.article.votes}
+        articleCommentCount={articleData.article.comment_count}
+      />
     </main>
   );
 }

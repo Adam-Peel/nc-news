@@ -52,7 +52,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
 
   return (
     <section className="user-interaction-box">
-      <div className="user-interaction-options">
+      {/* <div className="user-interaction-options">
         <span>
           <button
             id="article-read"
@@ -71,7 +71,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
           <br />
           <span className="user-interaction-button-text">Save</span>
         </button>
-      </div>
+      </div> */}
       <div id="user-article-voting-options">
         <span>
           <button

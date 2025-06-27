@@ -49,7 +49,7 @@ Run using the following:
 | ---------- | ----------- |
 | Node.js    | V22.15.0    |
 
-Once set up, the build can be deployed locally by running the command `npm run dev`.
+Once set up, the build can be deployed locally by running the command `npm run dev` in any folder of the repo.
 
 ## Progress Status
 

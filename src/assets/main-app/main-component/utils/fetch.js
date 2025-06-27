@@ -1,8 +1,6 @@
 async function fetchData(baseURL) {
   try {
     const data = await fetch(baseURL);
-    console.log(baseURL);
-    console.log(data);
     if (!data.ok) {
       throw data.status;
     }

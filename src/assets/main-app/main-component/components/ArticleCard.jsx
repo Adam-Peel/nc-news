@@ -14,6 +14,9 @@ import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
+import CodeIcon from "@mui/icons-material/Code";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 
 function ArticleCard(article) {
   const { users } = useContext(UserContext);
@@ -29,11 +32,6 @@ function ArticleCard(article) {
         <CardHeader
           sx={{ height: 35 }}
           avatar={provideAvatar(article.article.author, 35, users)}
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
           title={article.article.author}
           subheader={article.article.created_at.slice(0, 10)}
         />
@@ -59,19 +57,23 @@ function ArticleCard(article) {
               {article.article.topic}
             </Typography>
           </CardContent>
+          <CardActions sx={{ height: 25 }}>
+            <Badge
+              badgeContent={article.article.comment_count}
+              color="primary"
+              showZero
+            >
+              <CommentIcon />
+            </Badge>
+            <Badge
+              badgeContent={article.article.votes}
+              color="primary"
+              showZero
+            >
+              <HowToVoteIcon />
+            </Badge>
+          </CardActions>
         </CardActionArea>
-        <CardActions sx={{ height: 25 }}>
-          <Badge
-            badgeContent={article.article.comment_count}
-            color="primary"
-            showZero
-          >
-            <CommentIcon />
-          </Badge>
-          <Badge badgeContent={article.article.votes} color="primary" showZero>
-            <HowToVoteIcon />
-          </Badge>
-        </CardActions>
       </Card>
     </div>
   );
