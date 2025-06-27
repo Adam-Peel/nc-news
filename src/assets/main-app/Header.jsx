@@ -9,7 +9,11 @@ function Header() {
   const { currentColourTheme, setCurrentColourTheme } =
     useContext(ColourThemeContext);
 
+  const [checked, setChecked] = useState(true);
+
   function switchColor(event) {
+    console.log(event);
+    setChecked(!checked);
     if (currentColourTheme === "light") {
       setCurrentColourTheme("dark");
     } else {
@@ -36,6 +40,9 @@ function Header() {
         "& + .MuiSwitch-track": {
           opacity: 1,
           backgroundColor: "#aab4be",
+          ...theme.applyStyles("dark", {
+            backgroundColor: "#8796A5",
+          }),
         },
       },
     },
@@ -64,6 +71,9 @@ function Header() {
       opacity: 1,
       backgroundColor: "#aab4be",
       borderRadius: 20 / 2,
+      ...theme.applyStyles("dark", {
+        backgroundColor: "#8796A5",
+      }),
     },
   }));
 
@@ -82,7 +92,7 @@ function Header() {
             control={
               <MaterialUISwitch
                 sx={{ m: 1 }}
-                defaultChecked
+                checked={checked}
                 onChange={switchColor}
               />
             }

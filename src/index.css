@@ -25,8 +25,6 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    /* color: #242424;
-    background-color: #ffffff; */
     --bgr: #ffffff;
     --clr: #242424;
     --accent: #1976d2;
@@ -35,14 +33,14 @@
     color: #1976d2;
   }
   button {
-    background-color: #585858;
+    --bgr: #ffffff;
+    --clr: #242424;
+    --accent: #1976d2;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* background-color: #242424;
-    color: #ffffff; */
     --bgr: #242424;
     --clr: #ffffff;
     --accent: goldenrod;
@@ -51,7 +49,9 @@
     color: #1976d2;
   }
   button {
-    background-color: #f9f9f9;
+    --bgr: #ffffff;
+    --clr: #242424;
+    --accent: #1976d2;
   }
 }
 
@@ -101,7 +101,6 @@ header {
   justify-content: space-evenly;
   width: auto;
   z-index: 999;
-  background-color: var(--bgr);
 }
 
 #header-hero-image {
@@ -192,7 +191,6 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
