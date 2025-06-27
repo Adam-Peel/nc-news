@@ -12,9 +12,10 @@ import Sidebar from "../Sidebar.jsx";
 
 function SingleArticlePage() {
   const { users } = useContext(UserContext);
-  const navigate = useNavigate();
   const [articleData, setArticleData] = useState(null);
   const { article_id } = useParams();
+  const [errorStatus, setErrorStatus] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchArticle = async function () {
@@ -24,22 +25,25 @@ function SingleArticlePage() {
         );
         setArticleData(fetchedArticle);
       } catch (err) {
-        console.log(err);
         setArticleData(null);
-        if (err === 404) {
-          navigate("/404");
-        } else if (err === 400) {
-          navigate("/400");
-        } else {
-          navigate("/500");
-        }
+        setErrorStatus(err);
       }
     };
     fetchArticle();
   }, [article_id]);
+
+  if (errorStatus) {
+    return (
+      <main>
+        <BadRequest errorStatus={errorStatus} />
+      </main>
+    );
+  }
+
   if (!articleData) {
     return (
       <main>
+        <h3>Loading...</h3>
         <Stack spacing={1}>
           <Skeleton
             variant="text"
