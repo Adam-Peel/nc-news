@@ -3,9 +3,11 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
+import IconButton from "@mui/material/IconButton";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
+import Badge from "@mui/material/Badge";
 
 function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [voteValue, setVoteValue] = useState(articleVotes);
@@ -74,40 +76,34 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
       </div> */}
       <div id="user-article-voting-options">
         <span>
-          <button
+          <IconButton
             id="article-downvote"
             className="user-article-interaction-box-button"
             value={-1}
             disabled={disableDownvoteButton}
             onClick={() => downvoteChange(-1)}
           >
-            <ThumbDownOffAltOutlinedIcon />
-            <br />
-            <span className="user-interaction-button-text">Downvote</span>
-          </button>
+            <ThumbDownOffAltOutlinedIcon color="primary" />
+          </IconButton>
         </span>
-        <button
+        <IconButton
           id="user-interaction-article-votes-button"
           className="user-article-interaction-box-button"
         >
-          <HowToVoteIcon />
-          <br />
-          <span className="user-interaction-button-text no-hover">
-            Votes: {voteValue}
-          </span>
-        </button>
+          <Badge color="primary" badgeContent={voteValue}>
+            <HowToVoteIcon />
+          </Badge>
+        </IconButton>
         <span>
-          <button
+          <IconButton
             id="article-upvote"
             className="user-article-interaction-box-button"
             value={1}
             disabled={disableUpvoteButton}
             onClick={() => upvoteChange(1)}
           >
-            <ThumbUpOutlinedIcon />
-            <br />
-            <span className="user-interaction-button-text">Upvote</span>
-          </button>
+            <ThumbUpOutlinedIcon color="primary" />
+          </IconButton>
         </span>
         <p className="error-text">{patchError}</p>
       </div>

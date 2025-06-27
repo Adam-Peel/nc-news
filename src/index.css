@@ -15,7 +15,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #535bf2;
+    background: light-dark(#1976d2, goldenrod);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -60,19 +60,6 @@
   height: calc(100dvh - 60px);
 }
 
-/* #root {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 100px auto;
-  grid-template-areas:
-    "header"
-    "main";
-  padding-top: 0 !important;
-  margin-top: 0;
-  top: 0;
-  height: calc(100dvh - 60px);
-} */
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -100,7 +87,6 @@ header {
   display: flex;
   position: fixed;
   top: 0;
-  /* padding-bottom: 10px; */
   min-height: 57px;
   flex-direction: row;
   align-items: center;
@@ -110,6 +96,7 @@ header {
   margin-right: 10%;
   flex-wrap: wrap;
   background-color: light-dark(#ffffff, #242424);
+  color: light-dark(#1976d2, goldenrod);
 }
 
 .header-logo {
@@ -129,13 +116,13 @@ header {
 }
 
 div[class^="MuiDrawer"] * {
-  background-color: light-dark(#ffffff, #242424);
-  color: light-dark(#1976d2, #ffffff);
+  background-color: #242424;
+  color: #ffffff;
 }
 
 div[class^="Mui-selected"] * {
-  background-color: light-dark(#ffffff, #242424);
-  color: light-dark(#1976d2, #ffffff);
+  background-color: #242424;
+  color: #ffffff;
 }
 
 main {
@@ -146,7 +133,7 @@ main {
   top: 115px;
   max-height: 100dvh;
   overflow-y: scroll;
-  border-left: #535bf2;
+  border-left: light-dark(#1976d2, goldenrod);
   border-left-style: solid;
   padding-left: 5px;
   margin-left: 10%;
@@ -502,6 +489,8 @@ button:focus-visible {
 
 .user-article-interaction-box-button {
   background-color: transparent;
+  color: light-dark(#1976d2, goldenrod);
+  box-shadow: 1px 1px 1px #999;
 }
 
 #user-interaction-article-votes-button {
@@ -530,6 +519,7 @@ button:focus-visible {
 }
 
 .comment-card {
+  margin-bottom: 5px;
   margin-left: 20px;
   border-top-color: light-dark(#1976d2, goldenrod);
   border-top-style: double;
