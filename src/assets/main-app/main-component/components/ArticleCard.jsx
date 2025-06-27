@@ -22,7 +22,7 @@ function ArticleCard(article) {
   return (
     <div className="article-card-container" key={article.article.id}>
       <Card
-        sx={{ width: 350 }}
+        // sx={{ width: 350 }}
         className="article-card"
         key={article.article.id}
       >
