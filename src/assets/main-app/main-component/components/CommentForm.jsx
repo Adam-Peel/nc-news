@@ -21,8 +21,8 @@ function CommentForm({ articleId, setCommentPosted }) {
       { username: destructuredUser.username, body: commentValue },
     ];
     if (commentValue.length > 5) {
+      setCommentValue("📨 Your post is being submitted 📨");
       try {
-        setCommentValue("📨 Your post is being submitted 📨");
         setCommentPosted(false);
         const post = await postData(url, postToSend);
         setPostError(null);
@@ -31,6 +31,7 @@ function CommentForm({ articleId, setCommentPosted }) {
       } catch (err) {
         setPostError("🪧 Sorry, the post did not work 🪧");
         setCommentPosted(true);
+        console.log(err);
       } finally {
         setCommentPosted(true);
       }
@@ -38,7 +39,6 @@ function CommentForm({ articleId, setCommentPosted }) {
       setPostError("🪧 Sorry, the post is too short 🪧");
     }
   }
-
   return (
     <section id="commenting-area">
       <form method="post" onSubmit={handleSubmit}>

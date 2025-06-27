@@ -7,11 +7,13 @@ import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 import Badge from "@mui/material/Badge";
 import CommentIcon from "@mui/icons-material/Comment";
+import BadRequest from "../routes/BadRequest";
 
 function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
   const [commentsData, setCommentsData] = useState(null);
   const [commentsError, setCommentsError] = useState(null);
   const [commentPosted, setCommentPosted] = useState(false);
+  const [errorStatus, setErrorStatus] = useState(null);
 
   useEffect(() => {
     const fetchComments = async function () {
@@ -21,16 +23,11 @@ function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
         );
         setCommentsData(fetchedComments);
         setCommentsError(null);
+        setErrorStatus(null);
       } catch (err) {
         setCommentsError(err.message);
         setCommentsData(null);
-        if (err === 404) {
-          navigate("/404");
-        } else if (err === 400) {
-          navigate("/400");
-        } else {
-          navigate("/500");
-        }
+        setErrorStatus(err);
       }
     };
     fetchComments();
@@ -38,11 +35,7 @@ function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
 
   if (commentsError) {
     console.log(commentsError);
-    return (
-      <main>
-        <h3>Error</h3>
-      </main>
-    );
+    return <BadRequest error={error} />;
   }
 
   if (!commentsData) {

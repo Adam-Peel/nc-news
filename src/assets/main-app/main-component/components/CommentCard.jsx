@@ -3,7 +3,7 @@ import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import Badge from "@mui/material/Badge";
 import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import deleteData from "../utils/delete";
 import provideAvatar from "../utils/provideAvatar";
@@ -17,7 +17,6 @@ function CommentCard({ comment, setCommentPosted }) {
   const date = d.toDateString();
 
   async function deleteComment(id) {
-    console.log(id);
     setButtonDisabled(true);
     setCommentPosted(false);
     setDeleteError("⏳ Deleting comment");
@@ -38,15 +37,14 @@ function CommentCard({ comment, setCommentPosted }) {
       return (
         <>
           <br />
-          <Button
+          <IconButton
             color="warning"
             onClick={() => deleteComment(comment.comment_id)}
             disabled={buttonDisabled}
-            variant="contained"
-            size="small"
+            size="large"
           >
-            <DeleteIcon fontSize="small" />
-          </Button>
+            <DeleteIcon fontSize="inherit" />
+          </IconButton>
         </>
       );
     }
@@ -56,21 +54,20 @@ function CommentCard({ comment, setCommentPosted }) {
     <section className="comment-card">
       <div className="comment-card-head-info">
         <h4>
-          <span>{provideAvatar(comment.author, 45, users)}</span>
+          <span>{provideAvatar(comment.author, 40, users)}</span>
           <span>{comment.author}</span>
         </h4>
       </div>
 
       <div className="comment-card-body">{comment.body}</div>
       <div className="comment-card-footer">
-        {checkUser(comment.author)}
         <CalendarMonthIcon sx={{ ml: 2 }} />
         {date.slice(4)}
         <Badge
           badgeContent={comment.votes}
           color="primary"
           showZero
-          sx={{ ml: 2 }}
+          sx={{ ml: 2, mr: 2 }}
           anchorOrigin={{
             vertical: "top",
             horizontal: "right",
@@ -78,6 +75,7 @@ function CommentCard({ comment, setCommentPosted }) {
         >
           <HowToVoteIcon />
         </Badge>
+        {checkUser(comment.author)}
       </div>
     </section>
   );

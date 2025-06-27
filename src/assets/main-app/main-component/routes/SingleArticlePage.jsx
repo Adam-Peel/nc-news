@@ -1,8 +1,9 @@
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
+import BadRequest from "./BadRequest.jsx";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Stack from "@mui/material/Stack";
@@ -15,9 +16,7 @@ function SingleArticlePage() {
   const [articleData, setArticleData] = useState(null);
   const { article_id } = useParams();
   const [errorStatus, setErrorStatus] = useState(null);
-  const navigate = useNavigate();
-  const d = new Date(articleData.article.created_at);
-  const date = d.toDateString();
+  const [articleDate, setArticleDate] = useState("");
 
   useEffect(() => {
     const fetchArticle = async function () {
@@ -26,7 +25,12 @@ function SingleArticlePage() {
           `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
         );
         setArticleData(fetchedArticle);
+        console.log(fetchedArticle);
+        const d = new Date(fetchedArticle.article.created_at);
+        const date = d.toDateString();
+        setArticleDate(date);
       } catch (err) {
+        console.log(err);
         setArticleData(null);
         setErrorStatus(err);
       }
@@ -84,7 +88,7 @@ function SingleArticlePage() {
           </strong>
           <br />
           <CalendarMonthIcon />
-          {date.slice(4)}{" "}
+          {articleDate.slice(4)}{" "}
         </p>
         <section className="article-body">
           <span className="article-start-accent">
