@@ -63,12 +63,14 @@ header {
   position: fixed;
   top: 0;
   padding-bottom: 10px;
-  height: 57 px;
+  height: 57px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   justify-content: space-evenly;
   width: auto;
+  z-index: 999;
+  background-color: #242424;
 }
 
 #header-hero-image {
@@ -109,9 +111,12 @@ main {
 .searchbar {
   display: flex;
   position: sticky;
-  top: 57px;
-  width: auto;
+  top: 0;
+  width: 100%;
   padding: 2px;
+  z-index: 990;
+  background-color: #242424;
+  justify-items: center;
 }
 
 .searchbar * {
@@ -209,11 +214,6 @@ footer {
 }
 
 /*Article Cards*/
-
-.searchbar {
-  position: fixed;
-  justify-items: center;
-}
 
 .articles-feed {
   display: flex;

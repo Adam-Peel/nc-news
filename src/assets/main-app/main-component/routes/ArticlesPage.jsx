@@ -8,21 +8,17 @@ function ArticlesPage() {
     const title = topic[0].toUpperCase() + topic.slice(1);
     return (
       <>
-        <main>
-          <ArticlesFeed
-            title={title}
-            url={`?topic=${topic}`}
-            topicChange={topic}
-          />
-        </main>
+        <ArticlesFeed
+          title={title}
+          url={`?topic=${topic}`}
+          topicChange={topic}
+        />
       </>
     );
   } else {
     return (
       <>
-        <main>
-          <ArticlesFeed title="All posts" url={""} />
-        </main>
+        <ArticlesFeed title="All posts" url={""} />
       </>
     );
   }

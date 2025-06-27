@@ -108,8 +108,8 @@ function ArticlesFeed({ title, url, topicChange }) {
   }
 
   return (
-    <>
-      <section className="searchbar">
+    <main>
+      <div className="searchbar">
         <h3 className="article-start-accent">{title}</h3>
         <form>
           <label htmlFor="sort-by">Sort by:</label>
@@ -126,13 +126,13 @@ function ArticlesFeed({ title, url, topicChange }) {
             <option value="sort=votes:asc">Votes: Ascending</option>
           </select>
         </form>
-      </section>
+      </div>
       <section className="articles-feed">
         {articlesData.articles.map((article, index) => (
           <ArticleCard article={article} key={index} />
         ))}
       </section>
-    </>
+    </main>
   );
 }
 
