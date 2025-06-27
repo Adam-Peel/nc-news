@@ -25,13 +25,14 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #242424;
-    background-color: #ffffff;
+    /* color: #242424;
+    background-color: #ffffff; */
     --bgr: #ffffff;
     --clr: #242424;
+    --accent: #1976d2;
   }
   a:hover {
-    color: #747bff;
+    color: #1976d2;
   }
   button {
     background-color: #585858;
@@ -40,13 +41,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    background-color: #242424;
-    color: #ffffff;
+    /* background-color: #242424;
+    color: #ffffff; */
     --bgr: #242424;
     --clr: #ffffff;
+    --accent: goldenrod;
   }
   a:hover {
-    color: #747bff;
+    color: #1976d2;
   }
   button {
     background-color: #f9f9f9;
@@ -122,17 +124,17 @@ aside {
   align-self: start;
   text-align: left;
   height: calc(90dvh - 60px);
-  background-color: var(--bgr);
+  background-color: #242424;
 }
 
 div[class^="MuiDrawer"] * {
-  background-color: var(--bgr);
-  color: var(--clr);
+  background-color: #242424;
+  color: #ffffff;
 }
 
 div[class^="Mui-selected"] * {
-  background-color: var(--bgr);
-  color: var(--clr);
+  background-color: #242424;
+  color: #ffffff;
 }
 
 main {
@@ -156,7 +158,6 @@ main {
   padding: 2px;
   z-index: 990;
   justify-items: center;
-  background-color: var(--bgr);
 }
 
 .searchbar * {
@@ -245,7 +246,7 @@ button:focus-visible {
     justify-content: space-evenly;
     width: auto;
     z-index: 999;
-    background-color: #242424;
+    background-color: var(--bgr);
   }
 
   #header-hero-image {
@@ -318,7 +319,7 @@ button:focus-visible {
 
 .article-head-image {
   border-radius: 10%;
-  border-color: goldenrod;
+  border-color: var(--accent);
   border-width: 1px;
   border-style: solid;
   width: 90%;
@@ -330,7 +331,7 @@ button:focus-visible {
 .article-start-accent {
   font-size: 2em;
   font-weight: bolder;
-  color: goldenrod;
+  color: var(--accent);
   margin: 0;
 }
 
@@ -381,7 +382,7 @@ button:focus-visible {
 
 .comment-card {
   margin-left: 20px;
-  border-top-color: goldenrod;
+  border-top-color: var(--accent);
   border-top-style: double;
   border-top-width: 1px;
 }
