@@ -43,6 +43,7 @@ function SingleArticlePage() {
           <Skeleton
             variant="text"
             sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
+            width={210}
           />
           <Skeleton
             variant="circular"

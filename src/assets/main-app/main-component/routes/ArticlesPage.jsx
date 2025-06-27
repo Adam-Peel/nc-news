@@ -4,24 +4,11 @@ import { useParams } from "react-router";
 function ArticlesPage() {
   const { topic } = useParams();
 
-  if (topic) {
-    const title = topic[0].toUpperCase() + topic.slice(1);
-    return (
-      <>
-        <ArticlesFeed
-          title={title}
-          url={`?topic=${topic}`}
-          topicChange={topic}
-        />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <ArticlesFeed title="All posts" url={""} />
-      </>
-    );
-  }
+  return (
+    <>
+      <ArticlesFeed title="All posts" url={"?topic="} topicChange={topic} />
+    </>
+  );
 }
 
 export default ArticlesPage;

@@ -26,10 +26,13 @@ function ArticlesFeed({ title, url, topicChange }) {
       }
       try {
         const data = await fetchData(baseURL);
+        console.log(searchParams);
         setArticlesData(data);
+        setSearchParams(null);
       } catch (err) {
         console.log(err);
         setArticlesData(null);
+        setSearchParams(null);
         if (err === 404) {
           navigate("/404");
         } else if (err === 400) {
@@ -48,62 +51,66 @@ function ArticlesFeed({ title, url, topicChange }) {
 
   if (!articlesData) {
     return (
-      <>
-        <Stack spacing={1}>
-          <Skeleton
-            variant="text"
-            sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
-          />
-          <Skeleton
-            variant="circular"
-            width={40}
-            height={40}
-            sx={{ bgcolor: "#ffffde" }}
-          />
-          <Skeleton
-            variant="rounded"
-            width={210}
-            height={60}
-            sx={{ bgcolor: "#ffffde" }}
-          />
-        </Stack>
-        <Stack spacing={1}>
-          <Skeleton
-            variant="text"
-            sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
-          />
-          <Skeleton
-            variant="circular"
-            width={40}
-            height={40}
-            sx={{ bgcolor: "#ffffde" }}
-          />
-          <Skeleton
-            variant="rounded"
-            width={210}
-            height={60}
-            sx={{ bgcolor: "#ffffde" }}
-          />
-        </Stack>
-        <Stack spacing={1}>
-          <Skeleton
-            variant="text"
-            sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
-          />
-          <Skeleton
-            variant="circular"
-            width={40}
-            height={40}
-            sx={{ bgcolor: "#ffffde" }}
-          />
-          <Skeleton
-            variant="rounded"
-            width={210}
-            height={60}
-            sx={{ bgcolor: "#ffffde" }}
-          />
-        </Stack>
-      </>
+      <main>
+        <section className="articles-feed">
+          <div className="article-card-container">
+            <Stack spacing={1}>
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
+              />
+              <Skeleton
+                variant="circular"
+                width={40}
+                height={40}
+                sx={{ bgcolor: "#ffffde" }}
+              />
+              <Skeleton
+                variant="rounded"
+                width={210}
+                height={60}
+                sx={{ bgcolor: "#ffffde" }}
+              />
+            </Stack>
+            <Stack spacing={1}>
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
+              />
+              <Skeleton
+                variant="circular"
+                width={40}
+                height={40}
+                sx={{ bgcolor: "#ffffde" }}
+              />
+              <Skeleton
+                variant="rounded"
+                width={210}
+                height={60}
+                sx={{ bgcolor: "#ffffde" }}
+              />
+            </Stack>
+            <Stack spacing={1}>
+              <Skeleton
+                variant="text"
+                sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
+              />
+              <Skeleton
+                variant="circular"
+                width={40}
+                height={40}
+                sx={{ bgcolor: "#ffffde" }}
+              />
+              <Skeleton
+                variant="rounded"
+                width={210}
+                height={60}
+                sx={{ bgcolor: "#ffffde" }}
+              />
+            </Stack>
+          </div>
+        </section>
+      </main>
     );
   }
 
@@ -116,7 +123,7 @@ function ArticlesFeed({ title, url, topicChange }) {
           <br />
           <select id="sort-by" onChange={handleChange} defaultValue="Sort by">
             <option disabled>Sort by</option>
-            <option value="sort=comment_count:desc">
+            <option value="?sort=comment_count:desc">
               Comments: Descending
             </option>
             <option value="sort=comment_count:asc">Comments: Ascending</option>

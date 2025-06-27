@@ -123,7 +123,6 @@ function Sidebar() {
   };
 
   let navigate = useNavigate();
-  console.log(topicList);
 
   return (
     <aside>
