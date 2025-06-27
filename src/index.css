@@ -35,6 +35,7 @@
   padding-top: 0 !important;
   margin-top: 0;
   top: 0;
+  height: 90dvh;
 }
 
 a {
@@ -49,7 +50,7 @@ a:hover {
 body {
   margin-top: 0;
   place-items: center;
-  max-height: 99vh;
+  max-height: 90dvh;
 }
 
 article {
