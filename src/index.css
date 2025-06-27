@@ -4,8 +4,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,6 +20,36 @@
 
   ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.87);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #242424;
+    background-color: #ffffff;
+    --bgr: #ffffff;
+    --clr: #242424;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #585858;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #242424;
+    color: #ffffff;
+    --bgr: #242424;
+    --clr: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
   }
 }
 
@@ -71,7 +99,7 @@ header {
   justify-content: space-evenly;
   width: auto;
   z-index: 999;
-  background-color: #242424;
+  background-color: var(--bgr);
 }
 
 #header-hero-image {
@@ -93,7 +121,18 @@ aside {
   position: sticky;
   align-self: start;
   text-align: left;
-  height: calc(100dvh - 60px);
+  height: calc(90dvh - 60px);
+  background-color: var(--bgr);
+}
+
+div[class^="MuiDrawer"] * {
+  background-color: var(--bgr);
+  color: var(--clr);
+}
+
+div[class^="Mui-selected"] * {
+  background-color: var(--bgr);
+  color: var(--clr);
 }
 
 main {
@@ -116,8 +155,8 @@ main {
   width: 100%;
   padding: 2px;
   z-index: 990;
-  background-color: #242424;
   justify-items: center;
+  background-color: var(--bgr);
 }
 
 .searchbar * {
@@ -164,19 +203,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 @media (max-width: 800px) {

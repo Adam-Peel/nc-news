@@ -130,9 +130,9 @@ function Sidebar() {
 
   return (
     <>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} className="sidebar">
         <DrawerHeader>
-          <IconButton onClick={handleClick}>
+          <IconButton onClick={handleClick} disableRipple>
             {!open ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
@@ -143,11 +143,12 @@ function Sidebar() {
           sx={{ width: 65, height: 65 }}
         />
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 2 }}></ListItemButton>
+          <ListItemButton sx={{ pl: 2 }} disableRipple></ListItemButton>
         </List>
         <List component="div" disablePadding>
           <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              disableRipple
               sx={[
                 {
                   minHeight: 48,
@@ -198,6 +199,7 @@ function Sidebar() {
           <Divider />
           <ListItem key="coding" disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              disableRipple
               sx={[
                 {
                   minHeight: 48,
@@ -247,6 +249,7 @@ function Sidebar() {
           </ListItem>
           <ListItem key="cooking" disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              disableRipple
               sx={[
                 {
                   minHeight: 48,
@@ -296,6 +299,7 @@ function Sidebar() {
           </ListItem>
           <ListItem key="football" disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              disableRipple
               sx={[
                 {
                   minHeight: 48,
