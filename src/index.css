@@ -30,7 +30,7 @@
   grid-template-columns: 120px 1fr;
   grid-template-rows: 100px 1fr auto;
   grid-template-areas:
-    "header header"
+    "aside header"
     "aside main"
     "aside footer";
   padding-top: 0 !important;

@@ -6,9 +6,6 @@ async function patchData(url, bodyToPatch) {
       body: JSON.stringify(bodyToPatch[0]),
     });
     const formattedPatch = await patch.json();
-    if (!formattedPatch.ok) {
-      throw formattedPatch.status;
-    }
     return formattedPatch;
   } catch (err) {
     throw err;

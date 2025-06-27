@@ -22,8 +22,8 @@ function SingleArticlePage() {
           `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
         );
         setArticleData(fetchedArticle);
-        setArticleError(null);
       } catch (err) {
+        console.log(err);
         setArticleData(null);
         if (err === 404) {
           navigate("/404");
@@ -36,7 +36,6 @@ function SingleArticlePage() {
     };
     fetchArticle();
   }, [article_id]);
-
   if (!articleData) {
     return (
       <main>

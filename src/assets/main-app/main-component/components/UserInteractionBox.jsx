@@ -43,7 +43,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
       setPatchError(null);
       setVoteValue(patch.article.votes);
     } catch (err) {
-      console.log(err);
       setVoteValue((prev) => prev - value);
       setDisableUpvoteButton(false);
       setDisableDownvoteButton(false);
