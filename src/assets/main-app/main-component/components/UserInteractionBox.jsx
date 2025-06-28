@@ -54,26 +54,6 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
 
   return (
     <section className="user-interaction-box">
-      {/* <div className="user-interaction-options">
-        <span>
-          <button
-            id="article-read"
-            className="user-article-interaction-box-button"
-          >
-            <MarkChatReadIcon />
-            <br />
-            <span className="user-interaction-button-text">Read</span>
-          </button>
-        </span>
-        <button
-          id="article-bookmarked"
-          className="user-article-interaction-box-button"
-        >
-          <BookmarkAddIcon />
-          <br />
-          <span className="user-interaction-button-text">Save</span>
-        </button>
-      </div> */}
       <div id="user-article-voting-options">
         <span>
           <IconButton
@@ -83,17 +63,13 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
             disabled={disableDownvoteButton}
             onClick={() => downvoteChange(-1)}
           >
-            <ThumbDownOffAltOutlinedIcon color="primary" />
+            <ThumbDownOffAltOutlinedIcon />
           </IconButton>
         </span>
-        <IconButton
-          id="user-interaction-article-votes-button"
-          className="user-article-interaction-box-button"
-        >
-          <Badge color="primary" badgeContent={voteValue}>
-            <HowToVoteIcon color="primary" />
-          </Badge>
-        </IconButton>
+        <Badge color="primary" badgeContent={voteValue}>
+          <HowToVoteIcon color="primary" sx={{ ml: 2 }} />
+        </Badge>
+        {/* </IconButton> */}
         <span>
           <IconButton
             id="article-upvote"
@@ -101,8 +77,9 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
             value={1}
             disabled={disableUpvoteButton}
             onClick={() => upvoteChange(1)}
+            sx={{ ml: 2 }}
           >
-            <ThumbUpOutlinedIcon color="primary" />
+            <ThumbUpOutlinedIcon />
           </IconButton>
         </span>
         <p className="error-text">{patchError}</p>

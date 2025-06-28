@@ -27,6 +27,7 @@ function ArticleCard(article) {
         sx={{
           display: "flex",
           flexDirection: "column",
+          minHeight: 400,
           height: "100%",
         }}
       >
@@ -37,7 +38,6 @@ function ArticleCard(article) {
             alignItems: "center",
             padding: "2",
             typography: { sm: "body2", xs: "caption" },
-            justifyContent: "flex-start",
           }}
         >
           <CardHeader
@@ -88,6 +88,7 @@ function ArticleCard(article) {
             padding: "2",
             typography: { sm: "body2", xs: "caption" },
             justifyContent: "space-evenly",
+            marginTop: "auto",
           }}
         >
           <Badge

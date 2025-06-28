@@ -54,18 +54,18 @@ function SingleArticlePage() {
         <Stack spacing={1}>
           <Skeleton
             variant="text"
-            sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
+            sx={{ fontSize: "1rem", bgcolor: "#898584" }}
           />
           <Skeleton
             variant="circular"
             width={200}
             height={200}
-            sx={{ bgcolor: "#ffffde" }}
+            sx={{ bgcolor: "#898584" }}
           />
           <Skeleton
             variant="rounded"
             height={200}
-            sx={{ bgcolor: "#ffffde" }}
+            sx={{ bgcolor: "#898584" }}
           />
         </Stack>
       </main>

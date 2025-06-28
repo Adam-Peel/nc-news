@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -206,9 +206,6 @@ button:focus-visible {
 }
 
 * .article-card-container {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   margin: 10px;
   max-width: 350px;
   width: 100%;
@@ -217,7 +214,7 @@ button:focus-visible {
 }
 
 .article-card-image {
-  height: 215px;
+  max-height: 215px;
 }
 
 /* Single Article Page */
@@ -280,15 +277,18 @@ button:focus-visible {
   font-size: 0.7em;
 }
 
-.user-article-interaction-box-button {
+#article-downvote,
+#article-upvote {
   background-color: transparent;
   color: light-dark(#1976d2, goldenrod);
   box-shadow: 1px 1px 1px #999;
 }
 
-#user-interaction-article-votes-button {
-  border: none;
-  cursor: auto;
+#article-downvote:disabled,
+#article-upvote:disabled {
+  background-color: transparent;
+  color: light-dark(#8a8a8a, #8a8a8a);
+  box-shadow: 1px 1px 1px #999;
 }
 
 .error-text {
