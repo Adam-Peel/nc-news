@@ -9,7 +9,8 @@ import { UserContext } from "../../contexts/UserContext";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 import provideAvatar from "../utils/provideAvatar.jsx";
-import Sidebar from "../Sidebar.jsx";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 function SingleArticlePage() {
   const { users } = useContext(UserContext);
@@ -73,41 +74,89 @@ function SingleArticlePage() {
 
   return (
     <main className="main">
-      <article>
-        <section className="article-head">
-          <img
-            className="article-head-image"
-            src={articleData.article.article_img_url}
-          ></img>
-        </section>
-        <h2 id="article-head-title">{articleData.article.title}</h2>
-        <p id="article-info">
-          <strong id="article-head-subtitle">
-            {articleData.article.topic}
-          </strong>
-          <br />
-          <CalendarMonthIcon />
-          {articleDate.slice(4)}{" "}
-        </p>
-        <section className="article-body">
-          <span className="article-start-accent">
-            {articleData.article.body[0]}
-          </span>
-          {articleData.article.body.slice(1)}
-        </section>
-        <div id="article-author">
-          <h4>
-            <span>{provideAvatar(articleData.article.author, 66, users)}</span>
-            {articleData.article.author}
-          </h4>
-        </div>
-      </article>
+      <Box sx={{ maxWidth: 750 }}>
+        <article className="article">
+          <section className="article-head">
+            <img
+              className="article-head-image"
+              src={articleData.article.article_img_url}
+            ></img>
+          </section>
+          <section className="article-body-container">
+            <Typography
+              className="article-card-title"
+              gutterBottom
+              component="div"
+              textAlign="left"
+              variant="h5"
+              sx={{
+                typography: {
+                  xs: "h6",
+                  sm: "h5",
+                  md: "h4",
+                  lg: "h4",
+                  xl: "h4",
+                },
+              }}
+            >
+              {articleData.article.title}
+            </Typography>
+            <p id="article-info">
+              <Typography
+                className="article-card-title"
+                gutterBottom
+                component="div"
+                textAlign="left"
+                sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
+              >
+                <strong>{articleData.article.topic} </strong>
+              </Typography>
 
-      <CommentsFeed
-        articleId={articleData.article.article_id}
-        articleVotes={articleData.article.votes}
-        articleCommentCount={articleData.article.comment_count}
-      />
+              <Typography
+                variant="body2"
+                sx={{
+                  typography: { md: "body2", sm: "body1", xs: "caption" },
+                }}
+              >
+                <CalendarMonthIcon /> {articleDate.slice(4)}{" "}
+              </Typography>
+            </p>
+            <section className="article-body">
+              <Typography
+                sx={{
+                  typography: { md: "body1", sm: "body2", xs: "body2" },
+                }}
+              >
+                <span className="article-start-accent">
+                  {articleData.article.body[0]}
+                </span>
+                {articleData.article.body.slice(1)}
+              </Typography>
+            </section>
+            <br />
+            <div id="article-author">
+              <Typography
+                className="article-card-title"
+                gutterBottom
+                component="div"
+                textAlign="left"
+                sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
+              >
+                <span>
+                  {provideAvatar(articleData.article.author, 66, users)}
+                </span>
+                <strong>{articleData.article.author}</strong>
+              </Typography>
+            </div>
+          </section>
+        </article>
+
+        <CommentsFeed
+          articleId={articleData.article.article_id}
+          articleVotes={articleData.article.votes}
+          articleCommentCount={articleData.article.comment_count}
+        />
+      </Box>
     </main>
   );
 }

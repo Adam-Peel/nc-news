@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import deleteData from "../utils/delete";
 import provideAvatar from "../utils/provideAvatar";
+import Typography from "@mui/material/Typography";
 
 function CommentCard({ comment, setCommentPosted }) {
   const { currentUser } = useContext(UserContext);
@@ -59,23 +60,38 @@ function CommentCard({ comment, setCommentPosted }) {
         </h4>
       </div>
 
-      <div className="comment-card-body">{comment.body}</div>
-      <div className="comment-card-footer">
-        <CalendarMonthIcon sx={{ ml: 2 }} />
-        {date.slice(4)}
-        <Badge
-          badgeContent={comment.votes}
-          color="primary"
-          showZero
-          sx={{ ml: 2, mr: 2 }}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
+      <div className="comment-card-body">
+        <Typography
+          sx={{
+            typography: { md: "body1", sm: "body2", xs: "body2" },
           }}
         >
-          <HowToVoteIcon />
-        </Badge>
-        {checkUser(comment.author)}
+          {comment.body}
+        </Typography>
+      </div>
+      <div className="comment-card-footer">
+        <Typography
+          variant="body2"
+          sx={{
+            typography: { md: "body2", sm: "body1", xs: "caption" },
+          }}
+        >
+          <CalendarMonthIcon />
+          {date.slice(4)}
+          <Badge
+            badgeContent={comment.votes}
+            color="primary"
+            showZero
+            sx={{ ml: 2, mr: 2 }}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <HowToVoteIcon />
+          </Badge>
+          {checkUser(comment.author)}
+        </Typography>
       </div>
     </section>
   );

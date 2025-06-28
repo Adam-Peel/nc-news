@@ -225,6 +225,7 @@ button:focus-visible {
 .article-head {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 #article-head-title,
@@ -252,7 +253,8 @@ button:focus-visible {
   width: 90%;
   max-width: 700px;
   height: auto;
-  margin-left: 5px;
+  margin: 5px;
+  justify-self: center;
 }
 
 .article-start-accent {
