@@ -116,12 +116,12 @@ header {
 }
 
 div[class^="MuiDrawer"] * {
-  background-color: #242424;
+  background-color: #494949;
   color: #ffffff;
 }
 
 div[class^="Mui-selected"] * {
-  background-color: #242424;
+  background-color: #494949;
   color: #ffffff;
 }
 
@@ -412,6 +412,7 @@ button:focus-visible {
   justify-content: center;
   justify-content: space-evenly;
   width: auto;
+  background-color: light-dark(#ffffff, #494949);
 }
 
 * .article-card-container {
