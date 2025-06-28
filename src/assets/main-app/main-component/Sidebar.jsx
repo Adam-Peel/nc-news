@@ -142,7 +142,7 @@ function Sidebar() {
         <Avatar
           alt={currentUser[0].name}
           src={currentUser[0].avatar_url}
-          sx={{ width: 65, height: 65 }}
+          sx={{ width: 50, height: 50, mr: 5, ml: 1 }}
         />
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 2 }} disableRipple></ListItemButton>

@@ -74,7 +74,7 @@ function SingleArticlePage() {
 
   return (
     <main className="main">
-      <Box sx={{ maxWidth: 750 }}>
+      <Box sx={{ maxWidth: 1250 }}>
         <article className="article">
           <section className="article-head">
             <img
