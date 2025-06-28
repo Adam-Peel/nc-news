@@ -72,8 +72,7 @@ function SingleArticlePage() {
   }
 
   return (
-    <main>
-      <Sidebar />
+    <main className="main">
       <article>
         <section className="article-head">
           <img

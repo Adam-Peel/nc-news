@@ -105,31 +105,20 @@ function Sidebar() {
   const [open, setOpen] = useState(false);
   const { currentUser } = useContext(UserContext);
 
-  const handleClick = async function () {
+  const handleClick = function () {
     setOpen(!open);
-
-    //  Extracted out as will hard code topics - but shows the logic for rendering a topic list
-    // const [topicList, setTopicList] = useState(null);
-    // const [topicMessage, setTopicMessage] = useState(null);
-    // if (topicList) {
-    //   return;
-    // }
-    // setTopicMessage("loading\ntopics");
-    // try {
-    //   const fetchedTopics = await fetchData(
-    //     `https://news-aggregator-7e9t.onrender.com/api/topics`
-    //   );
-    //   setTopicList(fetchedTopics);
-    //   setTopicMessage("Topics:");
-    // } catch (err) {
-    //   setTopicMessage("Error");
-    // }
+    if (!open) {
+      document.getElementsByClassName("header").style.marginLeft = "15%";
+      document.getElementsByClassName("main").style.marginLeft = "15%";
+      document.getElementById("sidebar").style.width = "15%";
+      document.getElementById("sidebar").style.display = "block";
+    }
   };
 
   let navigate = useNavigate();
 
   return (
-    <>
+    <div className="aside" id="sidebar">
       <Drawer variant="permanent" open={open} className="sidebar">
         <DrawerHeader>
           <IconButton onClick={handleClick} disableRipple>
@@ -416,7 +405,7 @@ function Sidebar() {
 
         <Divider />
       </Drawer>
-    </>
+    </div>
   );
 }
 

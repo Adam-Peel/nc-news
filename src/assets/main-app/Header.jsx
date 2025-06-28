@@ -80,7 +80,7 @@ function Header() {
   }));
 
   return (
-    <header className="header main-header">
+    <header className="header">
       <div id="main-header-logo">
         <RssFeedIcon className="header-logo" sx={{ fontSize: 60 }} />
       </div>
