@@ -54,13 +54,18 @@ function ArticleCard(article) {
         </Box>
         <CardActionArea
           onClick={() => navigate(`/articles/${article.article.article_id}`)}
+          sx={{
+            "&:hover": {
+              backgroundColor: "gray",
+            },
+          }}
         >
           <CardMedia
             component="img"
             maxHeight="125"
             className="article-card-image"
             image={article.article.article_img_url}
-            alt="An image of the article"
+            alt={`An image of the ${article.article.topic} article`}
           />
           <CardContent sx={{}}>
             <Typography
@@ -73,37 +78,41 @@ function ArticleCard(article) {
               {article.article.title}
             </Typography>
           </CardContent>
-        </CardActionArea>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            padding: "2",
-            typography: { sm: "body2", xs: "caption" },
-            justifyContent: "space-evenly",
-          }}
-        >
-          <Badge
-            badgeContent={article.article.comment_count}
-            color="primary"
-            showZero
-          >
-            <CommentIcon fontSize="small" />
-          </Badge>
-          <Badge badgeContent={article.article.votes} color="primary" showZero>
-            <HowToVoteIcon fontSize="small" sx={{ ml: 1 }} />
-          </Badge>
-          <Typography
-            variant="body2"
+          <Box
             sx={{
-              color: "text.secondary",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              padding: "2",
               typography: { sm: "body2", xs: "caption" },
+              justifyContent: "space-evenly",
             }}
           >
-            {article.article.topic}
-          </Typography>
-        </Box>
+            <Badge
+              badgeContent={article.article.comment_count}
+              color="primary"
+              showZero
+            >
+              <CommentIcon fontSize="small" />
+            </Badge>
+            <Badge
+              badgeContent={article.article.votes}
+              color="primary"
+              showZero
+            >
+              <HowToVoteIcon fontSize="small" sx={{ ml: 1 }} />
+            </Badge>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                typography: { sm: "body2", xs: "caption" },
+              }}
+            >
+              {article.article.topic}
+            </Typography>
+          </Box>
+        </CardActionArea>
       </Card>
     </div>
   );
