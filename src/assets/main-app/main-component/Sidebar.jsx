@@ -139,15 +139,16 @@ function Sidebar() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Avatar
-          alt={currentUser[0].name}
-          src={currentUser[0].avatar_url}
-          sx={{ width: 50, height: 50, mr: 5, ml: 1 }}
-        />
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 2 }} disableRipple></ListItemButton>
-        </List>
-        <List component="div" disablePadding>
+          <ListItem key="current-user" disablePadding sx={{ display: "block" }}>
+            <Avatar
+              alt={currentUser[0].name}
+              src={currentUser[0].avatar_url}
+              sx={{ width: 45, height: 45, mt: 2, ml: 1 }}
+            />
+          </ListItem>
+
+          <ListItemButton sx={{ ml: 2, mt: 2 }} disableRipple></ListItemButton>
           <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
             <ListItemButton
               disableRipple
