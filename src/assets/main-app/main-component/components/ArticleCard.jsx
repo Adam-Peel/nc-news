@@ -24,6 +24,7 @@ function ArticleCard(article) {
     <div className="article-card-container" key={article.article.id}>
       <Card
         className="article-card"
+        raised="true"
         key={article.article.id}
         variant="elevation"
         sx={{
@@ -90,6 +91,7 @@ function ArticleCard(article) {
         <Box
           sx={{
             display: "flex",
+            flexWrap: "wrap",
             flexDirection: "row",
             alignItems: "center",
             padding: "2",
@@ -111,7 +113,14 @@ function ArticleCard(article) {
           <Box
             className="article-card-topic"
             bgcolor="gray"
-            sx={{ borderRadius: 20, pl: 2, pr: 2, mb: 1 }}
+            sx={{
+              borderRadius: 20,
+              pl: 2,
+              pr: 2,
+              mb: 1,
+              ml: 1,
+              "&:hover": { bgcolor: "#1976d2" },
+            }}
           >
             <Typography
               variant="body2"

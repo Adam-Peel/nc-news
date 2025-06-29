@@ -4,9 +4,8 @@ import { useNavigate } from "react-router";
 import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
-import Sidebar from "../Sidebar";
-import NotFound from "../routes/NotFound";
 import BadRequest from "../routes/BadRequest";
+import Typography from "@mui/material/Typography";
 
 function ArticlesFeed({ title, url, topicChange }) {
   const [articlesData, setArticlesData] = useState(null);
@@ -63,19 +62,19 @@ function ArticlesFeed({ title, url, topicChange }) {
             <Stack spacing={1}>
               <Skeleton
                 variant="text"
-                sx={{ fontSize: "1rem", bgcolor: "#ffffde" }}
+                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
               />
               <Skeleton
                 variant="circular"
                 width={40}
                 height={40}
-                sx={{ bgcolor: "#ffffde" }}
+                sx={{ bgcolor: "grey.900" }}
               />
               <Skeleton
                 variant="rounded"
                 width={210}
                 height={60}
-                sx={{ bgcolor: "#ffffde" }}
+                sx={{ bgcolor: "grey.900" }}
               />
             </Stack>
           </div>
@@ -87,14 +86,23 @@ function ArticlesFeed({ title, url, topicChange }) {
   return (
     <main className="main">
       <div className="searchbar">
-        <h5 className="article-start-accent">
+        <Typography
+          className="article-start-accent"
+          sx={{
+            typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
+          }}
+        >
           {title[0].toUpperCase()}
           {title.slice(1)}
-        </h5>
+        </Typography>
         <form>
-          <label htmlFor="sort-by">Sort by:</label>
           <br />
-          <select id="sort-by" onChange={handleChange} defaultValue="Sort by">
+          <select
+            id="sort-by"
+            className="select"
+            onChange={handleChange}
+            defaultValue="Sort by"
+          >
             <option disabled>Sort by</option>
             <option value="?sort=comment_count:desc">
               Comments: Descending

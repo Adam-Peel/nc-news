@@ -49,22 +49,21 @@ function SingleArticlePage() {
   if (!articleData) {
     return (
       <main>
-        <h3>Loading...</h3>
         <Stack spacing={1}>
           <Skeleton
             variant="text"
-            sx={{ fontSize: "1rem", bgcolor: "#898584" }}
+            sx={{ mt: 25, fontSize: "1rem", bgcolor: "grey.900" }}
           />
           <Skeleton
             variant="circular"
             width={200}
             height={200}
-            sx={{ bgcolor: "#898584" }}
+            sx={{ bgcolor: "grey.900" }}
           />
           <Skeleton
             variant="rounded"
             height={200}
-            sx={{ bgcolor: "#898584" }}
+            sx={{ bgcolor: "grey.900" }}
           />
         </Stack>
       </main>
