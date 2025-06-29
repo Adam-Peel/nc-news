@@ -26,7 +26,6 @@ function SingleArticlePage() {
           `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
         );
         setArticleData(fetchedArticle);
-        console.log(fetchedArticle);
         const d = new Date(fetchedArticle.article.created_at);
         const date = d.toDateString();
         setArticleDate(date);
@@ -101,26 +100,26 @@ function SingleArticlePage() {
             >
               {articleData.article.title}
             </Typography>
-            <p id="article-info">
-              <Typography
-                className="article-card-title"
-                gutterBottom
-                component="div"
-                textAlign="left"
-                sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
-              >
-                <strong>{articleData.article.topic} </strong>
-              </Typography>
+            <br id="article-info" />
+            <Typography
+              className="article-card-title"
+              gutterBottom
+              component="div"
+              textAlign="left"
+              sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
+            >
+              <strong>{articleData.article.topic} </strong>
+            </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{
-                  typography: { md: "body2", sm: "body1", xs: "caption" },
-                }}
-              >
-                <CalendarMonthIcon /> {articleDate.slice(4)}{" "}
-              </Typography>
-            </p>
+            <Typography
+              variant="body2"
+              sx={{
+                typography: { md: "body2", sm: "body1", xs: "caption" },
+              }}
+            >
+              <CalendarMonthIcon /> {articleDate.slice(4)}{" "}
+            </Typography>
+
             <section className="article-body">
               <Typography
                 sx={{

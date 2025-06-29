@@ -198,7 +198,7 @@ button:focus-visible {
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   justify-content: space-evenly;
   width: auto;
@@ -206,10 +206,11 @@ button:focus-visible {
 }
 
 * .article-card-container {
+  display: grid;
+  grid-auto-rows: 1fr;
   margin: 10px;
   max-width: 350px;
   width: 100%;
-  max-height: auto;
   align-items: stretch;
 }
 

@@ -6,6 +6,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router";
 import provideAvatar from "../utils/provideAvatar";
 import Card from "@mui/material/Card";
+import Container from "@mui/material/Container";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -24,11 +25,12 @@ function ArticleCard(article) {
       <Card
         className="article-card"
         key={article.article.id}
+        variant="elevation"
         sx={{
           display: "flex",
           flexDirection: "column",
-          minHeight: 400,
-          height: "100%",
+          flexGrow: true,
+          height: "auto",
         }}
       >
         <Box
@@ -52,34 +54,39 @@ function ArticleCard(article) {
             subheader={date.slice(4)}
           />
         </Box>
-        <CardActionArea
-          onClick={() => navigate(`/articles/${article.article.article_id}`)}
-          sx={{
-            transition: "transform 0.15s ease-in-out",
-            "&:hover": {
-              transform: "scale3d(1.05, 1.05, 1)",
-            },
-          }}
+        <Container
+          className="card-image-title-container"
+          sx={{ display: "flex", flexDirection: "row" }}
         >
-          <CardMedia
-            component="img"
-            maxHeight="125"
-            className="article-card-image"
-            image={article.article.article_img_url}
-            alt={`An image of the ${article.article.topic} article`}
-          />
-          <CardContent sx={{}}>
-            <Typography
-              className="article-card-title"
-              gutterBottom
-              component="div"
-              textAlign="left"
-              sx={{ typography: { md: "body1", sm: "body2", xs: "caption" } }}
-            >
-              {article.article.title}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+          <CardActionArea
+            onClick={() => navigate(`/articles/${article.article.article_id}`)}
+            sx={{
+              transition: "transform 0.15s ease-in-out",
+              "&:hover": {
+                transform: "scale3d(1.05, 1.05, 1)",
+              },
+            }}
+          >
+            <CardMedia
+              component="img"
+              maxHeight="125"
+              className="article-card-image"
+              image={article.article.article_img_url}
+              alt={`An image of the ${article.article.topic} article`}
+            />
+            <CardContent sx={{}}>
+              <Typography
+                className="article-card-title"
+                gutterBottom
+                component="div"
+                textAlign="left"
+                sx={{ typography: { md: "body1", sm: "body2", xs: "caption" } }}
+              >
+                {article.article.title}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Container>
         <Box
           sx={{
             display: "flex",
