@@ -203,6 +203,7 @@ button:focus-visible {
   justify-content: space-evenly;
   width: auto;
   background-color: light-dark(#ffffff, #242424);
+  text-wrap: balance;
 }
 
 * .article-card-container {
@@ -216,6 +217,14 @@ button:focus-visible {
 
 .article-card-image {
   max-height: 215px;
+}
+
+.article-card-topic-link,
+.article-card-topic-link:visited,
+.article-card-topic-link:hover,
+.article-card-topic-link:active,
+.article-card-topic-link:focus {
+  color: #ffffff;
 }
 
 /* Single Article Page */

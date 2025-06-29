@@ -21,6 +21,7 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { Link } from "react-router";
 
 const drawerWidth = 200;
 
@@ -149,207 +150,209 @@ function Sidebar() {
           </ListItem>
 
           <ListItemButton sx={{ ml: 2, mt: 2 }} disableRipple></ListItemButton>
-          <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              disableRipple
-              sx={[
-                {
-                  minHeight: 48,
-                  px: 2.5,
-                },
-                open
-                  ? {
-                      justifyContent: "initial",
-                    }
-                  : {
-                      justifyContent: "center",
-                    },
-              ]}
-            >
-              <ListItemIcon
-                onClick={() => navigate(`/articles`)}
+          <Link to={"/articles"} className="article-card-topic-link">
+            <ListItem key="all-posts" disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                disableRipple
                 sx={[
                   {
-                    minWidth: 0,
-                    justifyContent: "center",
+                    minHeight: 48,
+                    px: 2.5,
                   },
                   open
                     ? {
-                        mr: 3,
+                        justifyContent: "initial",
                       }
                     : {
-                        mr: "auto",
+                        justifyContent: "center",
                       },
                 ]}
               >
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText
-                onClick={() => navigate(`/articles`)}
-                primary="All posts"
-                sx={[
-                  open
-                    ? {
-                        opacity: 1,
-                      }
-                    : {
-                        opacity: 0,
-                      },
-                ]}
-              />
-            </ListItemButton>
-          </ListItem>
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: "center",
+                    },
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="All posts"
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+          </Link>
           <Divider />
-          <ListItem key="coding" disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              disableRipple
-              sx={[
-                {
-                  minHeight: 48,
-                  px: 2.5,
-                },
-                open
-                  ? {
-                      justifyContent: "initial",
-                    }
-                  : {
-                      justifyContent: "center",
-                    },
-              ]}
-            >
-              <ListItemIcon
-                onClick={() => navigate(`/topics/coding`)}
+          <Link className="article-card-topic-link" to="/topics/coding">
+            <ListItem key="coding" disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                disableRipple
                 sx={[
                   {
-                    minWidth: 0,
-                    justifyContent: "center",
+                    minHeight: 48,
+                    px: 2.5,
                   },
                   open
                     ? {
-                        mr: 3,
+                        justifyContent: "initial",
                       }
                     : {
-                        mr: "auto",
+                        justifyContent: "center",
                       },
                 ]}
               >
-                <CodeIcon />
-              </ListItemIcon>
-              <ListItemText
-                onClick={() => navigate(`/topics/coding`)}
-                primary="Coding"
-                sx={[
-                  open
-                    ? {
-                        opacity: 1,
-                      }
-                    : {
-                        opacity: 0,
-                      },
-                ]}
-              />
-            </ListItemButton>
-          </ListItem>
-          <ListItem key="cooking" disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              disableRipple
-              sx={[
-                {
-                  minHeight: 48,
-                  px: 2.5,
-                },
-                open
-                  ? {
-                      justifyContent: "initial",
-                    }
-                  : {
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
                       justifyContent: "center",
                     },
-              ]}
-            >
-              <ListItemIcon
-                onClick={() => navigate(`/topics/cooking`)}
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  <CodeIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Coding"
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link className="article-card-topic-link" to="/topics/cooking">
+            <ListItem key="cooking" disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                disableRipple
                 sx={[
                   {
-                    minWidth: 0,
-                    justifyContent: "center",
+                    minHeight: 48,
+                    px: 2.5,
                   },
                   open
                     ? {
-                        mr: 3,
+                        justifyContent: "initial",
                       }
                     : {
-                        mr: "auto",
+                        justifyContent: "center",
                       },
                 ]}
               >
-                <RestaurantIcon />
-              </ListItemIcon>
-              <ListItemText
-                onClick={() => navigate(`/topics/cooking`)}
-                primary="Cooking"
-                sx={[
-                  open
-                    ? {
-                        opacity: 1,
-                      }
-                    : {
-                        opacity: 0,
-                      },
-                ]}
-              />
-            </ListItemButton>
-          </ListItem>
-          <ListItem key="football" disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              disableRipple
-              sx={[
-                {
-                  minHeight: 48,
-                  px: 2.5,
-                },
-                open
-                  ? {
-                      justifyContent: "initial",
-                    }
-                  : {
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
                       justifyContent: "center",
                     },
-              ]}
-            >
-              <ListItemIcon
-                onClick={() => navigate(`/topics/football`)}
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  <RestaurantIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Cooking"
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link className="article-card-topic-link" to="/topics/football">
+            <ListItem key="football" disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                disableRipple
                 sx={[
                   {
-                    minWidth: 0,
-                    justifyContent: "center",
+                    minHeight: 48,
+                    px: 2.5,
                   },
                   open
                     ? {
-                        mr: 3,
+                        justifyContent: "initial",
                       }
                     : {
-                        mr: "auto",
+                        justifyContent: "center",
                       },
                 ]}
               >
-                <SportsSoccerIcon />
-              </ListItemIcon>
-              <ListItemText
-                onClick={() => navigate(`/topics/football`)}
-                primary="Football"
-                sx={[
-                  open
-                    ? {
-                        opacity: 1,
-                      }
-                    : {
-                        opacity: 0,
-                      },
-                ]}
-              />
-            </ListItemButton>
-          </ListItem>
+                <ListItemIcon
+                  onClick={() => navigate(`/topics/football`)}
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: "center",
+                    },
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  <SportsSoccerIcon />
+                </ListItemIcon>
+                <ListItemText
+                  onClick={() => navigate(`/topics/football`)}
+                  primary="Football"
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         </List>
         <Divider />
         <div className="switch">

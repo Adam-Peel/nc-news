@@ -3,7 +3,7 @@ import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import Badge from "@mui/material/Badge";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import provideAvatar from "../utils/provideAvatar";
 import Card from "@mui/material/Card";
 import Container from "@mui/material/Container";
@@ -108,15 +108,26 @@ function ArticleCard(article) {
           <Badge badgeContent={article.article.votes} color="primary" showZero>
             <HowToVoteIcon fontSize="small" sx={{ ml: 1 }} />
           </Badge>
-          <Typography
-            variant="body2"
-            sx={{
-              color: "text.secondary",
-              typography: { sm: "body2", xs: "caption" },
-            }}
+          <Box
+            className="article-card-topic"
+            bgcolor="gray"
+            sx={{ borderRadius: 20, pl: 2, pr: 2, mb: 1 }}
           >
-            {article.article.topic}
-          </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "white",
+                typography: { sm: "body2", xs: "caption" },
+              }}
+            >
+              <Link
+                className="article-card-topic-link"
+                to={`/topics/${article.article.topic}`}
+              >
+                {article.article.topic}
+              </Link>
+            </Typography>
+          </Box>
         </Box>
       </Card>
     </div>
