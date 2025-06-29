@@ -92,8 +92,7 @@ function ArticlesFeed({ title, url, topicChange }) {
             typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
           }}
         >
-          {title[0].toUpperCase()}
-          {title.slice(1)}
+          #{title}
         </Typography>
         <form>
           <br />

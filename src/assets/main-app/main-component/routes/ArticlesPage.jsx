@@ -8,7 +8,7 @@ function ArticlesPage() {
     return (
       <>
         <ArticlesFeed
-          title={topic || "All posts"}
+          title={topic || "all-posts"}
           url={`?topic=${topic}`}
           topicChange={topic}
         />
@@ -18,7 +18,7 @@ function ArticlesPage() {
 
   return (
     <>
-      <ArticlesFeed title={"All posts"} url={"?topic="} />
+      <ArticlesFeed title={"all-posts"} url={"?topic="} />
     </>
   );
 }

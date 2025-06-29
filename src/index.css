@@ -15,7 +15,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: light-dark(#1976d2, goldenrod);
+    background: #1976d2;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -25,7 +25,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --accent: goldenrod;
+    --accent: #1976d2;
   }
   a:hover {
     color: #1976d2;
@@ -50,10 +50,10 @@
 #root {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 100px auto;
+  grid-template-rows: auto;
   grid-template-areas:
-    "aside header"
-    "aside main";
+    "header"
+    "main";
   padding-top: 0 !important;
   margin-top: 0;
   top: 0;
@@ -91,27 +91,15 @@ header {
   align-items: center;
   width: auto;
   z-index: 999;
-  margin-left: 1%;
-  margin-right: 1%;
-  flex-wrap: wrap;
-  background-color: light-dark(#ffffff, #242424);
-  color: light-dark(#1976d2, goldenrod);
 }
 
 .header-logo {
   font-size: 2rem;
 }
 
-#header-hero-image {
-  height: 57px;
+.nn-logo {
+  height: 40px;
   width: auto;
-}
-
-#main-header-buttons,
-#main-header-title {
-  line-height: 0;
-  padding: 0;
-  margin: 0;
 }
 
 div[class^="MuiDrawer"] * {
@@ -254,11 +242,8 @@ main {
   top: 115px;
   max-height: 100dvh;
   overflow-y: scroll;
-  border-left: light-dark(#1976d2, goldenrod);
+  border-left: #1976d2;
   border-left-style: solid;
-  padding-left: 5px;
-  margin-left: 1%;
-  margin-right: 1%;
 }
 
 .searchbar {
@@ -378,7 +363,7 @@ button:focus-visible {
 
 .article-head-image {
   border-radius: 10%;
-  border-color: light-dark(#1976d2, goldenrod);
+  border-color: #1976d2;
   border-width: 1px;
   border-style: solid;
   width: 90%;
@@ -391,7 +376,7 @@ button:focus-visible {
 .article-start-accent {
   font-size: 2em;
   font-weight: bolder;
-  color: light-dark(#1976d2, goldenrod);
+  color: #1976d2;
   margin: 0;
 }
 
@@ -414,7 +399,7 @@ button:focus-visible {
 #article-downvote,
 #article-upvote {
   background-color: transparent;
-  color: light-dark(#1976d2, goldenrod);
+  color: #1976d2;
   box-shadow: 1px 1px 1px #999;
 }
 
@@ -448,7 +433,7 @@ button:focus-visible {
 .comment-card {
   margin-bottom: 5px;
   margin-left: 20px;
-  border-top-color: light-dark(#1976d2, goldenrod);
+  border-top-color: #1976d2;
   border-top-style: double;
   border-top-width: 1px;
 }

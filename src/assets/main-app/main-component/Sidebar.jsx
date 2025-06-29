@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { useNavigate } from "react-router";
 import Avatar from "@mui/material/Avatar";
+import { useNavigate } from "react-router";
 import { ColourThemeContext } from "../contexts/ThemeContext";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";

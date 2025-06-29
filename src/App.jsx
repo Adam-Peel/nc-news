@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <Header setUserId={setUserId} />
       <MainComponent userId={userId} />
     </>
