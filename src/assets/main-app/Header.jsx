@@ -142,6 +142,7 @@ export default function Header() {
       setIsError(true);
     }
     navigate(`/articles/search?keywords=${keywords}`);
+    setKeywords(null);
   }
 
   const openTopics = Boolean(topicsEl);
@@ -366,6 +367,7 @@ export default function Header() {
                 <NotificationsIcon />
               </Badge>
             </IconButton> */}
+
             <Avatar
               alt={currentUser[0].name}
               src={currentUser[0].avatar_url}
@@ -373,8 +375,9 @@ export default function Header() {
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              // onClick={handleProfileMenuOpen}
             />
+
             <FormGroup>
               <FormControlLabel
                 control={
