@@ -22,7 +22,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -128,6 +128,18 @@ export default function Header() {
   const [topicsEl, setTopicsEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [checked, setChecked] = useState(true);
+  const [keywords, setKeywords] = useState(null);
+  const navigate = useNavigate();
+
+  function handleChange(event) {
+    setKeywords(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(keywords);
+    // navigate(`/articles/search?keywords=${keywords}`);
+  }
 
   const openTopics = Boolean(topicsEl);
   const handleClick = (event) => {
@@ -315,15 +327,18 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <form onSubmit={handleSubmit}>
+            <Search onChange={handleChange}>
+              <IconButton onClick={handleSubmit}>
+                <SearchIcon />
+              </IconButton>
+
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </form>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {/* <IconButton
