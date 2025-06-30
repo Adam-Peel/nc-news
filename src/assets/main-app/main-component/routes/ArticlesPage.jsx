@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ArticlesFeed from "../components/ArticlesFeed";
-import { useParams, useSearchParams, useLocation } from "react-router";
+import { useParams, useSearchParams, useLocation } from "react-router-dom";
 import Header from "../../Header";
 
 function ArticlesPage() {
@@ -13,7 +13,7 @@ function ArticlesPage() {
     const keywords = searchParams.get("keywords");
     setKeywordString(keywords);
     console.log(location.search);
-  }, [location.search, topic]);
+  }, [location.search, topic, searchParams]);
 
   if (topic) {
     return (
