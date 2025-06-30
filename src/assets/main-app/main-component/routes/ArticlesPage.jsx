@@ -1,14 +1,23 @@
+import { useState, useEffect } from "react";
 import ArticlesFeed from "../components/ArticlesFeed";
-import { useParams, useSearchParams } from "react-router";
+import { useParams, useSearchParams, useLocation } from "react-router";
+import Header from "../../Header";
 
 function ArticlesPage() {
   const { topic } = useParams();
   const [searchParams] = useSearchParams();
-  const keywords = searchParams.get("keywords");
+  const [keywordString, setKeywordString] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const keywords = searchParams.get("keywords");
+    setKeywordString(keywords);
+  }, [location.search, topic]);
 
   if (topic) {
     return (
       <>
+        <Header />
         <ArticlesFeed
           title={topic || "all-posts"}
           url={`?topic=${topic}`}
@@ -18,12 +27,13 @@ function ArticlesPage() {
     );
   }
 
-  if (keywords) {
+  if (keywordString) {
     return (
       <>
+        <Header />
         <ArticlesFeed
-          title={`all-posts related to ${keywords}`}
-          url={`/search?keywords=${keywords}`}
+          title={`all-posts related to ${keywordString}`}
+          url={`/search?keywords=${keywordString}`}
           topicChange={null}
         />
       </>
@@ -32,6 +42,7 @@ function ArticlesPage() {
 
   return (
     <>
+      <Header />
       <ArticlesFeed title={"all-posts"} url={"?topic="} />
     </>
   );

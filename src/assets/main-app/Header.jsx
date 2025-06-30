@@ -141,8 +141,7 @@ export default function Header() {
     if (keywords.length < 2) {
       setIsError(true);
     }
-    navigate(`/articles/search?keywords=${keywords}`);
-    setKeywords(null);
+    navigate(`/articles/search?keywords=${encodeURIComponent(keywords)}`);
   }
 
   const openTopics = Boolean(topicsEl);
@@ -339,6 +338,7 @@ export default function Header() {
 
               <StyledInputBase
                 placeholder="Search…"
+                value={keywords}
                 inputProps={{ "aria-label": "search" }}
                 error={isError}
                 helperText={
