@@ -128,7 +128,7 @@ export default function Header() {
   const [topicsEl, setTopicsEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [checked, setChecked] = useState(true);
-  const [keywords, setKeywords] = useState(null);
+  const [keywords, setKeywords] = useState("");
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
 
@@ -207,7 +207,7 @@ export default function Header() {
         <Link to="/topics/cooking">#cooking</Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link to="/topics/football">#footbal</Link>
+        <Link to="/topics/football">#football</Link>
       </MenuItem>
     </Menu>
   );
