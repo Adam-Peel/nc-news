@@ -13,7 +13,7 @@ function MainComponent() {
         <Route path="/topics/:topic" element={<ArticlesPage />} />
         <Route path="/topic/:topic" element={<ArticlesPage />} />
         <Route path="/articles/:article_id" element={<SingleArticlePage />} />
-        <Route path="/articles/search?keywords" element={<ArticlesPage />} />
+        <Route path="/articles/search" element={<ArticlesPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

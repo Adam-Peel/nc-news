@@ -1,11 +1,10 @@
 import ArticlesFeed from "../components/ArticlesFeed";
-import { useParams, useLocation } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 
 function ArticlesPage() {
   const { topic } = useParams();
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const { keywords } = queryParams;
+  const [searchParams] = useSearchParams();
+  const keywords = searchParams.get("keywords");
 
   if (topic) {
     return (
