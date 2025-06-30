@@ -63,6 +63,7 @@ function ArticleCard(article) {
           <CardActionArea
             onClick={() => navigate(`/articles/${article.article.article_id}`)}
             sx={{
+              borderRadius: "25px",
               transition: "transform 0.15s ease-in-out",
               "&:hover": {
                 transform: "scale3d(1.05, 1.05, 1)",
