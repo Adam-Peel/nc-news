@@ -130,6 +130,7 @@ export default function Header() {
   const [checked, setChecked] = useState(true);
   const [keywords, setKeywords] = useState(null);
   const navigate = useNavigate();
+  const [isError, setIsError] = useState(false);
 
   function handleChange(event) {
     setKeywords(event.target.value);
@@ -137,6 +138,9 @@ export default function Header() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (keywords.length < 2) {
+      setIsError(true);
+    }
     navigate(`/articles/search?keywords=${keywords}`);
   }
 
@@ -335,6 +339,10 @@ export default function Header() {
               <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
+                error={isError}
+                helperText={
+                  isError ? "Search field must be at least 3 characters" : ""
+                }
               />
             </Search>
           </form>

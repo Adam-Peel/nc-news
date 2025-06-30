@@ -55,8 +55,7 @@ function ArticlesFeed({ title, url, topicChange }) {
 
   if (!articlesData) {
     return (
-      <main>
-        <h3>Loading...</h3>
+      <main className="main">
         <section className="articles-feed">
           <div className="article-card-container">
             <Stack spacing={1}>

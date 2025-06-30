@@ -361,7 +361,7 @@ button:focus-visible {
 .article-start-accent {
   font-size: 2em;
   font-weight: bolder;
-  color: #1976d2;
+  color: light-dark (#1976d2, #ffffff);
   margin: 0;
 }
 
