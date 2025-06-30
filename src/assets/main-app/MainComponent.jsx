@@ -1,5 +1,4 @@
 //Components
-import ArticlesPage from "./main-component/routes/ArticlesPage";
 import ArticlesFeed from "./main-component/components/ArticlesFeed";
 import SingleArticlePage from "./main-component/routes/SingleArticlePage";
 import { Routes, Route } from "react-router-dom";

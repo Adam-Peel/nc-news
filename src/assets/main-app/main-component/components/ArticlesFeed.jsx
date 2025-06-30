@@ -15,17 +15,19 @@ function ArticlesFeed() {
   const [sortQuery, setSortQuery] = useState("");
   const [errorStatus, setErrorStatus] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [title, setTitle] = useState(null);
 
   useEffect(() => {
     const keywords = searchParams.get("keywords");
-    console.log(location);
 
     let baseUrl = "https://news-aggregator-7e9t.onrender.com/api/articles";
 
     if (location.pathname === "/articles/search" && keywords) {
       baseUrl = `https://news-aggregator-7e9t.onrender.com/api/articles/search?keywords=${keywords}`;
+      setTitle(`Search results`);
     } else if (topic) {
       baseUrl = `https://news-aggregator-7e9t.onrender.com/api/articles?topic=${topic}`;
+      setTitle(`#${topic}`);
     }
 
     if (sortQuery) {
@@ -61,7 +63,6 @@ function ArticlesFeed() {
       </main>
     );
   }
-  console.log(articlesData);
 
   if (!articlesData) {
     return (
@@ -107,7 +108,7 @@ function ArticlesFeed() {
               typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
             }}
           >
-            "Title here"
+            {title}
           </Typography>
           <form>
             <br />
