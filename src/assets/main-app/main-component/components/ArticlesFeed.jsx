@@ -1,48 +1,57 @@
 import ArticleCard from "../components/ArticleCard";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import BadRequest from "../routes/BadRequest";
 import Typography from "@mui/material/Typography";
+import Header from "../../Header";
 
-function ArticlesFeed({ title, url, topicChange }) {
+function ArticlesFeed() {
+  const { topic } = useParams();
+  const location = useLocation();
   const [articlesData, setArticlesData] = useState(null);
-  const [baseURL, setBaseURL] = useState(
-    `https://news-aggregator-7e9t.onrender.com/api/articles${url}`
-  );
-  const [searchParams, setSearchParams] = useState(null);
+  const [sortQuery, setSortQuery] = useState("");
   const [errorStatus, setErrorStatus] = useState(null);
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const fetchArticles = async function () {
-      if (searchParams) {
-        setBaseURL(
-          `https://news-aggregator-7e9t.onrender.com/api/articles${url}&${searchParams}`
-        );
+    const keywords = searchParams.get("keywords");
+    console.log(location);
+
+    let baseUrl = "https://news-aggregator-7e9t.onrender.com/api/articles";
+
+    if (location.pathname === "/articles/search" && keywords) {
+      baseUrl = `https://news-aggregator-7e9t.onrender.com/api/articles/search?keywords=${keywords}`;
+    } else if (topic) {
+      baseUrl = `https://news-aggregator-7e9t.onrender.com/api/articles?topic=${topic}`;
+    }
+
+    if (sortQuery) {
+      if (baseUrl.includes("?")) {
+        baseUrl += `&${sortQuery}`;
       } else {
-        setBaseURL(
-          `https://news-aggregator-7e9t.onrender.com/api/articles${url}`
-        );
+        baseUrl += `?${sortQuery}`;
       }
+    }
+
+    const fetchArticles = async function () {
       try {
-        const data = await fetchData(baseURL);
+        const data = await fetchData(baseUrl);
         setArticlesData(data);
-        setSearchParams(null);
         setErrorStatus(null);
       } catch (err) {
+        setErrorStatus(err.status);
         setArticlesData(null);
-        setSearchParams(null);
-        setErrorStatus(err);
+        console.error("Error fetching articles:", err);
       }
     };
     fetchArticles();
-  }, [baseURL, topicChange, searchParams]);
+  }, [location, topic, sortQuery]);
 
   function handleChange(event) {
-    setSearchParams(event.target.value);
+    setSortQuery(event.target.value);
   }
 
   if (errorStatus) {
@@ -52,73 +61,83 @@ function ArticlesFeed({ title, url, topicChange }) {
       </main>
     );
   }
+  console.log(articlesData);
 
   if (!articlesData) {
     return (
-      <main className="main">
-        <section className="articles-feed">
-          <div className="article-card-container">
-            <Stack spacing={1}>
-              <Skeleton
-                variant="text"
-                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="circular"
-                width={40}
-                height={40}
-                sx={{ bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="rounded"
-                width={210}
-                height={60}
-                sx={{ bgcolor: "grey.900" }}
-              />
-            </Stack>
-          </div>
-        </section>
-      </main>
+      <>
+        <Header />
+
+        <main className="main">
+          <section className="articles-feed">
+            <div className="article-card-container">
+              <Stack spacing={1}>
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
+                />
+                <Skeleton
+                  variant="circular"
+                  width={40}
+                  height={40}
+                  sx={{ bgcolor: "grey.900" }}
+                />
+                <Skeleton
+                  variant="rounded"
+                  width={210}
+                  height={60}
+                  sx={{ bgcolor: "grey.900" }}
+                />
+              </Stack>
+            </div>
+          </section>
+        </main>
+      </>
     );
   }
 
   return (
-    <main className="main">
-      <div className="searchbar">
-        <Typography
-          className="article-start-accent"
-          sx={{
-            typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
-          }}
-        >
-          #{title}
-        </Typography>
-        <form>
-          <br />
-          <select
-            id="sort-by"
-            className="select"
-            onChange={handleChange}
-            defaultValue="Sort by"
+    <>
+      <Header />
+      <main className="main">
+        <div className="searchbar">
+          <Typography
+            className="article-start-accent"
+            sx={{
+              typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
+            }}
           >
-            <option disabled>Sort by</option>
-            <option value="?sort=comment_count:desc">
-              Comments: Descending
-            </option>
-            <option value="sort=comment_count:asc">Comments: Ascending</option>
-            <option value="sort=created_at:desc">Date: Descending</option>
-            <option value="sort=created_at:asc">Date: Ascending</option>
-            <option value="sort=votes:desc">Votes: Descending</option>
-            <option value="sort=votes:asc">Votes: Ascending</option>
-          </select>
-        </form>
-      </div>
-      <section className="articles-feed">
-        {articlesData.articles.map((article, index) => (
-          <ArticleCard article={article} key={index} />
-        ))}
-      </section>
-    </main>
+            "Title here"
+          </Typography>
+          <form>
+            <br />
+            <select
+              id="sort-by"
+              className="select"
+              onChange={handleChange}
+              defaultValue="Sort by"
+            >
+              <option disabled>Sort by</option>
+              <option value="sort=comment_count:desc">
+                Comments: Descending
+              </option>
+              <option value="sort=comment_count:asc">
+                Comments: Ascending
+              </option>
+              <option value="sort=created_at:desc">Date: Descending</option>
+              <option value="sort=created_at:asc">Date: Ascending</option>
+              <option value="sort=votes:desc">Votes: Descending</option>
+              <option value="sort=votes:asc">Votes: Ascending</option>
+            </select>
+          </form>
+        </div>
+        <section className="articles-feed">
+          {articlesData.articles.map((article, index) => (
+            <ArticleCard article={article} key={index} />
+          ))}
+        </section>
+      </main>
+    </>
   );
 }
 
