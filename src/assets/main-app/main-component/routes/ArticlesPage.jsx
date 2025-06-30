@@ -12,6 +12,7 @@ function ArticlesPage() {
   useEffect(() => {
     const keywords = searchParams.get("keywords");
     setKeywordString(keywords);
+    console.log(location.search);
   }, [location.search, topic]);
 
   if (topic) {
