@@ -32,6 +32,7 @@ function ArticleCard(article) {
           flexDirection: "column",
           flexGrow: true,
           height: "auto",
+          borderRadius: "25px",
         }}
       >
         <Box
