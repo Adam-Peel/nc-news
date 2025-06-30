@@ -137,8 +137,7 @@ export default function Header() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(keywords);
-    // navigate(`/articles/search?keywords=${keywords}`);
+    navigate(`/articles/search?keywords=${keywords}`);
   }
 
   const openTopics = Boolean(topicsEl);
