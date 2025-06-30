@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./assets/main-app/contexts/UserContext.jsx";
 import { ColourThemeProvider } from "./assets/main-app/contexts/ThemeContext.jsx";
 import "./index.css";

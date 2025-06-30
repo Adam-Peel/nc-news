@@ -2,6 +2,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
 import BadRequest from "./BadRequest.jsx";
+import Header from "../../Header.jsx";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useContext } from "react";
@@ -48,91 +49,65 @@ function SingleArticlePage() {
 
   if (!articleData) {
     return (
-      <main>
-        <Stack spacing={1}>
-          <Skeleton
-            variant="text"
-            sx={{ mt: 25, fontSize: "1rem", bgcolor: "grey.900" }}
-          />
-          <Skeleton
-            variant="circular"
-            width={200}
-            height={200}
-            sx={{ bgcolor: "grey.900" }}
-          />
-          <Skeleton
-            variant="rounded"
-            height={200}
-            sx={{ bgcolor: "grey.900" }}
-          />
-        </Stack>
-      </main>
+      <>
+        {" "}
+        <Header />
+        <main>
+          <Stack spacing={1}>
+            <Skeleton
+              variant="text"
+              sx={{ mt: 25, fontSize: "1rem", bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="circular"
+              width={200}
+              height={200}
+              sx={{ bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="rounded"
+              height={200}
+              sx={{ bgcolor: "grey.900" }}
+            />
+          </Stack>
+        </main>
+      </>
     );
   }
 
   return (
-    <main className="main">
-      <Box sx={{ maxWidth: 1250 }}>
-        <article className="article">
-          <section className="article-head">
-            <img
-              className="article-head-image"
-              src={articleData.article.article_img_url}
-            ></img>
-          </section>
-          <section className="article-body-container">
-            <Typography
-              className="article-card-title"
-              gutterBottom
-              component="div"
-              textAlign="left"
-              variant="h5"
-              sx={{
-                typography: {
-                  xs: "h6",
-                  sm: "h5",
-                  md: "h4",
-                  lg: "h4",
-                  xl: "h4",
-                },
-              }}
-            >
-              {articleData.article.title}
-            </Typography>
-            <br id="article-info" />
-            <Typography
-              className="article-card-title"
-              gutterBottom
-              component="div"
-              textAlign="left"
-              sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
-            >
-              <strong>{articleData.article.topic} </strong>
-            </Typography>
-
-            <Typography
-              variant="body2"
-              sx={{
-                typography: { md: "body2", sm: "body1", xs: "caption" },
-              }}
-            >
-              <CalendarMonthIcon /> {articleDate.slice(4)}{" "}
-            </Typography>
-
-            <section className="article-body">
+    <>
+      {" "}
+      <Header />
+      <main className="main">
+        <Box sx={{ maxWidth: 1250 }}>
+          <article className="article">
+            <section className="article-head">
+              <img
+                className="article-head-image"
+                src={articleData.article.article_img_url}
+              ></img>
+            </section>
+            <section className="article-body-container">
               <Typography
+                className="article-card-title"
+                gutterBottom
+                component="div"
+                textAlign="left"
+                variant="h5"
                 sx={{
-                  typography: { md: "body1", sm: "body2", xs: "body2" },
+                  typography: {
+                    xs: "h6",
+                    sm: "h5",
+                    md: "h4",
+                    lg: "h4",
+                    xl: "h4",
+                  },
                 }}
               >
-                <span className="article-start-accent">
-                  {articleData.article.body[0]}
-                </span>
-                {articleData.article.body.slice(1)}
+                {articleData.article.title}
               </Typography>
-            </section>
-            <br />
-            <div id="article-author">
+              <br id="article-info" />
               <Typography
                 className="article-card-title"
                 gutterBottom
@@ -140,22 +115,56 @@ function SingleArticlePage() {
                 textAlign="left"
                 sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
               >
-                <span>
-                  {provideAvatar(articleData.article.author, 66, users)}
-                </span>
-                <strong>{articleData.article.author}</strong>
+                <strong>{articleData.article.topic} </strong>
               </Typography>
-            </div>
-          </section>
-        </article>
 
-        <CommentsFeed
-          articleId={articleData.article.article_id}
-          articleVotes={articleData.article.votes}
-          articleCommentCount={articleData.article.comment_count}
-        />
-      </Box>
-    </main>
+              <Typography
+                variant="body2"
+                sx={{
+                  typography: { md: "body2", sm: "body1", xs: "caption" },
+                }}
+              >
+                <CalendarMonthIcon /> {articleDate.slice(4)}{" "}
+              </Typography>
+
+              <section className="article-body">
+                <Typography
+                  sx={{
+                    typography: { md: "body1", sm: "body2", xs: "body2" },
+                  }}
+                >
+                  <span className="article-start-accent">
+                    {articleData.article.body[0]}
+                  </span>
+                  {articleData.article.body.slice(1)}
+                </Typography>
+              </section>
+              <br />
+              <div id="article-author">
+                <Typography
+                  className="article-card-title"
+                  gutterBottom
+                  component="div"
+                  textAlign="left"
+                  sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
+                >
+                  <span>
+                    {provideAvatar(articleData.article.author, 66, users)}
+                  </span>
+                  <strong>{articleData.article.author}</strong>
+                </Typography>
+              </div>
+            </section>
+          </article>
+
+          <CommentsFeed
+            articleId={articleData.article.article_id}
+            articleVotes={articleData.article.votes}
+            articleCommentCount={articleData.article.comment_count}
+          />
+        </Box>
+      </main>
+    </>
   );
 }
 
