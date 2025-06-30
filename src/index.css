@@ -75,12 +75,12 @@ body {
   margin-top: 0;
   place-items: center;
   max-height: 100dvh;
-  background-color: light-dark(#ffffff, #242424);
+  background-color: light-dark(#eff2f6, #242424);
 }
 
 article {
   text-align: left;
-  background-color: light-dark(#ffffff, #242424);
+  background-color: light-dark(#eff2f6, #242424);
 }
 
 .nn-logo {
@@ -88,21 +88,15 @@ article {
   width: auto;
 }
 
-div[class^="MuiDrawer"] * {
-  background-color: #494949;
-  color: #ffffff;
-}
-
-div[class^="Mui-selected"] * {
-  background-color: #494949;
-  color: #ffffff;
+.muiBox-root {
+  max-height: 64px;
 }
 
 .select {
   width: auto;
   height: 40px;
   cursor: pointer;
-  background-color: light-dark(#ffffff, #242424);
+  background-color: light-dark(#eff2f6, #242424);
   border-radius: 5px;
 
   &_expand {
@@ -235,7 +229,7 @@ main {
 .searchbar {
   display: flex;
   flex-direction: row;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   width: 100%;
   padding: 2px;
@@ -243,7 +237,7 @@ main {
   justify-items: center;
   align-items: flex-end;
   flex-wrap: wrap;
-  background-color: light-dark(#ffffff, #242424);
+  background-color: light-dark(#eff2f6, #242424);
   height: auto;
 }
 
@@ -297,7 +291,7 @@ button:focus-visible {
   justify-content: center;
   justify-content: space-evenly;
   width: auto;
-  background-color: light-dark(#ffffff, #242424);
+  background-color: light-dark(#eff2f6, #242424);
   text-wrap: balance;
 }
 

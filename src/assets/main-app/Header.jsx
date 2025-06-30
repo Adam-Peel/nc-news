@@ -300,7 +300,7 @@ export default function Header() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, maxHeight: "64px" }}>
       <AppBar position="static">
         <Toolbar
           sx={{
