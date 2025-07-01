@@ -2,7 +2,6 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
 import BadRequest from "./BadRequest.jsx";
-import Header from "../../Header.jsx";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useContext } from "react";
@@ -50,8 +49,6 @@ function SingleArticlePage() {
   if (!articleData) {
     return (
       <>
-        {" "}
-        <Header />
         <main>
           <Stack spacing={1}>
             <Skeleton
@@ -77,8 +74,6 @@ function SingleArticlePage() {
 
   return (
     <>
-      {" "}
-      <Header />
       <main className="main">
         <Box sx={{ maxWidth: 1250 }}>
           <article className="article">

@@ -4,9 +4,8 @@ import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
-import BadRequest from "../routes/BadRequest";
+import BadRequest from "./BadRequest";
 import Typography from "@mui/material/Typography";
-import Header from "../../Header";
 
 function ArticlesFeed() {
   const { topic } = useParams();
@@ -67,8 +66,6 @@ function ArticlesFeed() {
   if (!articlesData) {
     return (
       <>
-        <Header />
-
         <main className="main">
           <section className="articles-feed">
             <div className="article-card-container">
@@ -99,7 +96,6 @@ function ArticlesFeed() {
 
   return (
     <>
-      <Header />
       <main className="main">
         <div className="searchbar">
           <Typography

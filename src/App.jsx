@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MainComponent from "./assets/main-app/MainComponent";
+import Header from "./assets/main-app/Header";
 import "./App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <MainComponent userId={userId} />
     </>
   );

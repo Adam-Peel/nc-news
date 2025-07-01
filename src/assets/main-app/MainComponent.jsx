@@ -1,5 +1,5 @@
 //Components
-import ArticlesFeed from "./main-component/components/ArticlesFeed";
+import ArticlesFeed from "./main-component/routes/ArticlesFeed";
 import SingleArticlePage from "./main-component/routes/SingleArticlePage";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./main-component/routes/NotFound";

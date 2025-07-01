@@ -220,7 +220,6 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
   top: 115px;
-  max-height: 100dvh;
   overflow-y: scroll;
   border-left: #1976d2;
   border-left-style: solid;
@@ -229,10 +228,10 @@ main {
 .searchbar {
   display: flex;
   flex-direction: row;
-  /* position: sticky; */
+  position: sticky;
   top: 0;
   width: 100%;
-  padding: 2px;
+  padding-bottom: 4px;
   z-index: 990;
   justify-items: center;
   align-items: flex-end;
@@ -276,17 +275,12 @@ button:hover {
   border-color: #646cff;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 /*Article Cards*/
 
 .articles-feed {
   display: flex;
   flex-wrap: wrap;
-  margin: 20px;
+  /* margin: 20px; */
   align-items: stretch;
   justify-content: center;
   justify-content: space-evenly;

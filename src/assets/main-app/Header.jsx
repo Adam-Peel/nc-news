@@ -21,7 +21,6 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import Stack from "@mui/material/Stack";
 import { Link, useNavigate } from "react-router";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -301,7 +300,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1, maxHeight: "64px" }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ maxHeight: "64px" }}>
         <Toolbar
           sx={{
             display: "flex",
@@ -337,7 +336,8 @@ export default function Header() {
               </IconButton>
 
               <StyledInputBase
-                placeholder="Search…"
+                // placeholder="Search…"
+                sx={{ maxHeight: "64px" }}
                 value={keywords}
                 inputProps={{ "aria-label": "search" }}
                 error={isError}
