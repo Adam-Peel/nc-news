@@ -337,6 +337,13 @@ export default function Header() {
           >
             <img src="/nc-thumbnail.png" className="nn-logo"></img>
           </Typography>
+          <Typography
+            sx={{
+              typography: { md: "h4", sm: "body1", xs: "body2" },
+            }}
+          >
+            Northcoders News
+          </Typography>
           <IconButton
             size="large"
             edge="start"
@@ -350,6 +357,7 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
+
           <form onSubmit={handleSubmit}>
             <Search onChange={handleChange}>
               <IconButton onClick={handleSubmit}>
