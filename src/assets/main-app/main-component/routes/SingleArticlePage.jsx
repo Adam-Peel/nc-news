@@ -85,6 +85,20 @@ function SingleArticlePage() {
             </section>
             <section className="article-body-container">
               <Typography
+                className="article-start-accent"
+                sx={{
+                  typography: {
+                    xs: "h6",
+                    sm: "h6",
+                    md: "h5",
+                    lg: "h4",
+                    xl: "h4",
+                  },
+                }}
+              >
+                all posts &gt; #{articleData.article.topic}
+              </Typography>
+              <Typography
                 className="article-card-title"
                 gutterBottom
                 component="div"
@@ -104,16 +118,6 @@ function SingleArticlePage() {
               </Typography>
               <br id="article-info" />
               <Typography
-                className="article-card-title"
-                gutterBottom
-                component="div"
-                textAlign="left"
-                sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
-              >
-                <strong>{articleData.article.topic} </strong>
-              </Typography>
-
-              <Typography
                 variant="body2"
                 sx={{
                   typography: { md: "body2", sm: "body1", xs: "caption" },
@@ -121,7 +125,6 @@ function SingleArticlePage() {
               >
                 <CalendarMonthIcon /> {articleDate.slice(4)}{" "}
               </Typography>
-
               <section className="article-body">
                 <Typography
                   sx={{

@@ -26,7 +26,7 @@ function ArticlesFeed() {
       setTitle(`Search results`);
     } else if (topic) {
       baseUrl = `https://news-aggregator-7e9t.onrender.com/api/articles?topic=${topic}`;
-      setTitle(`#${topic}`);
+      setTitle(`> #${topic}`);
     }
 
     if (sortQuery) {
@@ -104,7 +104,7 @@ function ArticlesFeed() {
               typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
             }}
           >
-            {title}
+            all posts {title}
           </Typography>
           <form>
             <br />
