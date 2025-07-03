@@ -69,6 +69,7 @@ function ArticlesFeed() {
         <main className="main">
           <section className="articles-feed">
             <div className="article-card-container">
+              <p></p>
               <Stack spacing={1}>
                 <Skeleton
                   variant="text"
