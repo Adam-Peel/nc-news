@@ -279,9 +279,10 @@ button:hover {
 #loading-container {
   display: flex !important;
   flex-direction: row !important;
-  justify-content: space-evenly !important; /* or use `center` if you want them tight */
+  justify-content: space-evenly !important;
   gap: 1rem !important;
-  width: 100% !important; /* Ensure it spans enough space if needed */
+  width: 100% !important;
+  margin-bottom: 250px;
 }
 
 .loading-item {
@@ -324,6 +325,9 @@ button:hover {
 }
 
 /* Single Article Page */
+
+.single-article-box {
+}
 
 .article-head {
   display: flex;

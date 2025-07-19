@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 import { ColourThemeContext } from "./contexts/ThemeContext";
-import Avatar from "@mui/material/Avatar";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -268,38 +267,7 @@ export default function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
       <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem> */}
-      <MenuItem>
-        {/* <Avatar
-          alt={currentUser[0].name}
-          src={currentUser[0].avatar_url}
-          sx={{ width: 35, height: 35 }}
-          onClick={handleProfileMenuOpen}
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        />
-        <p>Profile</p> */}
         <FormGroup>
           <FormControlLabel
             control={
@@ -317,8 +285,16 @@ export default function Header() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, maxHeight: "64px" }}>
-      <AppBar position="static" sx={{ maxHeight: "64px" }}>
+    <Box sx={{ flexGrow: 1, maxHeight: "64px", zIndex: 999 }}>
+      <AppBar
+        position="static"
+        sx={{
+          maxHeight: "64px",
+          display: "flex",
+          alignItems: "center",
+          alignContent: "space-evenly",
+        }}
+      >
         <Toolbar
           sx={{
             display: "flex",
@@ -330,16 +306,9 @@ export default function Header() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block" }, marginRight: 3 }}
           >
             <img src="/nc-thumbnail.png" className="nn-logo"></img>
-          </Typography>
-          <Typography
-            sx={{
-              typography: { md: "h4", sm: "body1", xs: "body2" },
-            }}
-          >
-            Northcoders News
           </Typography>
           <IconButton
             size="large"
@@ -350,10 +319,24 @@ export default function Header() {
             aria-haspopup="true"
             aria-expanded={openTopics ? "true" : undefined}
             onClick={handleClick}
-            sx={{ mr: 2, ml: 2 }}
+            sx={{ mr: 3 }}
           >
             <MenuIcon />
           </IconButton>
+          <Typography
+            sx={{
+              typography: {
+                xl: "h3",
+                lg: "h4",
+                md: "h5",
+                sm: "body1",
+                xs: "body2",
+              },
+              marginRight: 3,
+            }}
+          >
+            Northcoders News
+          </Typography>
 
           <form onSubmit={handleSubmit}>
             <Search
@@ -371,7 +354,7 @@ export default function Header() {
                   maxHeight: "40px",
                   minWidth: "200px",
                   flexGrow: 1,
-                  marginRight: "8px:",
+                  marginRight: 2,
                 }}
                 value={keywords}
                 inputProps={{ "aria-label": "search" }}
@@ -385,40 +368,11 @@ export default function Header() {
           </form>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {/* <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
-
-            <Avatar
-              alt={currentUser[0].name}
-              src={currentUser[0].avatar_url}
-              sx={{ width: 35, height: 35, ml: 2 }}
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              // onClick={handleProfileMenuOpen}
-            />
-
             <FormGroup>
               <FormControlLabel
                 control={
                   <MaterialUISwitch
-                    sx={{ m: 1 }}
+                    sx={{ ml: 10 }}
                     defaultChecked
                     onClick={switchColor}
                   />

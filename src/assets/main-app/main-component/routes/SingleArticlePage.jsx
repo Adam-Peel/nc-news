@@ -2,7 +2,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
 import BadRequest from "./BadRequest.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
@@ -18,6 +18,7 @@ function SingleArticlePage() {
   const { article_id } = useParams();
   const [errorStatus, setErrorStatus] = useState(null);
   const [articleDate, setArticleDate] = useState("");
+  const myRef = useRef(null);
 
   useEffect(() => {
     const fetchArticle = async function () {
@@ -50,23 +51,27 @@ function SingleArticlePage() {
     return (
       <>
         <main>
-          <Stack spacing={1}>
-            <Skeleton
-              variant="text"
-              sx={{ mt: 25, fontSize: "1rem", bgcolor: "grey.900" }}
-            />
-            <Skeleton
-              variant="circular"
-              width={200}
-              height={200}
-              sx={{ bgcolor: "grey.900" }}
-            />
-            <Skeleton
-              variant="rounded"
-              height={200}
-              sx={{ bgcolor: "grey.900" }}
-            />
-          </Stack>
+          <div id="loading-container">
+            <div className="loading-item">
+              <Stack spacing={1}>
+                <Skeleton
+                  variant="text"
+                  sx={{ mt: 25, fontSize: "1rem", bgcolor: "grey.900" }}
+                />
+                <Skeleton
+                  variant="circular"
+                  width={200}
+                  height={200}
+                  sx={{ bgcolor: "grey.900" }}
+                />
+                <Skeleton
+                  variant="rounded"
+                  height={200}
+                  sx={{ bgcolor: "grey.900" }}
+                />
+              </Stack>
+            </div>
+          </div>
         </main>
       </>
     );
@@ -75,7 +80,26 @@ function SingleArticlePage() {
   return (
     <>
       <main className="main">
-        <Box sx={{ maxWidth: 1250 }}>
+        <Box
+          sx={{
+            maxWidth: 1250,
+            marginLeft: {
+              xs: "5%", // Default margin for extra-small screens
+              sm: "17%", // Margin for small screens
+              md: "21%", // Margin for medium screens
+              lg: "24%", // Margin for large screens
+              xl: "24%", // Margin for extra-large screens
+            },
+            marginRight: {
+              xs: "5%", // Default margin for extra-small screens
+              sm: "17%", // Margin for small screens
+              md: "21%", // Margin for medium screens
+              lg: "24%", // Margin for large screens
+              xl: "24%", // Margin for extra-large screens
+            },
+          }}
+          classname="single-article-box"
+        >
           <article className="article">
             <section className="article-head">
               <img
@@ -87,6 +111,8 @@ function SingleArticlePage() {
               <Typography
                 className="article-start-accent"
                 sx={{
+                  mt: 2,
+                  mb: 2,
                   typography: {
                     xs: "h6",
                     sm: "h6",
