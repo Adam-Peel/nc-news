@@ -9,13 +9,10 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
 import FormGroup from "@mui/material/FormGroup";
@@ -359,21 +356,31 @@ export default function Header() {
           </IconButton>
 
           <form onSubmit={handleSubmit}>
-            <Search onChange={handleChange}>
-              <IconButton onClick={handleSubmit}>
-                <SearchIcon />
-              </IconButton>
-
+            <Search
+              onChange={handleChange}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "nowrap",
+                alignItems: "center",
+              }}
+            >
               <StyledInputBase
-                // placeholder="Search…"
-                sx={{ maxHeight: "64px" }}
+                placeholder="Search…"
+                sx={{
+                  maxHeight: "40px",
+                  minWidth: "200px",
+                  flexGrow: 1,
+                  marginRight: "8px:",
+                }}
                 value={keywords}
                 inputProps={{ "aria-label": "search" }}
                 error={isError}
-                helperText={
-                  isError ? "Search field must be at least 3 characters" : ""
-                }
+                helperText={isError ? "Must 3 characters" : ""}
               />
+              <IconButton onClick={handleSubmit} style={{ height: "40px" }}>
+                <SearchIcon />
+              </IconButton>
             </Search>
           </form>
           <Box sx={{ flexGrow: 1 }} />
