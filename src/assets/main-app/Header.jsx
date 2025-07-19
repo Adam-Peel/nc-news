@@ -292,7 +292,7 @@ export default function Header() {
         <p>Notifications</p>
       </MenuItem> */}
       <MenuItem>
-        <Avatar
+        {/* <Avatar
           alt={currentUser[0].name}
           src={currentUser[0].avatar_url}
           sx={{ width: 35, height: 35 }}
@@ -302,7 +302,7 @@ export default function Header() {
           aria-haspopup="true"
           color="inherit"
         />
-        <p>Profile</p>
+        <p>Profile</p> */}
         <FormGroup>
           <FormControlLabel
             control={

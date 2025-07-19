@@ -276,6 +276,19 @@ button:hover {
 }
 
 /*Article Cards*/
+#loading-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-evenly !important; /* or use `center` if you want them tight */
+  gap: 1rem !important;
+  width: 100% !important; /* Ensure it spans enough space if needed */
+}
+
+.loading-item {
+  display: flex; /* Allows internal layout if needed */
+  flex: 0 0 auto; /* Don't grow or shrink */
+  max-width: 100%; /* Prevent overflow */
+}
 
 .articles-feed {
   display: flex;

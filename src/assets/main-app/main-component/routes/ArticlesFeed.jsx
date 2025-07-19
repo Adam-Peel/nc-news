@@ -65,33 +65,73 @@ function ArticlesFeed() {
 
   if (!articlesData) {
     return (
-      <>
-        <main className="main">
-          <section className="articles-feed">
-            <div className="article-card-container">
-              <p></p>
-              <Stack spacing={1}>
-                <Skeleton
-                  variant="text"
-                  sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
-                />
-                <Skeleton
-                  variant="circular"
-                  width={40}
-                  height={40}
-                  sx={{ bgcolor: "grey.900" }}
-                />
-                <Skeleton
-                  variant="rounded"
-                  width={210}
-                  height={60}
-                  sx={{ bgcolor: "grey.900" }}
-                />
-              </Stack>
-            </div>
-          </section>
-        </main>
-      </>
+      <main className="main">
+        <div id="loading-container">
+          <div className="loading-item">
+            <Stack spacing={1} sx={{ mt: 5 }}>
+              <Skeleton
+                variant="text"
+                width={210}
+                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
+              />
+              <Skeleton
+                variant="circular"
+                width={40}
+                height={40}
+                sx={{ bgcolor: "grey.900" }}
+              />
+              <Skeleton
+                variant="rounded"
+                width={210}
+                height={60}
+                sx={{ bgcolor: "grey.900" }}
+              />
+            </Stack>
+          </div>
+          <div className="loading-item">
+            <Stack spacing={1} sx={{ mt: 5 }}>
+              <Skeleton
+                variant="text"
+                width={210}
+                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
+              />
+              <Skeleton
+                variant="circular"
+                width={40}
+                height={40}
+                sx={{ bgcolor: "grey.900" }}
+              />
+              <Skeleton
+                variant="rounded"
+                width={210}
+                height={60}
+                sx={{ bgcolor: "grey.900" }}
+              />
+            </Stack>
+          </div>
+          <div className="loading-item">
+            <Stack spacing={1} sx={{ mt: 5 }}>
+              <Skeleton
+                variant="text"
+                width={210}
+                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
+              />
+              <Skeleton
+                variant="circular"
+                width={40}
+                height={40}
+                sx={{ bgcolor: "grey.900" }}
+              />
+              <Skeleton
+                variant="rounded"
+                width={210}
+                height={60}
+                sx={{ bgcolor: "grey.900" }}
+              />
+            </Stack>
+          </div>
+        </div>
+      </main>
     );
   }
 
