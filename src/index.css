@@ -52,18 +52,19 @@
   flex-direction: column;
   align-content: first baseline;
   grid-template-columns: auto;
-  grid-template-rows: 60px auto;
+  grid-template-rows: 60px auto 30px;
   grid-template-areas:
     "header"
-    "main";
+    "main"
+    "footer";
   padding-top: 0 !important;
   margin-top: 0;
-  height: calc(100dvh - 60px);
+  height: calc(100dvh - 90px);
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: light-dark(#242424, #eff2f6)
   text-decoration: inherit;
 }
 a:hover {

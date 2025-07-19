@@ -143,6 +143,7 @@ function ArticlesFeed() {
             className="article-start-accent"
             sx={{
               typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
+              ml: 2,
             }}
           >
             all posts {title}
