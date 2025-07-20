@@ -135,11 +135,10 @@ function ArticlesFeed() {
         <Typography
           className="article-start-accent"
           sx={{
-            typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
-            ml: 2,
+            typography: { xs: "s2", sm: "s1", md: "h5", lg: "h4", xl: "h4" },
           }}
         >
-          all posts {title}
+          posts {title}
         </Typography>
         <form>
           <br />
@@ -148,6 +147,10 @@ function ArticlesFeed() {
             className="select"
             onChange={handleChange}
             defaultValue="Sort by"
+            style={{
+              width: "100%",
+              maxWidth: "120px",
+            }}
           >
             <option disabled>Sort by</option>
             <option value="sort=comment_count:desc">

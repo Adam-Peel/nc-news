@@ -227,11 +227,6 @@ header {
   width: 100vw;
   height: 64px; /* Adjust as needed */
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly; /* Or space-around/space-evenly */
-  padding: 0 2rem; /* Adjust horizontal padding as needed */
-  box-sizing: border-box;
 }
 
 .searchbar {
@@ -248,7 +243,7 @@ header {
 }
 
 .searchbar * {
-  margin-left: 15px;
+  margin-left: 5px;
 }
 
 form {

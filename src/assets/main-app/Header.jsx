@@ -291,96 +291,138 @@ export default function Header() {
       <Box sx={{ flexGrow: 1, maxHeight: "64px", zIndex: 999 }}>
         <AppBar position="static">
           <Toolbar>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" }, marginRight: 1 }}
-            >
-              <img src="/nc-news/nc-thumbnail.png" className="nn-logo"></img>
-            </Typography>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              aria-controls={openTopics ? "topics-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={openTopics ? "true" : undefined}
-              onClick={handleClick}
-              sx={{ mr: 1 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
+            <Box
               sx={{
-                typography: {
-                  xl: "h3",
-                  lg: "h4",
-                  md: "h5",
-                  sm: "body1",
-                  xs: "body2",
-                },
-                marginRight: 1,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
               }}
             >
-              NC News
-            </Typography>
+              {/* Left Section */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ display: { xs: "none", sm: "block" } }}
+                >
+                  <img src="/nc-news/nc-thumbnail.png" className="nn-logo" />
+                </Typography>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  aria-controls={openTopics ? "topics-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={openTopics ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Box>
 
-            <form onSubmit={handleSubmit}>
-              <Search
-                onChange={handleChange}
-                style={{
+              {/* Center Section */}
+              <Box
+                sx={{
                   display: "flex",
-                  flexDirection: "row",
-                  flexWrap: "nowrap",
                   alignItems: "center",
+                  flexGrow: 1,
+                  justifyContent: "center",
+                  marginLeft: 2,
+                  marginRight: 2,
                 }}
               >
-                <StyledInputBase
-                  placeholder="Search…"
+                <Typography
                   sx={{
-                    maxHeight: "40px",
-                    // minWidth: "100px",
-                    flexGrow: 1,
-                    marginRight: 1,
+                    typography: {
+                      xl: "h3",
+                      lg: "h4",
+                      md: "h5",
+                      sm: "body1",
+                      xs: "body2",
+                    },
+                    marginRight: 2,
                   }}
-                  value={keywords}
-                  inputProps={{ "aria-label": "search" }}
-                  error={isError}
-                  helperText={isError ? "Must 3 characters" : ""}
-                />
-                <IconButton onClick={handleSubmit} style={{ height: "40px" }}>
-                  <SearchIcon />
-                </IconButton>
-              </Search>
-            </form>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <MaterialUISwitch
-                      sx={{ ml: 5 }}
-                      defaultChecked
-                      onClick={switchColor}
+                >
+                  NC News
+                </Typography>
+                <form onSubmit={handleSubmit}>
+                  <Search
+                    onChange={handleChange}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                    sx={{
+                      maxHeight: "40px",
+                      flexGrow: 1,
+                      marginRight: 1,
+                      width: {
+                        xs: "120px",
+                        sm: "200px",
+                        md: "300px",
+                        lg: "350px",
+                      },
+                      paddingLeft: 1,
+                      borderRadius: "20px",
+                      boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+                      border: "1px solid #ccc",
+                      transition: "all 0.3s ease",
+                      "&:focus": {
+                        borderColor: "#0077FF",
+                        boxShadow: "0 0 0 2px rgba(0, 119, 255, 0.5)",
+                      },
+                    }}
+                  >
+                    <StyledInputBase
+                      placeholder="Search…"
+                      sx={{ maxHeight: "40px", flexGrow: 1, marginRight: 1 }}
+                      value={keywords}
+                      inputProps={{ "aria-label": "search" }}
+                      error={isError}
+                      helperText={isError ? "Must 3 characters" : ""}
                     />
-                  }
-                  label=""
-                />
-              </FormGroup>
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
+                    <IconButton
+                      onClick={handleSubmit}
+                      style={{ height: "40px" }}
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                  </Search>
+                </form>
+              </Box>
+
+              {/* Right Section */}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <MaterialUISwitch
+                          sx={{ ml: 2 }}
+                          defaultChecked
+                          onClick={switchColor}
+                        />
+                      }
+                      label=""
+                    />
+                  </FormGroup>
+                </Box>
+                <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="show more"
+                    aria-controls={mobileMenuId}
+                    aria-haspopup="true"
+                    onClick={handleMobileMenuOpen}
+                    color="inherit"
+                  >
+                    <MoreIcon />
+                  </IconButton>
+                </Box>
+              </Box>
             </Box>
           </Toolbar>
         </AppBar>
