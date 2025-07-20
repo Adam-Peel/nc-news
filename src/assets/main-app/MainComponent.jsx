@@ -8,13 +8,16 @@ function MainComponent() {
   return (
     <>
       <Routes>
-        <Route path="/articles" element={<ArticlesFeed />} />
-        <Route path="/" element={<ArticlesFeed />} />
-        <Route path="/topics/:topic" element={<ArticlesFeed />} />
-        <Route path="/topic/:topic" element={<ArticlesFeed />} />
-        <Route path="/articles/search" element={<ArticlesFeed />} />
-        <Route path="/articles/:article_id" element={<SingleArticlePage />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/nc-news/articles" element={<ArticlesFeed />} />
+        <Route path="/nc-news" element={<ArticlesFeed />} />
+        <Route path="/nc-news/topics/:topic" element={<ArticlesFeed />} />
+        <Route path="/nc-news/topic/:topic" element={<ArticlesFeed />} />
+        <Route path="/nc/news/articles/search" element={<ArticlesFeed />} />
+        <Route
+          path="/nc-news/articles/:article_id"
+          element={<SingleArticlePage />}
+        />
+        <Route path="*/nc-news/" element={<NotFound />} />
       </Routes>
     </>
   );
