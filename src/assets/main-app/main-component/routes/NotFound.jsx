@@ -1,3 +1,5 @@
+import BadRequest from "./BadRequest";
+
 function NotFound() {
   return (
     <main>
