@@ -5,7 +5,7 @@ This repo contains all scripts and components necessary to serve a front-end REA
 In the app, users can view articles, vote on articles, and post and delete comments.
 
 The front end is available at:
-https://adam-peel-portfolio-news-site.netlify.app/
+https://www.adampeel.co.uk/nc-news
 
 The data is retrieved from a back-end repository and application which can be found here:
 https://github.com/Adam-Peel/news-aggregator
