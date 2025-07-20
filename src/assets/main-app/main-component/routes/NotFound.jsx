@@ -2,9 +2,9 @@ import BadRequest from "./BadRequest";
 
 function NotFound() {
   return (
-    <main>
+    <>
       <BadRequest errorStatus={404} />
-    </main>
+    </>
   );
 }
 

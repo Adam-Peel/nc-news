@@ -56,127 +56,117 @@ function ArticlesFeed() {
   }
 
   if (errorStatus) {
-    return (
-      <main>
-        <BadRequest errorStatus={errorStatus} />
-      </main>
-    );
+    return <BadRequest errorStatus={errorStatus} />;
   }
 
   if (!articlesData) {
     return (
-      <main className="main">
-        <div id="loading-container">
-          <div className="loading-item">
-            <Stack spacing={1} sx={{ mt: 5 }}>
-              <Skeleton
-                variant="text"
-                width={210}
-                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="circular"
-                width={40}
-                height={40}
-                sx={{ bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="rounded"
-                width={210}
-                height={60}
-                sx={{ bgcolor: "grey.900" }}
-              />
-            </Stack>
-          </div>
-          <div className="loading-item">
-            <Stack spacing={1} sx={{ mt: 5 }}>
-              <Skeleton
-                variant="text"
-                width={210}
-                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="circular"
-                width={40}
-                height={40}
-                sx={{ bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="rounded"
-                width={210}
-                height={60}
-                sx={{ bgcolor: "grey.900" }}
-              />
-            </Stack>
-          </div>
-          <div className="loading-item">
-            <Stack spacing={1} sx={{ mt: 5 }}>
-              <Skeleton
-                variant="text"
-                width={210}
-                sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="circular"
-                width={40}
-                height={40}
-                sx={{ bgcolor: "grey.900" }}
-              />
-              <Skeleton
-                variant="rounded"
-                width={210}
-                height={60}
-                sx={{ bgcolor: "grey.900" }}
-              />
-            </Stack>
-          </div>
+      <div id="loading-container">
+        <div className="loading-item">
+          <Stack spacing={1} sx={{ mt: 5 }}>
+            <Skeleton
+              variant="text"
+              width={210}
+              sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="circular"
+              width={40}
+              height={40}
+              sx={{ bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="rounded"
+              width={210}
+              height={60}
+              sx={{ bgcolor: "grey.900" }}
+            />
+          </Stack>
         </div>
-      </main>
+        <div className="loading-item">
+          <Stack spacing={1} sx={{ mt: 5 }}>
+            <Skeleton
+              variant="text"
+              width={210}
+              sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="circular"
+              width={40}
+              height={40}
+              sx={{ bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="rounded"
+              width={210}
+              height={60}
+              sx={{ bgcolor: "grey.900" }}
+            />
+          </Stack>
+        </div>
+        <div className="loading-item">
+          <Stack spacing={1} sx={{ mt: 5 }}>
+            <Skeleton
+              variant="text"
+              width={210}
+              sx={{ fontSize: "1rem", bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="circular"
+              width={40}
+              height={40}
+              sx={{ bgcolor: "grey.900" }}
+            />
+            <Skeleton
+              variant="rounded"
+              width={210}
+              height={60}
+              sx={{ bgcolor: "grey.900" }}
+            />
+          </Stack>
+        </div>
+      </div>
     );
   }
 
   return (
-    <>
-      <main className="main">
-        <div className="searchbar">
-          <Typography
-            className="article-start-accent"
-            sx={{
-              typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
-              ml: 2,
-            }}
+    <main>
+      <div className="searchbar">
+        <Typography
+          className="article-start-accent"
+          sx={{
+            typography: { xs: "h6", sm: "h6", md: "h5", lg: "h4", xl: "h4" },
+            ml: 2,
+          }}
+        >
+          all posts {title}
+        </Typography>
+        <form>
+          <br />
+          <select
+            id="sort-by"
+            className="select"
+            onChange={handleChange}
+            defaultValue="Sort by"
           >
-            all posts {title}
-          </Typography>
-          <form>
-            <br />
-            <select
-              id="sort-by"
-              className="select"
-              onChange={handleChange}
-              defaultValue="Sort by"
-            >
-              <option disabled>Sort by</option>
-              <option value="sort=comment_count:desc">
-                Comments: Descending
-              </option>
-              <option value="sort=comment_count:asc">
-                Comments: Ascending
-              </option>
-              <option value="sort=created_at:desc">Date: Descending</option>
-              <option value="sort=created_at:asc">Date: Ascending</option>
-              <option value="sort=votes:desc">Votes: Descending</option>
-              <option value="sort=votes:asc">Votes: Ascending</option>
-            </select>
-          </form>
-        </div>
-        <section className="articles-feed">
-          {articlesData.articles.map((article, index) => (
-            <ArticleCard article={article} key={index} />
-          ))}
-        </section>
-      </main>
-    </>
+            <option disabled>Sort by</option>
+            <option value="sort=comment_count:desc">
+              Comments: Descending
+            </option>
+            <option value="sort=comment_count:asc">Comments: Ascending</option>
+            <option value="sort=created_at:desc">Date: Descending</option>
+            <option value="sort=created_at:asc">Date: Ascending</option>
+            <option value="sort=votes:desc">Votes: Descending</option>
+            <option value="sort=votes:asc">Votes: Ascending</option>
+          </select>
+        </form>
+      </div>
+      <section className="articles-feed">
+        {articlesData.articles.map((article, index) => (
+          <ArticleCard article={article} key={index} />
+        ))}
+      </section>
+    </main>
   );
 }
 

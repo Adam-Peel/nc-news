@@ -6,20 +6,20 @@ import NotFound from "./main-component/routes/NotFound";
 
 function MainComponent() {
   return (
-    <>
-      <Routes>
-        <Route path="/nc-news/articles" element={<ArticlesFeed />} />
-        <Route path="/nc-news" element={<ArticlesFeed />} />
-        <Route path="/nc-news/topics/:topic" element={<ArticlesFeed />} />
-        <Route path="/nc-news/topic/:topic" element={<ArticlesFeed />} />
-        <Route path="/nc/news/articles/search" element={<ArticlesFeed />} />
-        <Route
-          path="/nc-news/articles/:article_id"
-          element={<SingleArticlePage />}
-        />
-        <Route path="/nc-news/*" element={<NotFound />} />
-      </Routes>
-    </>
+    // <main>
+    <Routes>
+      <Route path="/nc-news/articles" element={<ArticlesFeed />} />
+      <Route path="/nc-news" element={<ArticlesFeed />} />
+      <Route path="/nc-news/topics/:topic" element={<ArticlesFeed />} />
+      <Route path="/nc-news/topic/:topic" element={<ArticlesFeed />} />
+      <Route path="/nc/news/articles/search" element={<ArticlesFeed />} />
+      <Route
+        path="/nc-news/articles/:article_id"
+        element={<SingleArticlePage />}
+      />
+      <Route path="/nc-news/*" element={<NotFound />} />
+    </Routes>
+    // </main>
   );
 }
 

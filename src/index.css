@@ -48,18 +48,11 @@
 }
 
 #root {
-  display: grid;
+  display: flex;
   flex-direction: column;
-  align-content: first baseline;
-  grid-template-columns: auto;
-  grid-template-rows: 60px auto 30px;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+  min-height: 100dvh;
   padding-top: 0 !important;
-  margin-top: 0;
-  height: calc(100dvh - 90px);
+  padding-bottom: 0 !important;
 }
 
 a {
@@ -71,11 +64,16 @@ a:hover {
   color: #535bf2;
 }
 
+html,
 body {
-  display: flex;
-  margin-top: 0;
-  place-items: center;
-  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+body {
+  height: 100vh;
   background-color: light-dark(#eff2f6, #242424);
 }
 
@@ -216,29 +214,37 @@ article {
 }
 
 main {
-  grid-area: main;
+  flex: 1 0 auto;
+  margin-top: 64px; /* Same as header height */
+  margin-bottom: 30px; /* Same as footer height, if footer is fixed */
+  /* overflow-y: auto; */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 64px; /* Adjust as needed */
+  z-index: 1000;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  top: 115px;
-  overflow-y: scroll;
-  border-left: #1976d2;
-  border-left-style: solid;
+  align-items: center;
+  justify-content: space-evenly; /* Or space-around/space-evenly */
+  padding: 0 2rem; /* Adjust horizontal padding as needed */
+  box-sizing: border-box;
 }
 
 .searchbar {
+  position: sticky;
+  top: 64px;
+  z-index: 990;
+  background-color: light-dark(#eff2f6, #242424);
   display: flex;
   flex-direction: row;
-  position: sticky;
-  top: 0;
+  flex-wrap: wrap;
+  align-items: flex-end;
   width: 100%;
   padding-bottom: 4px;
-  z-index: 990;
-  justify-items: center;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  background-color: light-dark(#eff2f6, #242424);
-  height: auto;
 }
 
 .searchbar * {
@@ -424,7 +430,6 @@ button:hover {
 
 .comment-card {
   margin-bottom: 5px;
-  margin-left: 20px;
   border-top-color: #1976d2;
   border-top-style: double;
   border-top-width: 1px;
@@ -445,4 +450,14 @@ button:hover {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30px; /* Adjust as needed */
+  z-index: 1000;
+  background-color: light-dark(#eff2f6, #242424);
 }
