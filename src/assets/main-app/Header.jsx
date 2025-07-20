@@ -157,7 +157,9 @@ export default function Header() {
     if (keywords.length < 2) {
       setIsError(true);
     }
-    navigate(`/articles/search?keywords=${encodeURIComponent(keywords)}`);
+    navigate(
+      `/nc-news/articles/search?keywords=${encodeURIComponent(keywords)}`
+    );
   }
 
   const openTopics = Boolean(topicsEl);
@@ -214,16 +216,16 @@ export default function Header() {
       onClose={handleClose}
     >
       <MenuItem onClick={handleMenuClose}>
-        <Link to="/articles">#all-posts</Link>
+        <Link to="/nc-news/articles">#all-posts</Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link to="/topics/coding">#coding</Link>
+        <Link to="/nc-news/topics/coding">#coding</Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link to="/topics/cooking">#cooking</Link>
+        <Link to="/nc-news/topics/cooking">#cooking</Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link to="/topics/football">#football</Link>
+        <Link to="/nc-news/topics/football">#football</Link>
       </MenuItem>
     </Menu>
   );
@@ -308,7 +310,7 @@ export default function Header() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" }, marginRight: 3 }}
           >
-            <img src="/nc-thumbnail.png" className="nn-logo"></img>
+            <img src="/nc-news/nc-thumbnail.png" className="nn-logo"></img>
           </Typography>
           <IconButton
             size="large"

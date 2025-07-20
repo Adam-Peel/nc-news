@@ -61,7 +61,9 @@ function ArticleCard(article) {
           sx={{ display: "flex", flexDirection: "row" }}
         >
           <CardActionArea
-            onClick={() => navigate(`/articles/${article.article.article_id}`)}
+            onClick={() =>
+              navigate(`/nc-news/articles/${article.article.article_id}`)
+            }
             sx={{
               borderRadius: "25px",
               transition: "transform 0.15s ease-in-out",
@@ -133,7 +135,7 @@ function ArticleCard(article) {
             >
               <Link
                 className="article-card-topic-link"
-                to={`/topics/${article.article.topic}`}
+                to={`/nc-news/topics/${article.article.topic}`}
               >
                 {article.article.topic}
               </Link>

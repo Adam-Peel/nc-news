@@ -17,7 +17,7 @@ function MainComponent() {
           path="/nc-news/articles/:article_id"
           element={<SingleArticlePage />}
         />
-        <Route path="*/nc-news/" element={<NotFound />} />
+        <Route path="/nc-news/*" element={<NotFound />} />
       </Routes>
     </>
   );
