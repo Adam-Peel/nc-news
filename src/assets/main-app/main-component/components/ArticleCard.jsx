@@ -87,7 +87,7 @@ export default function ArticleCard(article) {
                 sx={{ typography: { md: "body2", sm: "body2", xs: "caption" } }}
               >
                 {article.article.title[0].toUpperCase()}
-                {article.article.title.slice(1).toLowerCase()}
+                {article.article.title.slice(1)}
               </Typography>
             </CardContent>
           </CardActionArea>
