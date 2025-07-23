@@ -137,7 +137,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const { currentUser } = useContext(UserContext);
   const { currentColourTheme, setCurrentColourTheme } =
     useContext(ColourThemeContext);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -180,10 +179,6 @@ export default function Header() {
   }
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -294,13 +289,19 @@ export default function Header() {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "space-evenly",
                 alignItems: "center",
                 width: "100%",
               }}
             >
               {/* Left Section */}
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                }}
+              >
                 <Typography
                   variant="h6"
                   noWrap

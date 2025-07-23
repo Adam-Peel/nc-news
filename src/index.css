@@ -328,13 +328,12 @@ button:hover {
 
 /* Single Article Page */
 
-.single-article-box {
-}
-
 .article-head {
   display: flex;
+  width: inherit;
   flex-direction: row;
-  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 #article-head-title,
@@ -355,11 +354,7 @@ button:hover {
 }
 
 .article-head-image {
-  border-radius: 10%;
-  border-color: #1976d2;
-  border-width: 1px;
-  border-style: solid;
-  width: 90%;
+  width: 100%;
   max-width: 700px;
   height: auto;
   margin: 5px;

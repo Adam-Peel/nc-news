@@ -97,28 +97,27 @@ function SingleArticlePage() {
             xl: "24%", // Margin for extra-large screens
           },
         }}
-        classname="single-article-box"
       >
         <article className="article">
-          <section className="article-head">
-            <img
-              className="article-head-image"
-              src={articleData.article.article_img_url}
-            ></img>
+          <section>
+            <Typography
+              variant="body2"
+              sx={{
+                typography: {
+                  md: "body2",
+                  sm: "body1",
+                  xs: "caption",
+                },
+              }}
+            ></Typography>
           </section>
           <section className="article-body-container">
             <Typography
               className="article-start-accent"
+              variant="body2"
               sx={{
-                mt: 2,
-                mb: 2,
-                typography: {
-                  xs: "h6",
-                  sm: "h6",
-                  md: "h5",
-                  lg: "h4",
-                  xl: "h4",
-                },
+                mt: 1,
+                mb: 1,
               }}
             >
               all posts &gt; #{articleData.article.topic}
@@ -141,15 +140,11 @@ function SingleArticlePage() {
             >
               {articleData.article.title}
             </Typography>
-            <br id="article-info" />
-            <Typography
-              variant="body2"
-              sx={{
-                typography: { md: "body2", sm: "body1", xs: "caption" },
-              }}
-            >
-              <CalendarMonthIcon /> {articleDate.slice(4)}{" "}
-            </Typography>
+
+            <img
+              className="article-head-image"
+              src={articleData.article.article_img_url}
+            ></img>
             <section className="article-body">
               <Typography
                 sx={{
@@ -161,6 +156,16 @@ function SingleArticlePage() {
                 </span>
                 {articleData.article.body.slice(1)}
               </Typography>
+              <Typography
+                variant="body2"
+                sx={{ mt: 2, display: "flex", alignItems: "flex-end" }}
+              >
+                <span>
+                  {provideAvatar(articleData.article.author, 35, users)}
+                  <strong>{articleData.article.author}</strong>
+                </span>
+                <CalendarMonthIcon sx={{ ml: 5 }} /> {articleDate.slice(4)}{" "}
+              </Typography>
             </section>
             <br />
             <div id="article-author">
@@ -170,12 +175,7 @@ function SingleArticlePage() {
                 component="div"
                 textAlign="left"
                 sx={{ typography: { md: "h6", sm: "body1", xs: "body2" } }}
-              >
-                <span>
-                  {provideAvatar(articleData.article.author, 66, users)}
-                </span>
-                <strong>{articleData.article.author}</strong>
-              </Typography>
+              ></Typography>
             </div>
           </section>
         </article>

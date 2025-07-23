@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import Box from "@mui/material/Box";
 
-function ArticleCard(article) {
+export default function ArticleCard(article) {
   const { users } = useContext(UserContext);
   const navigate = useNavigate();
   const d = new Date(article.article.created_at);
@@ -75,6 +75,7 @@ function ArticleCard(article) {
             <CardMedia
               component="img"
               maxHeight="125"
+              sx={{ borderRadius: "10px" }}
               className="article-card-image"
               image={article.article.article_img_url}
               alt={`An image of the ${article.article.topic} article`}
@@ -146,5 +147,3 @@ function ArticleCard(article) {
     </div>
   );
 }
-
-export default ArticleCard;
