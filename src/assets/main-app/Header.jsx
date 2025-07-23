@@ -300,6 +300,7 @@ export default function Header() {
                   display: "flex",
                   alignItems: "center",
                   gap: 1,
+                  ml: { xs: "2%", sm: "8%", md: "15%", lg: "20%", xl: "25%" },
                 }}
               >
                 <Typography
@@ -396,8 +397,19 @@ export default function Header() {
               </Box>
 
               {/* Right Section */}
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mr: { xs: "2%", sm: "8%", md: "15%", lg: "20%", xl: "25%" },
+                }}
+              >
+                <Box
+                  sx={{
+                    display: { xs: "none", md: "flex" },
+                  }}
+                >
                   <FormGroup>
                     <FormControlLabel
                       control={

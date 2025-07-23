@@ -1,6 +1,11 @@
 import ArticleCard from "../components/ArticleCard";
 import { useState, useEffect } from "react";
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import {
+  useLocation,
+  useParams,
+  useSearchParams,
+  Link,
+} from "react-router-dom";
 import fetchData from "../utils/fetch";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
@@ -135,10 +140,11 @@ function ArticlesFeed() {
         <Typography
           className="article-start-accent"
           sx={{
-            typography: { xs: "s2", sm: "s1", md: "h5", lg: "h4", xl: "h4" },
+            typography: { xs: "s2", sm: "s1", md: "h6", lg: "h6", xl: "h6" },
           }}
         >
-          posts {title}
+          <Link to={`/nc-news/articles`}>#All posts</Link>
+          <Link to={`/nc-news/topics/${title}`}>{title}</Link>
         </Typography>
         <form>
           <br />

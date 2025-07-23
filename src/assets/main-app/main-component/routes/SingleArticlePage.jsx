@@ -3,7 +3,7 @@ import fetchData from "../utils/fetch";
 import CommentsFeed from "../components/CommentsFeed";
 import BadRequest from "./BadRequest.jsx";
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Stack from "@mui/material/Stack";
@@ -120,7 +120,10 @@ function SingleArticlePage() {
                 mb: 1,
               }}
             >
-              all posts &gt; #{articleData.article.topic}
+              <Link to={`/nc-news/articles`}>#All posts</Link> &gt;{" "}
+              <Link to={`/nc-news/topics/${articleData.article.topic}`}>
+                #{articleData.article.topic}
+              </Link>
             </Typography>
             <Typography
               className="article-card-title"
@@ -138,7 +141,8 @@ function SingleArticlePage() {
                 },
               }}
             >
-              {articleData.article.title}
+              {articleData.article.title[0].toUpperCase()}
+              {articleData.article.title.slice(1).toLowerCase()}
             </Typography>
 
             <img

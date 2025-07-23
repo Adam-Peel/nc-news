@@ -32,7 +32,6 @@ export default function ArticleCard(article) {
           flexDirection: "column",
           flexGrow: true,
           height: "auto",
-          borderRadius: "25px",
         }}
       >
         <Box
@@ -65,7 +64,7 @@ export default function ArticleCard(article) {
               navigate(`/nc-news/articles/${article.article.article_id}`)
             }
             sx={{
-              borderRadius: "25px",
+              borderRadius: "5px",
               transition: "transform 0.15s ease-in-out",
               "&:hover": {
                 transform: "scale3d(1.05, 1.05, 1)",
@@ -74,21 +73,21 @@ export default function ArticleCard(article) {
           >
             <CardMedia
               component="img"
-              maxHeight="125"
-              sx={{ borderRadius: "10px" }}
+              sx={{ borderRadius: "1px", maxHeight: "180px" }}
               className="article-card-image"
               image={article.article.article_img_url}
               alt={`An image of the ${article.article.topic} article`}
             />
-            <CardContent sx={{}}>
+            <CardContent>
               <Typography
                 className="article-card-title"
                 gutterBottom
                 component="div"
                 textAlign="left"
-                sx={{ typography: { md: "body1", sm: "body2", xs: "caption" } }}
+                sx={{ typography: { md: "body2", sm: "body2", xs: "caption" } }}
               >
-                {article.article.title}
+                {article.article.title[0].toUpperCase()}
+                {article.article.title.slice(1).toLowerCase()}
               </Typography>
             </CardContent>
           </CardActionArea>
