@@ -309,7 +309,7 @@ export default function Header() {
                   component="div"
                   sx={{ display: { xs: "none", sm: "block" } }}
                 >
-                  <img src="/nc-news/nc-thumbnail.png" className="nn-logo" />
+                  <img src="/nc-thumbnail.png" className="nn-logo" />
                 </Typography>
                 <IconButton
                   size="large"
