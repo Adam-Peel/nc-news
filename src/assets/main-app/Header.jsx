@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { UserContext } from "./contexts/UserContext";
+
 import { ColourThemeContext } from "./contexts/ThemeContext";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -11,9 +11,10 @@ import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import MoreIcon from "@mui/icons-material/MoreVert";
+import Button from "@mui/material/Button";
 
+import MoreIcon from "@mui/icons-material/MoreVert";
+import BasicModal from "./Modal";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
@@ -149,16 +150,6 @@ export default function Header() {
 
   function handleChange(event) {
     setKeywords(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (keywords.length < 2) {
-      setIsError(true);
-    }
-    navigate(
-      `/nc-news/articles/search?keywords=${encodeURIComponent(keywords)}`
-    );
   }
 
   const openTopics = Boolean(topicsEl);
@@ -350,50 +341,6 @@ export default function Header() {
                 >
                   NC News
                 </Typography>
-                <form onSubmit={handleSubmit}>
-                  <Search
-                    onChange={handleChange}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                    sx={{
-                      maxHeight: "40px",
-                      flexGrow: 1,
-                      marginRight: 1,
-                      width: {
-                        xs: "120px",
-                        sm: "200px",
-                        md: "300px",
-                        lg: "350px",
-                      },
-                      paddingLeft: 1,
-                      borderRadius: "20px",
-                      boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                      border: "1px solid #ccc",
-                      transition: "all 0.3s ease",
-                      "&:focus": {
-                        borderColor: "#0077FF",
-                        boxShadow: "0 0 0 2px rgba(0, 119, 255, 0.5)",
-                      },
-                    }}
-                  >
-                    <StyledInputBase
-                      placeholder="Search…"
-                      sx={{ maxHeight: "40px", flexGrow: 1, marginRight: 1 }}
-                      value={keywords}
-                      inputProps={{ "aria-label": "search" }}
-                      error={isError}
-                      helperText={isError ? "Must 3 characters" : ""}
-                    />
-                    <IconButton
-                      onClick={handleSubmit}
-                      style={{ height: "40px" }}
-                    >
-                      <SearchIcon />
-                    </IconButton>
-                  </Search>
-                </form>
               </Box>
 
               {/* Right Section */}
@@ -422,6 +369,7 @@ export default function Header() {
                       label=""
                     />
                   </FormGroup>
+                  <BasicModal />
                 </Box>
                 <Box sx={{ display: { xs: "flex", md: "none" } }}>
                   <IconButton

@@ -5,12 +5,12 @@ This repo contains all scripts and components necessary to serve a front-end REA
 In the app, users can view articles, vote on articles, and post and delete comments.
 
 The front end is available at:
-https://www.adampeel.co.uk/nc-news
+[NC News App](https://www.adampeel.co.uk/nc-news)
 
 The data is retrieved from a back-end application:
-https://www.adampeel.co.uk/api
+[API Documentation](https://www.adampeel.co.uk/api)
 The repository for which can be found here:
-https://github.com/Adam-Peel/news-aggregator
+[Backend Repo](https://github.com/Adam-Peel/news-aggregator)
 
 # Local hosting
 
