@@ -19,7 +19,7 @@ function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
     const fetchComments = async function () {
       try {
         const fetchedComments = await fetchData(
-          `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}/comments`
+          `https://www.adampeel.co.uk/api/articles/${articleId}/comments`
         );
         setCommentsData(fetchedComments);
         setCommentsError(null);
@@ -41,6 +41,7 @@ function CommentsFeed({ articleId, articleVotes, articleCommentCount }) {
   if (!commentsData) {
     return (
       <main>
+        <h2 className="comments-feed-title">Loading...</h2>
         <Stack spacing={1}>
           <Skeleton
             variant="text"

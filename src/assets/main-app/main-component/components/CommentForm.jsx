@@ -16,7 +16,7 @@ function CommentForm({ articleId, setCommentPosted }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const destructuredUser = currentUser[0];
-    const url = `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}/comments`;
+    const url = `https://www.adampeel.co.uk/api/articles/${articleId}/comments`;
     const postToSend = [
       { username: destructuredUser.username, body: commentValue },
     ];

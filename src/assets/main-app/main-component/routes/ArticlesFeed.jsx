@@ -24,13 +24,13 @@ function ArticlesFeed() {
   useEffect(() => {
     const keywords = searchParams.get("keywords");
 
-    let baseUrl = "https://news-aggregator-7e9t.onrender.com/api/articles";
+    let baseUrl = "https://www.adampeel.co.uk/api/articles";
 
     if (location.pathname === "/articles/search" && keywords) {
-      baseUrl = `https://news-aggregator-7e9t.onrender.com/api/articles/search?keywords=${keywords}`;
+      baseUrl = `https://www.adampeel.co.uk/api/articles/search?keywords=${keywords}`;
       setTitle(`Search results`);
     } else if (topic) {
-      baseUrl = `https://news-aggregator-7e9t.onrender.com/api/articles?topic=${topic}`;
+      baseUrl = `https://www.adampeel.co.uk/api/articles?topic=${topic}`;
       setTitle(`> #${topic}`);
     }
 

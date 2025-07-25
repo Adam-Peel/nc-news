@@ -7,7 +7,6 @@ import NotFound from "./main-component/routes/NotFound";
 
 function MainComponent() {
   return (
-    // <main>
     <Routes>
       <Route path="/nc-news/articles" element={<ArticlesFeed />} />
       <Route path="/nc-news" element={<ArticlesFeed />} />
@@ -21,7 +20,6 @@ function MainComponent() {
       <Route path="/nc-news/about" element={<AboutPage />} />
       <Route path="/nc-news/*" element={<NotFound />} />
     </Routes>
-    // </main>
   );
 }
 

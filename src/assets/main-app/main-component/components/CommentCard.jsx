@@ -21,7 +21,7 @@ function CommentCard({ comment, setCommentPosted }) {
     setButtonDisabled(true);
     setCommentPosted(false);
     setDeleteError("⏳ Deleting comment");
-    const url = `https://news-aggregator-7e9t.onrender.com/api/comments/${id}`;
+    const url = `https://www.adampeel.co.uk/api/comments/${id}`;
     try {
       const deleted = await deleteData(url);
       setDeleteError(null);

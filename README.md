@@ -7,7 +7,9 @@ In the app, users can view articles, vote on articles, and post and delete comme
 The front end is available at:
 https://www.adampeel.co.uk/nc-news
 
-The data is retrieved from a back-end repository and application which can be found here:
+The data is retrieved from a back-end application:
+https://www.adampeel.co.uk/api
+The repository for which can be found here:
 https://github.com/Adam-Peel/news-aggregator
 
 # Local hosting

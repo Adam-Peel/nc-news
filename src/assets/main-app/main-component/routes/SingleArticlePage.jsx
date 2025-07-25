@@ -24,7 +24,7 @@ function SingleArticlePage() {
     const fetchArticle = async function () {
       try {
         const fetchedArticle = await fetchData(
-          `https://news-aggregator-7e9t.onrender.com/api/articles/${article_id}`
+          `https://www.adampeel.co.uk/api/articles/${article_id}`
         );
         setArticleData(fetchedArticle);
         const d = new Date(fetchedArticle.article.created_at);

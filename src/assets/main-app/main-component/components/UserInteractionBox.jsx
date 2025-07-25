@@ -14,7 +14,7 @@ function UserInteractionBox({ articleId, articleCommentCount, articleVotes }) {
   const [disableUpvoteButton, setDisableUpvoteButton] = useState(false);
   const [disableDownvoteButton, setDisableDownvoteButton] = useState(false);
   const [patchURL, setPatchURL] = useState(
-    `https://news-aggregator-7e9t.onrender.com/api/articles/${articleId}`
+    `https://www.adampeel.co.uk/api/articles/${articleId}`
   );
   const [patchError, setPatchError] = useState(null);
 
