@@ -9,6 +9,7 @@ The front end is available at:
 
 The data is retrieved from a back-end application:
 [API Documentation](https://www.adampeel.co.uk/api)
+
 The repository for which can be found here:
 [Backend Repo](https://github.com/Adam-Peel/news-aggregator)
 
